@@ -27,4 +27,3 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
         # Run npm eslint fix and then test linting
-      - run: npm run lint
