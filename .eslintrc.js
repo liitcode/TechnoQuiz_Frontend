@@ -4,11 +4,7 @@ module.exports = {
     es2021: true,
     'jest/globals': true,
   },
-  extends: [
-    'airbnb',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['airbnb', 'prettier'],
 
   parserOptions: {
     ecmaFeatures: {
@@ -18,5 +14,10 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'prettier', 'jest'],
-  rules: {},
+  rules: {
+    'import/prefer-default-export': 'off',
+    'react/jsx-filename-extension': [0],
+    'import/extensions': 'off',
+    'no-param-reassign': 0,
+  },
 };
