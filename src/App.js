@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 import Category from './components/Category';
 import Quiz from './components/Quiz';
 
+
 function App() {
   return (
     <Router>

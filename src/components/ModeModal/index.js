@@ -4,6 +4,7 @@ import Styles from './ModeModal.module.scss';
 
 // eslint-disable-next-line react/prop-types
 function ModeModal({ status }) {
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
