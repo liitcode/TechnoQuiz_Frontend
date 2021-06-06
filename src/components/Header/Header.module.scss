@@ -1,0 +1,14 @@
+@import '../../assets/styles/mixins.scss';
+@import '../../assets/styles/variables.scss';
+
+.header {
+  @include set-flex;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 35px;
+  height: 8vh;
+  background-color: $background-secondary-color;
+  z-index: 200;
+}

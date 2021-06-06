@@ -1,0 +1,84 @@
+@import '../../assets/styles/mixins.scss';
+@import '../../assets/styles/variables.scss';
+
+.home {
+  width: 100%;
+  height: 92vh;
+  position: relative;
+  background-color: $background-color;
+  &__container {
+    width: 100%;
+    height: 100%;
+    padding: 15% 5%;
+    &__top {
+      z-index: 10;
+      position: relative;
+      p {
+        font-size: 1.1rem;
+      }
+      span {
+        color: $secondary-color;
+      }
+      button {
+        @include set-btn-style;
+      }
+    }
+
+    &__bottom {
+      display: inline-block;
+      width: 100%;
+      margin-top: 16%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .particle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .home {
+    height: 77vh;
+    &__container {
+      &__top {
+        p {
+          font-size: 1.2rem;
+        }
+      }
+      &__bottom {
+        img {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .home {
+    height: 92vh;
+    &__container {
+      padding: 5% 5%;
+      &__top {
+        text-align: left;
+        p {
+          width: 50%;
+          margin: 2% 0;
+        }
+      }
+      &__bottom {
+        margin-top: 0%;
+        text-align: right;
+        img {
+          width: 40%;
+        }
+      }
+    }
+  }
+}

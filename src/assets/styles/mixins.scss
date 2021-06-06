@@ -1,0 +1,41 @@
+@import '../styles/variables.scss';
+@mixin set-btn-style() {
+  font-weight: 400;
+
+  color: $text-color;
+  background-color: $primary-color;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  margin: 5px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(0.98);
+  }
+  &:focus {
+    outline-color: black;
+    cursor: pointer;
+  }
+}
+
+@mixin set-max-width() {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+@mixin set-link-style() {
+  text-decoration: none;
+  color: #707679;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+@mixin set-link-style-without-bullet() {
+  @include set-link-style;
+  list-style: none;
+}
+@mixin set-flex() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
