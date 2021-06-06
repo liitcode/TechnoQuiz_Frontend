@@ -6,6 +6,8 @@ import Home from './components/Home';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Category from './components/Category';
+import Quiz from './components/Quiz';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <main className={styles.main}>
           <Switch>
             <Route path="/" component={Home} exact />
+            <Route path="/quiz" component={Quiz} exact />
             <Route path="/category" component={Category} exact />
             <Route path="/Signin" component={SignIn} exact />
             <Route path="/signup" component={SignUp} exact />
