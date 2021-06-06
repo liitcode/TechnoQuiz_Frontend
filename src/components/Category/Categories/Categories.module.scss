@@ -1,0 +1,21 @@
+@import '../../../assets/styles/mixins.scss';
+.categories {
+  width: 95%;
+  max-height: 398px;
+  overflow-y: scroll;
+
+  &__cards {
+    @include set-flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .categories {
+    width: 70%;
+    padding: 3%;
+    max-height: unset;
+    overflow-y: unset;
+  }
+}
