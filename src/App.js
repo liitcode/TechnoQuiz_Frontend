@@ -16,7 +16,7 @@ function App() {
         <main className={styles.main}>
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/" component={Quiz} exact />
+            <Route path="/quiz" component={Quiz} exact />
             <Route path="/category" component={Category} exact />
             <Route path="/Signin" component={SignIn} exact />
             <Route path="/signup" component={SignUp} exact />
