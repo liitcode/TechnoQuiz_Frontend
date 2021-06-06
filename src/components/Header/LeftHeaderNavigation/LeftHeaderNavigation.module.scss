@@ -1,0 +1,18 @@
+@import '../../../assets/styles/mixins.scss';
+@import '../../../assets/styles/variables.scss';
+.nav_left {
+  @include set-flex;
+  &__list {
+    @include set-flex;
+    @include set-link-style-without-bullet;
+    font-size: 1.2rem;
+    padding-left: 0px;
+    & li {
+      padding: 0 10px 0 10px;
+    }
+    &__link {
+      text-decoration: none;
+      color: $text-color;
+    }
+  }
+}
