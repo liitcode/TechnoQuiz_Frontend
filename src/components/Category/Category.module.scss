@@ -1,0 +1,11 @@
+@import '../../assets/styles/mixins.scss';
+.categories {
+  @include set-flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .categories {
+    flex-direction: row;
+  }
+}

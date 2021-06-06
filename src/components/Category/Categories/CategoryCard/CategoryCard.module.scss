@@ -1,0 +1,25 @@
+@import '../../../../assets/styles/mixins.scss';
+@import '../../../../assets/styles/variables.scss';
+
+.categoryCard {
+  width: 91%;
+  margin: 3% 10px;
+  background-color: $background-secondary-color;
+  height: 140px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  @include set-flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .categoryCard {
+    width: 42%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .categoryCard {
+    width: 30%;
+    margin: 2% 10px;
+  }
+}
