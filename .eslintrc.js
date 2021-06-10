@@ -19,5 +19,6 @@ module.exports = {
     'react/jsx-filename-extension': [0],
     'import/extensions': 'off',
     'no-param-reassign': 0,
+    'func-names': 'off',
   },
 };

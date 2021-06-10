@@ -1,0 +1,54 @@
+[
+  {
+    "id": 409,
+    "question": "Which statement is used to insert a new data  database? Which statement is used to insert a nein a database? Which statement is used to insert a new data in a databaseWhich statement is used to insert a new data in a database",
+    "answers": {
+      "answer_a": "INSERT NEW tement is used to in tement is used to in  INSERT NEW tement is used to in tement is used to in",
+      "answer_b": "UPDATE tement is used to in tement is used to in",
+      "answer_c": "INSERT INTO tement is used to intement is used to in",
+      "answer_d": "Add New tement is used to intement is used to in",
+      "answer_e": null,
+      "answer_f": null
+    },
+    "correct": "answer_a"
+  },
+  {
+    "id": 248,
+    "question": "Which of the following will raise MySQL’s version of an error?",
+    "answers": {
+      "answer_a": "SIGNAL",
+      "answer_b": "RAISE",
+      "answer_c": "ERROR",
+      "answer_d": "None of these",
+      "answer_e": null,
+      "answer_f": null
+    },
+    "correct": "answer_a"
+  },
+  {
+    "id": 409,
+    "question": "Which statement is used to insert a new data in a database?",
+    "answers": {
+      "answer_a": "INSERT NEW",
+      "answer_b": "UPDATE",
+      "answer_c": "INSERT INTO",
+      "answer_d": "Add New",
+      "answer_e": null,
+      "answer_f": null
+    },
+    "correct": "answer_a"
+  },
+  {
+    "id": 248,
+    "question": "Which of the following will raise MySQL’s version of an error?",
+    "answers": {
+      "answer_a": "SIGNAL",
+      "answer_b": "RAISE",
+      "answer_c": "ERROR",
+      "answer_d": "None of these",
+      "answer_e": null,
+      "answer_f": null
+    },
+    "correct": "answer_a"
+  }
+]

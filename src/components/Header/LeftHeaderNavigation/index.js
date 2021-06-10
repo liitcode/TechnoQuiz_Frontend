@@ -9,13 +9,13 @@ function index() {
       <Logo />
       <ul className={styles.nav_left__list}>
         <li>
-          <Link to="/" className={styles.nav_left__list__link}>
-            Home
+          <Link to="/category" className={styles.nav_left__list__link}>
+            category
           </Link>
         </li>
         <li>
-          <Link to="/category" className={styles.nav_left__list__link}>
-            Category
+          <Link to="/quiz" className={styles.nav_left__list__link}>
+            quiz
           </Link>
         </li>
       </ul>

@@ -1,0 +1,42 @@
+@import '../../../assets/styles/mixins.scss';
+@import '../../../assets/styles/variables.scss';
+.leaderboard {
+  width: 90%;
+  padding: 2%;
+}
+
+.leaders {
+  background-color: #bebffe;
+  padding: 3%;
+  border-radius: 10px;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.leader {
+  height: 40px;
+  @include set-flex;
+  background-color: $background-secondary-color;
+  margin: 2%;
+  padding: 10%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .leaderboard {
+    width: 40%;
+  }
+  .leaders {
+    overflow-y: unset;
+    max-height: unset;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .leaderboard {
+    width: 30%;
+  }
+  .leaders {
+    overflow-y: unset;
+    max-height: unset;
+  }
+}
