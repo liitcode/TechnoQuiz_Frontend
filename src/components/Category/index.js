@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Category.module.scss';
 import Categories from './Categories';
 import LeaderBoard from './LeaderBoard';
-import ModeModal from '../ModeModal';
+import ModeModal from '../UI/ModeModal';
 
 function Category() {
   return (

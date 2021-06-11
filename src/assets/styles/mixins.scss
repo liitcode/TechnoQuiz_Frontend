@@ -21,7 +21,7 @@
 
 @mixin set-max-width() {
   margin: 0 auto;
-  max-width: 1024px;
+  max-width: 100%;
 }
 
 @mixin set-link-style() {
