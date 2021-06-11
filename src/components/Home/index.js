@@ -1,24 +1,43 @@
 import React from 'react';
 import Particles from 'react-particles-js';
+import Typewriter from 'typewriter-effect';
 import styles from './Home.module.scss';
-import landingPageQuiz from '../../assets/images/landingPageQuiz.png';
+import landingPageQuiz from '../../assets/images/pngwing.com.png';
 
 function Home() {
   return (
     <div className={styles.home}>
       <div className={styles.home__container}>
-        <div className={styles.home__container__top}>
+        <div className={styles.home__container__left}>
           <h2>
             Test your technical skills with <span>Techno Quiz</span>
           </h2>
-          <p>
-            See where you land among other players in various topics like- Java,
-            javascript, php, linux, docker, html, etc
-          </p>
+          <div className={styles.home__container__left__text}>
+            <p>Take a quiz on</p>
+            <Typewriter
+              options={{
+                strings: [
+                  'JAVASCRIPT',
+                  'HTML',
+                  'DOCKER',
+                  'PHP',
+                  'KUBERNETES',
+                  'MYSQL',
+                  'WORDPRESS',
+                  'LINUX',
+                  'DEVOPS',
+                  'BASH',
+                  'LARAVEL',
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </div>
           <button type="button">Sign Up</button>
           <button type="button">Play as Guest</button>
         </div>
-        <div className={styles.home__container__bottom}>
+        <div className={styles.home__container__right}>
           <img src={landingPageQuiz} alt="Person taking technical quiz" />
         </div>
         <Particles
