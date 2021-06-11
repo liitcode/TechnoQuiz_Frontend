@@ -11,9 +11,8 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
-import { register } from '../../../actions/actionCreators/auth';
+import { register } from '../../../Redux/actions/actionCreators/auth';
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import '../auth.css';
 
 const required = (value) => {
