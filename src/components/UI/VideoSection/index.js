@@ -7,7 +7,6 @@ import './videosection.css';
 function VideoSection({
     headline,description,buttonLabel,vid
 }){
-    console.log("INSIDEE VIDEOO SECTIONNN");
     return (
         <>
         <div className='vid-container'>
