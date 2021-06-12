@@ -1,0 +1,152 @@
+@import '../../../assets/styles/variables.scss';
+
+.container {
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.navbar {
+    background: $secondary-color;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    &-logo {
+      color:$primary-color;
+      justify-self:center;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+    }
+    &-icon {
+      margin-right: 0.5rem;
+    }
+  }  
+
+.nav {
+  &-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+    justify-content: end;
+  }
+  &-item {
+    height: 80px;
+    border-bottom: 2px solid transparent;
+    &:hover {
+      border-bottom: 2px solid $navbar-hover;
+    }
+  }
+  &-links {
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    height: 100%;
+  }
+  &-links-scroll {
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    height: 100%;
+  }
+  &-menu-icon {
+    display: none;
+  }
+
+}
+.fa-bars {
+  color: $secondary-color;
+}
+  
+@media screen and (max-width: 960px) {
+    .NavbarItems {
+      position: relative;
+    }
+    .nav {
+      &-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        &.active {
+          background: $secondary-color;
+          left: 0;
+          opacity: 1;
+          transition: all 0.6s ease;
+          z-index: 1;
+        }
+      }
+      &-links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+        &:hover {
+          color: $navbar-hover;
+          transform: scale(1.2);
+          transition: all 0.3s ease;
+        }
+      }
+      &-item {
+        width: 100%;
+        &:hover {
+          border: none;
+        }
+      }
+      &-menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+      &-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 120px;
+      }
+    }
+    .navbar-logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(25%, 50%);
+    }
+    .fa-times {
+      color: $secondary-color;
+      font-size: 2rem;
+    }
+  
+  }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './footer.css';
+import './footer.scss';
 import { Link } from 'react-router-dom';
 import {
   FaFacebook,

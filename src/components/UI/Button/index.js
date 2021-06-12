@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import './button.css';
+import './button.scss';
 
 const STYLES = ['btn--primary','btn--outline','btn--outline--white'];
 const SIZES = ['btn--medium','btn--large','btn--mobile','btn--wide'];

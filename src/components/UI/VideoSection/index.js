@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Button } from '../Button';
-import './videosection.css';
+import './videosection.scss';
 
 function VideoSection({
     headline,description,buttonLabel,vid

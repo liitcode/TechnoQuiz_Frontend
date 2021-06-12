@@ -6,7 +6,7 @@ import { FaBars,FaTimes } from 'react-icons/fa'
 import { MdFingerprint } from 'react-icons/md'
 import { IconContext } from 'react-icons/lib';
 import { Button } from '../Button';
-import './navbar.css';
+import './navbar.scss';
 
 function Navbar() {
     const [click,setClick] = useState(false);
@@ -30,7 +30,7 @@ function Navbar() {
                 <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
                     <MdFingerprint className='navbar-icon'/>TechnoQuiz
                 </Link>
-                <div className = 'menu-icon' onClick={handleClick} onKeyDown={handleClick}>
+                <div className = 'nav-menu-icon' onClick={handleClick} onKeyDown={handleClick}>
                  {click ? <FaTimes/> : <FaBars/> }
                 </div>
                 <ul className={click?'nav-menu active' : 'nav-menu'} >
