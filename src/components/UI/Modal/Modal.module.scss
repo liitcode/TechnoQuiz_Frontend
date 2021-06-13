@@ -11,11 +11,13 @@
 }
 
 .mode {
+  position: relative;
   width: 80%;
   height: 50%;
   background-color: white;
   border-radius: 10px;
   margin: auto;
+  z-index: 10000;
   &__heading {
     margin-top: 5%;
     font-size: 1.5rem;
@@ -32,7 +34,9 @@
 }
 @media only screen and (min-width: 1025px) {
   .mode {
+    position: relative;
     width: 30%;
+    z-index: 10000;
     &__heading {
       font-size: 1.5rem;
     }

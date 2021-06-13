@@ -3,14 +3,14 @@ import React from 'react';
 import styles from './Category.module.scss';
 import Categories from './Categories';
 import LeaderBoard from './LeaderBoard';
-import ModeModal from '../UI/ModeModal';
+import TypeSelectionModal from './TypeSelectionModal';
 
 function Category() {
   return (
     <div className={styles.categories}>
       <Categories />
       <LeaderBoard />
-      <ModeModal status />
+      <TypeSelectionModal />
     </div>
   );
 }

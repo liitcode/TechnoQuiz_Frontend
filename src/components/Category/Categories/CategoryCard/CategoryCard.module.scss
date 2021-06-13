@@ -1,25 +1,63 @@
 @import '../../../../assets/styles/mixins.scss';
 @import '../../../../assets/styles/variables.scss';
 
-.categoryCard {
-  width: 91%;
-  margin: 3% 10px;
-  background-color: $background-secondary-color;
-  height: 140px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-  @include set-flex;
-  justify-content: center;
+h1 {
+  color: #090985;
+  margin: auto;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .categoryCard {
-    width: 42%;
+.card {
+  background-color: transparent;
+  width: 250px;
+  perspective: 1000px;
+  position: relative;
+  cursor: grab;
+  width: 91%;
+  margin: 3% 10px;
+  height: 140px;
+  border-radius: 20px;
+  width: 90%;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  &:hover &__inner {
+    transform: rotateY(180deg);
+  }
+  &__front,
+  &__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  &__front__image {
+    background-image: url('../../../../assets/images/Capture.JPG');
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+  }
+
+  &__back {
+    font-size: 0.5rem;
+    background-color: #a4faff;
+    transform: rotateY(180deg);
+    @include set-flex;
+    border-radius: 25px;
   }
 }
-@media only screen and (min-width: 1024px) {
-  .categoryCard {
+
+@media only screen and (min-width: 768px) {
+  .card {
     width: 30%;
-    margin: 2% 10px;
   }
 }

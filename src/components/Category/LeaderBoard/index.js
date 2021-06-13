@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './LeaderBoard.module.scss';
+import Dropdown from '../../UI/Dropdown/index';
+import Trophy from '../../../assets/images/trophy.png';
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -13,7 +15,13 @@ function LeaderBoard() {
   }, []);
   return (
     <div className={styles.leaderboard}>
-      <h2>LeaderBoard</h2>
+      <div className={styles.leaderboard_img}>
+        <img src={Trophy} alt="Leaderboard Trophy" />
+      </div>
+      <Dropdown />
+      <div className={styles.message}>
+        *Choose Category to see leaders of respective category
+      </div>
       <div className={styles.leaders}>
         {data.map((leader, index) => (
           <div className={styles.leader}>
