@@ -12,11 +12,9 @@ function Dropdown() {
       'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/category',
     );
     setData(result.data);
-    console.log(result.data);
   }, []);
 
   const optionSelected = (e) => {
-    console.log(e.target.value);
     setValue(e.target.value);
   };
 
