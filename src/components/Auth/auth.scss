@@ -1,110 +1,137 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
 .base {
-  height: 92vh;
+  @include set-flex;
+  height: 100vh;
   width: 100%;
-  background-image: linear-gradient(
-    140deg,
-    #53b8bf 23%,
-    #5fa8bf 54%,
-    #1e3485 83%,
-    #1d0a54 100%
-  );
-  display: flex;
+  background-image: url(../../assets/images/bg.jpg);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6);
   justify-content: center;
+  flex-wrap: wrap;
+
+
+  &-container {
+    @include set-flex;
+    flex-wrap: wrap;
+    width:auto;
+    flex-direction: column;
+    background-color: $secondary-color;
+    box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
+    border-radius: 4px;
+    padding: 20px;
+  }
+}
+
+.form {
+  @include set-flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  flex-direction: column;
   align-items: center;
+  margin-top: 30px;
+
+  &-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 20px;
+    justify-content: center;
+  }
+  
+  &-label {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+  
+  &-text {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    &-link {
+      text-decoration: none;
+      color: $navbar-hover;
+    }
+  }
+
+  &-control {
+    margin-top: 3px;
+    min-width: 18em;
+    height: 33px;
+    padding: 0px 10px;
+    font-size: 16px;
+    background-color: $text-color;
+    border: 0;
+    border-radius: 4px;
+    transition: all 250ms ease-in-out;
+    &:hover {
+      background-color:$secondary-color;
+      box-shadow: 0px 0px 14px 0.3px $primary-color;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 12px 0.8px $primary-color;
+    }
+  }
+}
+
+.col {
+  @include set-flex;
+  color: $secondary-color;
+  background : transparent;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 3rem;
+  &-logo{
+    margin-right: 0.5rem;
+    &-link {
+      color: $secondary-color;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+  }
 }
 
 .alert-danger {
-  font-size: 12px;
-  color: red;
+  padding-top: 5px;
+  font-size: 15px;
+  color:$navbar-hover;
 }
 
-.base-container {
-  width: 307px;
+.header {
+  font-size: 24px;
+  font-weight: 1800;
+  padding-bottom: 10px;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
-  border-radius: 4px;
-  padding: 20px;
-
-  .header {
-    font-size: 24px;
-    font-family: 'Open Sans', sans-serif;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-
-    .image {
-      width: 18em;
-      height: 8em;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    form {
-      margin-top: 1em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: fit-content;
-        margin: auto;
-        label {
-          font-size: 0.9rem;
-          margin-top: 0.5rem;
-        }
-        input {
-          margin-top: 3px;
-          min-width: 18em;
-          height: 33px;
-          padding: 0px 5px;
-          font-size: 16px;
-          font-family: 'Open Sans', sans-serif;
-          background-color: #f3f3f3;
-          border: 0;
-          border-radius: 4px;
-          transition: all 250ms ease-in-out;
-          &:hover {
-            background-color: #ffffff;
-            box-shadow: 0px 0px 14px 0.3px #0e81ce96;
-          }
-
-          &:focus {
-            outline: none;
-            box-shadow: 0px 0px 12px 0.8px #3474dbb2;
-          }
-        }
-      }
-    }
-  }
-
-  .btn {
-    font-size: 18px;
-    padding: 5px 20px;
-    border: 0;
-    margin-top: 10px;
-    background-color: #3498db;
-    color: #fff;
-    border-radius: 3px;
-    transition: all 250ms ease-in-out;
-    cursor: pointer;
-    &:hover {
-      background-color: #2386c8;
-    }
-  }
+}
+.image {
+  width: 18em;
+  height: 10em;
+}
+img {
+  width: 100%;
+  height: 100%;
 }
 
-@media only screen and (min-width: 768px) {
-  .base-container {
-    width: 330px;
+
+@media only screen and (max-width: 1024) {
+  .base{
+    &-container {
+      width: auto;
+    }
+  }
+  .col{
+    &-logo-link {
+          font-size: 2rem;
+      }
   }
 }

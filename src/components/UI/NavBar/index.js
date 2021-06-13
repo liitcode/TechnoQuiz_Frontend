@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useLocation } from 'react-router-dom'
 import { FaBars,FaTimes } from 'react-icons/fa'
 import { MdFingerprint } from 'react-icons/md'
 import { IconContext } from 'react-icons/lib';
@@ -22,6 +22,7 @@ function Navbar() {
         }
     }
     window.addEventListener('resize',showButton);
+    if (useLocation().pathname === '/signin' || useLocation().pathname === '/signup') return null;
     return (
         <>
         <IconContext.Provider value={{color:'black'}}>

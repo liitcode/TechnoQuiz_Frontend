@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import da from './quizData.json';
 import styles from './Quiz.module.scss';
+import { Button } from '../UI/Button';
 
 function Quiz() {
   const [data, setData] = useState(da);
@@ -59,7 +60,7 @@ function Quiz() {
           </div>
         )}
         <div className={styles.quiz__nextbutton}>
-          <button type="button">Next</button>
+          <Button buttonSize='btn--large' buttonColor='red'>Next</Button>
         </div>
       </div>
     </div>
