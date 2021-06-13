@@ -1,16 +1,18 @@
 @import '../../../assets/styles/mixins.scss';
 @import '../../../assets/styles/variables.scss';
 .leaderboard {
-  width: 90%;
+  width: 84%;
   padding: 2%;
 }
 
 .leaders {
-  background-color: #bebffe;
   padding: 3%;
   border-radius: 10px;
   max-height: 250px;
   overflow-y: scroll;
+  box-shadow: 7px 10px 30px;
+  padding: 2%;
+  border-radius: 10px;
 }
 
 .leader {
@@ -18,12 +20,15 @@
   @include set-flex;
   background-color: $background-secondary-color;
   margin: 2%;
-  padding: 10%;
+  padding: 8%;
+  border-radius: 5px;
+  box-shadow: 10px 10px 20px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .leaderboard {
     width: 40%;
+    align-self: flex-start;
   }
   .leaders {
     overflow-y: unset;
@@ -34,9 +39,22 @@
 @media only screen and (min-width: 1024px) {
   .leaderboard {
     width: 30%;
+    align-self: flex-start;
   }
   .leaders {
     overflow-y: unset;
     max-height: unset;
   }
+}
+
+.leaderboard_img {
+  Img {
+    width: 40%;
+    height: 70%;
+  }
+}
+
+.message {
+  font-size: 0.8rem;
+  margin-bottom: 16px;
 }

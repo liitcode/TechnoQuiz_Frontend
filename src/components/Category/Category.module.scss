@@ -2,6 +2,13 @@
 .categories {
   @include set-flex;
   flex-direction: column;
+  background-image: linear-gradient(
+    140deg,
+    #cdecee 23%,
+    #3fa6c5 54%,
+    #304385 83%,
+    #311b6e 100%
+  );
 }
 
 @media only screen and (min-width: 768px) {
