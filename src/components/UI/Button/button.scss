@@ -1,0 +1,114 @@
+@import '../../../assets/styles/variables.scss';
+
+%hover-effect{
+    transition: all 0.3s ease-out;
+    background: $primary-color;
+    color: $secondary-color;
+}
+
+.btn {
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
+    border : none;
+    cursor: pointer;
+    white-space: nowrap;
+    
+    &--primary {
+        background-color: $primary-color;
+        color: $secondary-color;
+        border : 1px solid $primary-color;
+    }
+    &--secondary {
+        background-color: var(--secondary);
+        color: $secondary-color;
+        border : 1px solid $primary-color;
+    }
+    &--outline {
+        background-color: transparent;
+        color: $primary-color;
+        padding: 8px 20px;
+        border : 1px solid $primary-color;
+        transition: all 0.3s ease-out;
+    }
+    &--outline--white {
+        background-color: transparent;
+        color: $secondary-color;
+        padding: 8px 20px;
+        border : 1px solid var(--secondary);
+        transition: all 0.3s ease-out;
+    }
+    &--medium {
+        padding: 8px;
+        font-size: 18px;
+        &:hover {
+            @extend %hover-effect
+        }
+
+    }
+    &--large {
+        padding: 12px 26px;
+        font-size: 20px;
+        &:hover {
+            @extend %hover-effect
+        }
+    }
+    &--mobile {
+        text-align: center;
+        border-radius: 4px;
+        width: 100%;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-size: 24px;
+        background-color: transparent;
+        color: $primary-color;
+        padding: 14px 20px;
+        border: 1px solid $primary-color;
+        transition: all 0.3s ease-out;
+        &:hover {
+            @extend %hover-effect
+        }
+
+    }
+    &--wide {
+        padding: 12px 64px;
+        font-size: 20px;
+        &:hover{
+            color: $primary-color;
+            background-color: $secondary-color;
+            transition: all 0.2s ease-out;
+        }
+    }
+    &--link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding: 8px 16px;
+        height: 100%;
+        width: 100% ;
+    }
+}
+
+
+.blue {
+    background-color: #276afb;
+    color: $secondary-color;
+    border:none;
+}
+
+.red {
+    background-color: #f00946;
+    color: $secondary-color;
+    border:none;
+}
+.primary {
+    background-color: $primary-color;
+    color: $secondary-color;
+    border:none;
+    &:hover{
+        color: $primary-color;
+        background-color: $secondary-color;
+        transition: all 0.2s ease-out;
+    }
+}

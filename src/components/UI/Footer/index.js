@@ -1,6 +1,6 @@
 import React from 'react';
-import './footer.css';
-import { Link } from 'react-router-dom';
+import './footer.scss';
+import { Link,useLocation } from 'react-router-dom';
 import {
   FaFacebook,
   FaInstagram,
@@ -9,9 +9,9 @@ import {
   FaLinkedin
 } from 'react-icons/fa';
 import { MdFingerprint } from 'react-icons/md';
-// import { Button } from '../NavBar/button';
 
 function Footer() {
+  if (useLocation().pathname === '/signin' || useLocation().pathname === '/signup') return null;
   return (
     <div className='footer-container'>
       <section className='social-media'>

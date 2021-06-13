@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../Button';
-import './section.css';
+import './section.scss';
 
 function Section({
     lightBg,topLine,lightText,lightTextDesc,headline,description,
@@ -17,7 +17,7 @@ function Section({
                     <div className='col'>
                         <div className ='home__section-text-wrapper'>
                             <div className='top-line'>{topLine}</div>
-                            <h1 className={lightText?'heading':'heading dark'}>{headline}</h1>
+                            <h1 className={lightText?'heading':'heading-dark'}>{headline}</h1>
                             <p className={lightTextDesc?'home__section-subtitle':'home__section-subtitle dark'}>
                                 {description}
                             </p>

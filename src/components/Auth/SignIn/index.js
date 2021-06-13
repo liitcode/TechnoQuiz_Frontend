@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-shadow */
@@ -5,13 +6,15 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect,withRouter } from 'react-router-dom';
+import { Link,Redirect,withRouter } from 'react-router-dom';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import { isEmail } from 'validator';
+import { MdFingerprint } from 'react-icons/md';
 import loginImg from '../../../assets/images/login.svg';
 import { login } from '../../../Redux/actions/actionCreators/auth';
+import { Button } from '../../UI/Button';
 import '../auth.scss';
 
 const required = (value) => {
@@ -82,15 +85,21 @@ const Login = (props) => {
 
   return (
     <div className="base">
+      <div className='col'> 
+        <Link className='col-logo-link' to='/'>
+          <MdFingerprint className='col-logo'/>
+            TechnoQuiz
+            </Link>
+      </div>
       <div className="base-container">
-        <div className="header">Login</div>
+        <div className="header">LOGIN</div>
         <div className="content">
           <div className="image">
             <img src={loginImg} alt="" />
           </div>
           <Form onSubmit={handleLogin} ref={form}>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label className="form-label" htmlFor="email">Email</label>
               <Input
                 type="text"
                 className="form-control"
@@ -101,7 +110,7 @@ const Login = (props) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label className="form-label" htmlFor="password">Password</label>
               <Input
                 type="password"
                 className="form-control"
@@ -112,16 +121,16 @@ const Login = (props) => {
               />
             </div>
             <div className="form-group">
-              <button
-                className="btn btn-primary btn-block"
+              <Button
+                buttonSize='btn--wide'
+                buttonColor='primary'
                 disabled={loading}
-                type="button"
               >
                 {loading && (
                   <span className="spinner-border spinner-border-sm" />
                 )}
                 <span>Login</span>
-              </button>
+              </Button>
             </div>
             {message && (
               <div className="form-group">
@@ -130,8 +139,12 @@ const Login = (props) => {
                 </div>
               </div>
             )}
+             <div className="form-group">
+               <div className="form-text">
+                Don't have an account yet? <Link className ='form-text-link' to='/signup'>SignUp!</Link>
+                </div>
+              </div>
             <CheckButton
-              className="btn"
               style={{ display: 'none' }}
               ref={checkButton}
             />

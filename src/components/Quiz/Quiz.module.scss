@@ -4,10 +4,6 @@
   width: 100%;
   height: 92vh;
 
-  button {
-    @include set-btn-style;
-  }
-
   &__nextbutton {
     @include set-flex;
     justify-content: flex-end;

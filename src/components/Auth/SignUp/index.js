@@ -1,16 +1,19 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect,Link } from 'react-router-dom';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import { isEmail } from 'validator';
-import loginImg from '../../../assets/images/login.svg';
+import { MdFingerprint } from 'react-icons/md';
+import regImg from '../../../assets/images/register.svg';
 import { register } from '../../../Redux/actions/actionCreators/auth';
+import { Button } from '../../UI/Button';
 import '../auth.scss';
 
 const required = (value) => {
@@ -102,11 +105,17 @@ const Register = () => {
 
   return (
     <div className="base">
+      <div className='col'> 
+        <Link className='col-logo-link' to='/'>
+          <MdFingerprint className='col-logo'/>
+            TechnoQuiz
+            </Link>
+      </div>
       <div className="base-container">
-        <div className="header">Register</div>
+        <div className="header">REGISTER</div>
         <div className="content">
           <div className="image">
-            <img src={loginImg} alt="" />
+            <img src={regImg} alt="" />
           </div>
           <Form onSubmit={handleRegister} ref={form}>
             {!successful && (
@@ -145,9 +154,9 @@ const Register = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block" type="button">
+                <Button buttonSize='btn--wide' buttonColor='primary'>
                     Sign Up
-                  </button>
+                </Button>
                 </div>
               </div>
             )}
@@ -163,6 +172,11 @@ const Register = () => {
                 </div>
               </div>
             )}
+            <div className="form-group">
+               <div className="form-text">
+                Already have an account? <Link className ='form-text-link' to='/signin'>SignIn!</Link>
+                </div>
+              </div>
             <CheckButton
               className="btn"
               style={{ display: 'none' }}
