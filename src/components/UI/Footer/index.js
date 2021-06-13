@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import './footer.scss';
 import { Link,useLocation } from 'react-router-dom';
@@ -11,8 +12,9 @@ import {
 import { MdFingerprint } from 'react-icons/md';
 
 function Footer() {
-  if (useLocation().pathname === '/signin' || useLocation().pathname === '/signup') return null;
+  const disableFooter = ['/signin','/signup','/quiz'];
   return (
+    disableFooter.includes(useLocation().pathname) ? null : 
     <div className='footer-container'>
       <section className='social-media'>
         <div className='social-media-wrap'>
