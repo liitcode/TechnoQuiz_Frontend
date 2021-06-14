@@ -1,70 +1,167 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
-import da from './quizData.json';
+import { useSelector, useDispatch } from 'react-redux';
+// import da from './quizData.json';
 import styles from './Quiz.module.scss';
-import { Button } from '../UI/Button';
+
+import { submitTypeSelectionModal } from '../../Redux/actions/actionCreators/quiz';
 
 function Quiz() {
-  const [data, setData] = useState(da);
+  const dispatch = useDispatch();
+  // const [data, setData] = useState(da);
+  const {
+    quizData: { data: { data: quizDataList } = [] },
+  } = useSelector((state) => state.quiz);
 
-  useEffect(async () => {
-    const result = await axios.post(
-      'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/',
-      {
-        difficulty: 'M',
-        category: '105',
-      },
-      {
-        headers: {
-          'Auth-Token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBmNWFiNWVmZmExMDRkZWU5NzI5YSIsImlhdCI6MTYyMjIxMDAwM30.noIr5mdy7NcENraSOSQaXM2Zrf1lKx5K6q8OUFd7K58',
-        },
-      },
-    );
-    setData(result.data.data);
-  }, []);
-  const { user: currentUser } = useSelector((state) => state.auth);
-  if (!currentUser) return <Redirect to="/signin" />;
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswerByUser, setSelectedAnswerByUser] = useState([]);
+  // const [time, setTime] = useState({ time: {}, seconds: 0 });
+  // let [timer, setTimer] = useState(0);
+  const [startingSeconds, setStartingSeconds] = useState(1);
+  const [secondsRemaining, setSecondsRemaining] = useState(0);
+  const [time, setTime] = useState({});
+
+  useEffect(() => {
+    dispatch(submitTypeSelectionModal());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   console.log(data);
+  // });
+  const secondsToTime = (secs) => {
+    const hours = Math.floor(secs / (60 * 60));
+
+    const divisorForMinutes = secs % (60 * 60);
+    const minutes = Math.floor(divisorForMinutes / 60);
+
+    const divisorForSeconds = divisorForMinutes % 60;
+    const se = Math.ceil(divisorForSeconds);
+
+    const obj = {
+      h: hours,
+      m: minutes,
+      s: se,
+    };
+    return obj;
+  };
+
+  // const countDown = () => {
+  //   // Remove one second, set state so a re-render happens.
+  //   const { seconds } = time;
+  //   const secondAfterRemovingOne = seconds - 1;
+  //   setTime({
+  //     ...time,
+  //     time: secondsToTime(secondAfterRemovingOne),
+  //     seconds: secondAfterRemovingOne,
+  //   });
+
+  //   // Check if we're at zero.
+  //   if (seconds === 0) {
+  //     clearInterval(timer);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (time.time.m) {
+  //     timer = setInterval(countDown, 1000);
+  //   }
+  // }, [time.time.m]);
+  useEffect(() => {
+    if (quizDataList && quizDataList.length > 0) {
+      setStartingSeconds(90 * quizDataList.length);
+      setSecondsRemaining(90 * quizDataList.length);
+    }
+  }, [quizDataList]);
+
+  useEffect(() => {
+    let interval;
+    if (secondsRemaining > 0) {
+      interval = setInterval(() => {
+        setSecondsRemaining((secondsRemaining) => secondsRemaining - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [startingSeconds, secondsRemaining]);
+
+  const previousQuestionHandler = () => {
+    setCurrentQuestionIndex(currentQuestionIndex - 1);
+  };
+  const nextQuestionHandler = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  const optionSelectionHandler = (e) => {
+    const previousSelectedAnswers = [...selectedAnswerByUser];
+    previousSelectedAnswers[currentQuestionIndex] = e.target.value;
+    setSelectedAnswerByUser(previousSelectedAnswers);
+  };
+  const QuizSubmitHandler = () => {
+    alert('Submit');
+  };
+
   return (
     <div className={styles.quiz}>
+      {/* <div>
+        m: {time.time.m} s:{time.time.s}
+      </div> */}
       <div className={styles.quiz__container}>
         <div className={styles.quiz__container__heading}>
           CATEGORY: JAVASCRIPT
         </div>
-        <div className={styles.quiz__container__currentquestion}>Q1/10</div>
-        {data.length > 0 && (
+        <div className={styles.quiz__container__currentquestion}>
+          {`Q${currentQuestionIndex + 1} out of ${
+            quizDataList && quizDataList.length
+          }`}
+        </div>
+        {quizDataList && quizDataList.length > 0 && (
           <div className={styles.quiz__container__question}>
-            <div className={styles.question}>{data[0].question}</div>
-            {data[0].answers.answer_a && (
-              <div className={styles.option}>
-                <span className="bold">{'A.  '}</span>
-                {data[0].answers.answer_a}
-              </div>
-            )}
-            {data[0].answers.answer_b && (
-              <div className={styles.option}>
-                <span className="bold">{'B.    '}</span>
-                {data[0].answers.answer_b}
-              </div>
-            )}
-            {data[0].answers.answer_c && (
-              <div className={styles.option}>
-                <span className="bold">{'C.    '}</span>
-                {data[0].answers.answer_c}
-              </div>
-            )}
-            {data[0].answers.answer_d && (
-              <div className={styles.option}>
-                <span className="bold">{'D.    '}</span>
-                {data[0].answers.answer_d}
-              </div>
+            <div className={styles.question}>
+              {quizDataList[currentQuestionIndex].question}
+            </div>
+            {Object.keys(quizDataList[currentQuestionIndex].answers).map(
+              (option) =>
+                quizDataList[currentQuestionIndex].answers[option] && (
+                  <div
+                    className={styles.option}
+                    onChange={optionSelectionHandler}
+                  >
+                    <input
+                      type="radio"
+                      value={option}
+                      name={currentQuestionIndex}
+                      checked={
+                        option === selectedAnswerByUser[currentQuestionIndex]
+                      }
+                    />
+                    {quizDataList[currentQuestionIndex].answers[option]}
+                  </div>
+                ),
             )}
           </div>
         )}
         <div className={styles.quiz__nextbutton}>
-          <Button buttonSize='btn--large' buttonColor='red'>Next</Button>
+          <button
+            type="button"
+            onClick={previousQuestionHandler}
+            disabled={currentQuestionIndex === 0}
+          >
+            Previous
+          </button>
+          {quizDataList &&
+          quizDataList.length &&
+          currentQuestionIndex === quizDataList.length - 1 ? (
+            <button type="button" onClick={QuizSubmitHandler}>
+              Submit
+            </button>
+          ) : (
+            <button type="button" onClick={nextQuestionHandler}>
+              Next
+            </button>
+          )}
         </div>
       </div>
     </div>
