@@ -12,15 +12,14 @@ const register = (name,email,password) => axios
         'password' : password,
     });
 
-const login = (email,password) => {
-    return axios
+const login = async (email,password) => {
+    const respone = await axios
     .post(`${API_URL}login`, {
-        'email' : email,
-        'password' : password,
-    })
-    .then((respone) => {
-      if(respone.data.authtoken) localStorage.setItem('user',JSON.stringify(respone.data));
+      'email': email,
+      'password': password,
     });
+  if (respone.data)
+    localStorage.setItem('user', JSON.stringify(respone.data));
 }
 const logout = () => {
     localStorage.removeItem('user');
