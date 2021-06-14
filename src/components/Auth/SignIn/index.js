@@ -86,7 +86,7 @@ const Login = (props) => {
   return (
     <div className="base">
       <div className='col'> 
-        <Link className='col-logo-link' to='/'>
+        <Link className='col-logo-link shine' to='/'>
           <MdFingerprint className='col-logo'/>
             TechnoQuiz
             </Link>

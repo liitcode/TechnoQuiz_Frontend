@@ -19,10 +19,12 @@ const login = (email,password) => {
         'password' : password,
     })
     .then((respone) => {
-      if(respone.data.authtoken) localStorage.setItem('user',JSON.stringify(respone.data));
+    //   if(respone.data.authtoken) localStorage.setItem('user',JSON.stringify(respone.data));
+      if(respone.data) localStorage.setItem('user',JSON.stringify(respone.data));
     });
 }
 const logout = () => {
+    // eslint-disable-next-line no-console
     localStorage.removeItem('user');
 }    
 
