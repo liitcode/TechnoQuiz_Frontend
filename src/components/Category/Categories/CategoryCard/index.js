@@ -5,6 +5,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { openTypeSelectionModal } from '../../../../Redux/actions/actionCreators/category';
+
 import styles from './CategoryCard.module.scss';
 
 function CategoryCard() {

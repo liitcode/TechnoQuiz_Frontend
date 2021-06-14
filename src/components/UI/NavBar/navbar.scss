@@ -75,6 +75,17 @@
   &-menu-icon {
     display: none;
   }
+  &-profile {
+      vertical-align: middle;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-left: 15px ;
+      &:hover{
+        box-shadow: inset 0 0 10px $navbar-hover;
+      }
+      // border: 1px solid black;
+  }
 
 }
 .fa-bars {

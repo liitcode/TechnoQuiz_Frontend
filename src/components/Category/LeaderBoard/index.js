@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './LeaderBoard.module.scss';
-import Dropdown from '../../UI/Dropdown/index';
+import Dropdown from '../../UI/Dropdown';
 import Trophy from '../../../assets/images/trophy.png';
 
 function LeaderBoard() {
