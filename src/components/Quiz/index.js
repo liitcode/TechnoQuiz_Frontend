@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import da from './quizData.json';
 import styles from './Quiz.module.scss';
@@ -23,6 +25,8 @@ function Quiz() {
     );
     setData(result.data.data);
   }, []);
+  const { user: currentUser } = useSelector((state) => state.auth);
+  if (!currentUser) return <Redirect to="/signin" />;
   return (
     <div className={styles.quiz}>
       <div className={styles.quiz__container}>
