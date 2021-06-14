@@ -79,6 +79,7 @@ function Quiz() {
     let interval;
     if (secondsRemaining > 0) {
       interval = setInterval(() => {
+        // eslint-disable-next-line no-shadow
         setSecondsRemaining((secondsRemaining) => secondsRemaining - 1);
       }, 1000);
     } else {
