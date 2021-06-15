@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-alert */
@@ -8,7 +9,7 @@ import { openTypeSelectionModal } from '../../../../Redux/actions/actionCreators
 
 import styles from './CategoryCard.module.scss';
 
-function CategoryCard() {
+function CategoryCard({ categoryName, categoryId }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [30, -30]);
@@ -20,7 +21,7 @@ function CategoryCard() {
 
   return (
     <motion.div
-      onClick={() => dispatch(openTypeSelectionModal('JAVASCRIPT'))}
+      onClick={() => dispatch(openTypeSelectionModal(categoryName, categoryId))}
       className={styles.card}
       style={{ x, y, rotateX, rotateY, z: 100 }}
       drag
@@ -33,7 +34,7 @@ function CategoryCard() {
           <div className={styles.card__front__image} />
         </div>
         <div className={styles.card__back}>
-          <h1>Click here to take quiz on PYTHON</h1>
+          <h1>Click here to take quiz on {categoryName} </h1>
         </div>
       </div>
     </motion.div>

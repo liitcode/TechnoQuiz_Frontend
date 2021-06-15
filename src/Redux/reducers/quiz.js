@@ -14,6 +14,8 @@ export default function (state = intitialState, action) {
       return {
         ...state,
         quizData: payload.quizDataFromAPi,
+        path: '/quiz',
+        categoryName: payload.categoryName,
       };
     case QUIZ_DATA_ON_SUBMIT_FAIL:
       return {
