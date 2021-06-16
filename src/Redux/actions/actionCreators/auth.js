@@ -37,9 +37,8 @@ export const login = (email,password) => (dispatch) => authService.login(email,p
             });
             
             return Promise.resolve();
-        },
+        }).catch(
         (error) => {
-
             const message = error.toString();
             dispatch({
                 type : LOGIN_FAIL,
