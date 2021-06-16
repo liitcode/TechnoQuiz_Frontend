@@ -1,0 +1,35 @@
+@import '../../../assets/styles/mixins.scss';
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  @include set-flex;
+  justify-content: center;
+  overflow-y: hidden;
+}
+.modal_container {
+  position: relative;
+  width: 30%;
+  height: 50%;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 10000;
+}
+
+.mode {
+  position: relative;
+  width: 80%;
+  height: 50%;
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  z-index: 10000;
+  &__heading {
+    margin-top: 5%;
+    font-size: 1.5rem;
+  }
+}

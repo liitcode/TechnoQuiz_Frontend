@@ -16,7 +16,8 @@ export default function (state = initialState, action) {
       return {
         ...initialState,
         isTypeSelectionModalOpen: true,
-        category: payload,
+        categoryName: payload.categoryName,
+        categoryId: payload.categoryId,
       };
 
     case CLOSE_TYPE_SELECTION_MODAL:

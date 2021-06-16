@@ -5,7 +5,7 @@ const API_URL =
   'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/quiz';
 // const API_URL = 'http://localhost:8000/api/user/';
 
-const quiz = (difficulty = 'M', category = '105') =>
+const quiz = (difficulty, category) =>
   axios.post(
     `${API_URL}`,
     {
