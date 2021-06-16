@@ -3,9 +3,12 @@ import {
   CLOSE_TYPE_SELECTION_MODAL,
 } from '../actionType';
 
-export const openTypeSelectionModal = (category) => ({
+export const openTypeSelectionModal = (categoryName, categoryId) => ({
   type: OPEN_TYPE_SELECTION_MODAL,
-  payload: category,
+  payload: {
+    categoryName,
+    categoryId,
+  },
 });
 
 export const closeTypeSelectionModal = () => ({

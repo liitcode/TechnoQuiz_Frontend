@@ -18,7 +18,11 @@ function Categories() {
       <h2>Choose Category</h2>
       <div className={styles.categories__cards}>
         {Object.keys(data).map((item) => (
-          <CategoryCard key={item} cat={data[item]} />
+          <CategoryCard
+            key={item}
+            categoryName={data[item]}
+            categoryId={item}
+          />
         ))}
       </div>
     </div>

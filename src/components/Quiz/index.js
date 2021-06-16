@@ -1,73 +1,21 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-alert */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-// import da from './quizData.json';
+import { useSelector } from 'react-redux';
 import styles from './Quiz.module.scss';
-
-import { submitTypeSelectionModal } from '../../Redux/actions/actionCreators/quiz';
+import Timer from './Timer';
+// import { submitTypeSelectionModal } from '../../Redux/actions/actionCreators/quiz';
 
 function Quiz() {
-  const dispatch = useDispatch();
-  // const [data, setData] = useState(da);
+  // const dispatch = useDispatch();
   const {
     quizData: { data: { data: quizDataList } = [] },
+    categoryName,
   } = useSelector((state) => state.quiz);
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswerByUser, setSelectedAnswerByUser] = useState([]);
-  // const [time, setTime] = useState({ time: {}, seconds: 0 });
-  // let [timer, setTimer] = useState(0);
   const [startingSeconds, setStartingSeconds] = useState(1);
   const [secondsRemaining, setSecondsRemaining] = useState(0);
-  const [time, setTime] = useState({});
 
-  useEffect(() => {
-    dispatch(submitTypeSelectionModal());
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   console.log(data);
-  // });
-  const secondsToTime = (secs) => {
-    const hours = Math.floor(secs / (60 * 60));
-
-    const divisorForMinutes = secs % (60 * 60);
-    const minutes = Math.floor(divisorForMinutes / 60);
-
-    const divisorForSeconds = divisorForMinutes % 60;
-    const se = Math.ceil(divisorForSeconds);
-
-    const obj = {
-      h: hours,
-      m: minutes,
-      s: se,
-    };
-    return obj;
-  };
-
-  // const countDown = () => {
-  //   // Remove one second, set state so a re-render happens.
-  //   const { seconds } = time;
-  //   const secondAfterRemovingOne = seconds - 1;
-  //   setTime({
-  //     ...time,
-  //     time: secondsToTime(secondAfterRemovingOne),
-  //     seconds: secondAfterRemovingOne,
-  //   });
-
-  //   // Check if we're at zero.
-  //   if (seconds === 0) {
-  //     clearInterval(timer);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (time.time.m) {
-  //     timer = setInterval(countDown, 1000);
-  //   }
-  // }, [time.time.m]);
   useEffect(() => {
     if (quizDataList && quizDataList.length > 0) {
       setStartingSeconds(90 * quizDataList.length);
@@ -101,17 +49,19 @@ function Quiz() {
     setSelectedAnswerByUser(previousSelectedAnswers);
   };
   const QuizSubmitHandler = () => {
-    alert('Submit');
+    // alert('Submit');
   };
+
+  // const endTestHandler = () => {
+  //   alert('EndTest');
+  // };
 
   return (
     <div className={styles.quiz}>
-      {/* <div>
-        m: {time.time.m} s:{time.time.s}
-      </div> */}
+      <Timer secondsRemaining={secondsRemaining} />
       <div className={styles.quiz__container}>
         <div className={styles.quiz__container__heading}>
-          CATEGORY: JAVASCRIPT
+          CATEGORY: {categoryName}
         </div>
         <div className={styles.quiz__container__currentquestion}>
           {`Q${currentQuestionIndex + 1} out of ${
@@ -127,6 +77,7 @@ function Quiz() {
               (option) =>
                 quizDataList[currentQuestionIndex].answers[option] && (
                   <div
+                    key={option}
                     className={styles.option}
                     onChange={optionSelectionHandler}
                   >
