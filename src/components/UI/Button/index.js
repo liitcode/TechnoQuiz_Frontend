@@ -3,7 +3,7 @@
 import React from 'react';
 import './button.scss';
 
-const STYLES = ['btn--primary','btn--outline','btn--outline--white'];
+const STYLES = ['btn--primary','btn--outline','btn--outline--white','btn--modal'];
 const SIZES = ['btn--medium','btn--large','btn--mobile','btn--wide'];
 const COLOR = ['primary','secondary','red','blue'];
 

@@ -88,6 +88,29 @@
         height: 100%;
         width: 100% ;
     }
+    &--modal {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        background-color: $primary-color;
+        color: $secondary-color;
+        font-size: 25px;
+        border-radius: 0;
+        border: 2px solid $primary-color;
+        padding: 20px 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        &:hover{
+            color: $primary-color;
+            background-color: $secondary-color;
+            border: 2px solid $primary-color;
+            border-left: 0px;
+            border-right: 0px;
+            transition: all 0.2s ease-out;
+        }
+    }
+
 }
 
 

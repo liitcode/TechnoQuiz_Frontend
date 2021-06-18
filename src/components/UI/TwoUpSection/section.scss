@@ -1,7 +1,7 @@
 @import '../../../assets/styles/variables.scss';
 .home__section {
     color: $secondary-color;
-    padding: 160px 0;
+    padding: 7% 0;
     z-index: 1;
     background-color: $secondary-color;
     &-row {
@@ -63,7 +63,11 @@
     line-height: 1.1;
     font-weight: 600;
     color: $text-color;
-    &-dark {
+    &_dark {
+        margin-bottom: 24px;
+        font-size: 48px;
+        line-height: 1.1;
+        font-weight: 600;
         color:$primary-color;
     }
 
@@ -89,6 +93,9 @@ img {
     .col {
         max-width: 100%;
         flex-basis: 100%;
+    }
+    .home__section {
+        padding: 15% 0;
     }
 }
 

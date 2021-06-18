@@ -18,7 +18,7 @@ const login = async (email,password) => {
       'email': email,
       'password': password,
     });
-  if (respone.data)
+  if (respone.data.authtoken)
     localStorage.setItem('user', JSON.stringify(respone.data));
 }
 const logout = () => {

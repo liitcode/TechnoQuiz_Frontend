@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '../Button';
-import './section.scss';
+import Typewriter from 'typewriter-effect';
+import './textsection.module.scss';
 
-function Section({
-    lightBg,topLine,lightText,lightTextDesc,headline,description,
-    buttonLabel,img,alt,imgStart
+function TextSection({
+    lightBg,topLine,lightText,description,
+    img,alt,imgStart
 }){
     return (
         <>
@@ -17,13 +16,13 @@ function Section({
                     <div className='col'>
                         <div className ='home__section-text-wrapper'>
                             <div className='top-line'>{topLine}</div>
-                            <h1 className={lightText?'heading':'heading_dark'}>{headline}</h1>
-                            <p className={lightTextDesc?'home__section-subtitle':'home__section-subtitle dark'}>
-                                {description}
-                            </p>
-                            <Link to='/signup'>
-                                <Button buttonSize='btn--wide' buttonColor='blue'>{buttonLabel}</Button>
-                            </Link>   
+                            <h1 className={lightText?'heading':'heading_dark'}> <Typewriter
+              options={{
+                strings: description,
+                autoStart: true,
+                loop: true,
+              }}
+            /></h1>
                         </div>
                     </div>
                     <div className='col'>
@@ -38,4 +37,4 @@ function Section({
     )
 }
 
-export default Section;
+export default TextSection;
