@@ -5,7 +5,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
@@ -34,8 +33,6 @@ function TypeSelectionModal() {
   const { path } = useSelector((state) => state.quiz);
   const { isTypeSelectionModalOpen } = useSelector((state) => state.category);
 
-  if (path) return <Redirect to={path} />;
-
   const stopPropagation = (e) => e.stopPropagation();
 
   useEffect(() => {
@@ -45,7 +42,7 @@ function TypeSelectionModal() {
       document.body.style.overflow = 'auto';
     }
   }, [isTypeSelectionModalOpen]);
-
+  if (path) return <Redirect to={path} />;
   const closeModalWindowHandler = () => {
     setIstimed(false);
     setQuizMode('Practice');

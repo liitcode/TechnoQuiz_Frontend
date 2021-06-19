@@ -8,6 +8,7 @@ import Home from './components/LandingPage';
 import Login from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Category from './components/Category';
+import QuizSolution from './components/QuizSolution';
 import Quiz from './components/Quiz';
 import Navbar from './components/UI/NavBar';
 import Footer from './components/UI/Footer';
@@ -33,6 +34,7 @@ function App() {
             <Route path="/category" component={Category} exact />
             <Route path="/signin" component={Login} exact />
             <Route path="/signup" component={SignUp} exact />
+            <Route path="/quizsolution" component={QuizSolution} exact />
           </Switch>
           <Footer />
         </main>
