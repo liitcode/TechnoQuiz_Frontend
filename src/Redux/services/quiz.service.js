@@ -1,23 +1,30 @@
-/* eslint-disable no-console */
 import axios from 'axios';
-
-const API_URL =
-  'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/quiz';
-// const API_URL = 'http://localhost:8000/api/user/';
+import authHeader from './auth-header';
+import { quizUrl, scoreUrl } from './apiUrl';
 
 const quiz = (difficulty, category) =>
   axios.post(
-    `${API_URL}`,
+    quizUrl,
     {
       difficulty,
       category,
     },
     {
-      headers: {
-        'Auth-Token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjBmNWFiNWVmZmExMDRkZWU5NzI5YSIsImlhdCI6MTYyMjIxMDAwM30.noIr5mdy7NcENraSOSQaXM2Zrf1lKx5K6q8OUFd7K58',
-      },
+      headers: authHeader(),
     },
   );
 
-export default { quiz };
+const score = (difficulty, categoryId, userScore) =>
+  axios.post(
+    scoreUrl,
+    {
+      difficulty,
+      category: categoryId,
+      score: userScore,
+    },
+    {
+      headers: authHeader(),
+    },
+  );
+
+export default { quiz, score };

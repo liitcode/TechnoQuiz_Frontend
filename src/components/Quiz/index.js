@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import styles from './Quiz.module.scss';
 import Timer from './Timer';
-// import { submitTypeSelectionModal } from '../../Redux/actions/actionCreators/quiz';
+import { quizSubmission } from '../../Redux/actions/actionCreators/quiz';
 
 function Quiz() {
-  // const dispatch = useDispatch();
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswerByUser, setSelectedAnswerByUser] = useState([]);
+  const [startingSeconds, setStartingSeconds] = useState(0);
+  const [secondsRemaining, setSecondsRemaining] = useState(0);
+  const dispatch = useDispatch();
   const {
     quizData: { data: { data: quizDataList } = [] },
     categoryName,
+    quizMode,
+    difficulty,
+    categoryId,
   } = useSelector((state) => state.quiz);
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswerByUser, setSelectedAnswerByUser] = useState([]);
-  const [startingSeconds, setStartingSeconds] = useState(1);
-  const [secondsRemaining, setSecondsRemaining] = useState(0);
+  const { path } = useSelector((state) => state.score);
 
   useEffect(() => {
     if (quizDataList && quizDataList.length > 0) {
@@ -36,6 +41,8 @@ function Quiz() {
     return () => clearInterval(interval);
   }, [startingSeconds, secondsRemaining]);
 
+  if (path) return <Redirect to={path} />;
+
   const previousQuestionHandler = () => {
     setCurrentQuestionIndex(currentQuestionIndex - 1);
   };
@@ -48,17 +55,43 @@ function Quiz() {
     previousSelectedAnswers[currentQuestionIndex] = e.target.value;
     setSelectedAnswerByUser(previousSelectedAnswers);
   };
+
+  const scoreCalculation = () => {
+    let count = 0;
+    for (let i = 0; i < quizDataList.length; i += 1) {
+      const userAnswer = `${selectedAnswerByUser[i]}_correct`;
+      if (quizDataList[i].correct[userAnswer]) {
+        count += 1;
+      }
+    }
+    let scoreCard;
+    switch (quizMode) {
+      case 'E':
+        scoreCard = count;
+        break;
+      case 'M':
+        scoreCard = count * 2;
+        break;
+      case 'H':
+        scoreCard = count * 3;
+        break;
+      default:
+        scoreCard = count;
+    }
+    return scoreCard;
+  };
   const QuizSubmitHandler = () => {
-    // alert('Submit');
+    const userScore = scoreCalculation();
+    dispatch(quizSubmission(difficulty, categoryId, userScore));
   };
 
-  // const endTestHandler = () => {
-  //   alert('EndTest');
-  // };
+  const endTestHandler = () => {
+    alert('EndTest');
+  };
 
   return (
     <div className={styles.quiz}>
-      <Timer secondsRemaining={secondsRemaining} />
+      {quizMode === 'Timed' && <Timer secondsRemaining={secondsRemaining} />}
       <div className={styles.quiz__container}>
         <div className={styles.quiz__container__heading}>
           CATEGORY: {categoryName}
@@ -96,6 +129,9 @@ function Quiz() {
           </div>
         )}
         <div className={styles.quiz__nextbutton}>
+          <button type="button" onClick={endTestHandler}>
+            End Quiz
+          </button>
           <button
             type="button"
             onClick={previousQuestionHandler}

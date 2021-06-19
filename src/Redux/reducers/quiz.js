@@ -16,6 +16,9 @@ export default function (state = intitialState, action) {
         quizData: payload.quizDataFromAPi,
         path: '/quiz',
         categoryName: payload.categoryName,
+        quizMode: payload.quizMode,
+        difficulty: payload.difficulty,
+        categoryId: payload.categoryId,
       };
     case QUIZ_DATA_ON_SUBMIT_FAIL:
       return {
