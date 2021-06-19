@@ -1,73 +1,79 @@
 @import '../../../assets/styles/variables.scss';
 @import '../../../assets/styles/mixins.scss';
-$skeleton-color : #ddd;
+$skeleton-color: #ddd;
 .skeleton {
-    background : $skeleton-color;
-    margin: 10px 0;
-    border-radius: 4px;
-    &-wrapper{
-        margin:20px auto;
-        position: relative;
-        // background: #777;
-    }
-    &-text{
-        background-color:$skeleton-color;
-        width: 60%;
-        height: 20px;
-        margin-right: 15px;
-    }
-    &-avatar-small {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            margin-right: 15px;
-            background: $skeleton-color;
-    }
-    &-leaderboard {
-        width: 84%;
-        padding: 2%;
-      }
-      
-    &-leaders {
-        padding: 3%;
-        border-radius: 10px;
-        // box-shadow: 7px 10px 30px;
-        padding: 2%;
-        border-radius: 10px;
-        background: #f2f2f2;
-      }
-      &-leader {
-          height: 50px;
-          width: 500px;
-        @include set-flex;
-        background-color:transparent;
-        padding: 8%;
-        border-radius: 5px;
-        justify-content: flex-start;
-        position: relative;
-        overflow: hidden;
-      }
+  &-text {
+    background-color: $skeleton-color;
+    width: 75%;
+    height: 20px;
+    margin-right: 15px;
+  }
+  &-avatar-small {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background: $skeleton-color;
+  }
+
+  &-leaders {
+    border-radius: 10px;
+    // box-shadow: 7px 10px 30px;
+    border-radius: 10px;
+    background: #f2f2f2;
+    max-height: 298px;
+    overflow-y: scroll;
+  }
+  &-leader {
+    height: 50px;
+    @include set-flex;
+    background-color: transparent;
+    padding: 9% 5%;
+    border-radius: 5px;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
 }
 // animations
 
 .shimmer {
-    width: 50%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: (skew(-20deg));
+  &-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background: rgba(255,255,255,0.2);
-    transform: (skew(-20deg));
-    &-wrapper{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        animation: loading 1s infinite;
-        box-shadow: 0 0 30px 30px rgba(255,255,255,0.05);
-    }
+    animation: loading 1s infinite;
+    box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.05);
+  }
 }
 
 @keyframes loading {
-    0% {transform: translateX(-150%);}
-    50% {transform: translateX(-60%);}
-    100% {transform: translateX(150%);}
+  0% {
+    transform: translateX(-150%);
+  }
+  50% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .skeleton {
+    &-leaderboard {
+      width: 30%;
+      align-self: flex-start;
+    }
+    &-leaders {
+      overflow-y: unset;
+      max-height: unset;
+    }
+  }
 }

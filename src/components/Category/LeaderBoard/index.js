@@ -11,21 +11,21 @@ import SkeletonLeaderBoard from '../../UI/Skeletons/SkeletonLeaderboard';
 function LeaderBoard() {
   const [data, setData] = useState(null);
   useEffect(() => {
-   setTimeout(async () => {
-    const result = await axios(
-      'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/leaderboard',
-    );
-    setData(result.data);
-   },4000)
+    setTimeout(async () => {
+      const result = await axios(
+        'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/leaderboard',
+      );
+      setData(result.data);
+    }, 4000);
   }, []);
 
   return (
     <>
-      { data && (
-        <div className={styles.leaderboard}>
-          <div className={styles.leaderboard_img}>
-            <img src={Trophy} alt="Leaderboard Trophy" />
-          </div>
+      <div className={styles.leaderboard}>
+        <div className={styles.leaderboard_img}>
+          <img src={Trophy} alt="Leaderboard Trophy" />
+        </div>
+        {data && (
           <div className={styles.leaders}>
             {/* <Dropdown /> */}
             {/* <div className={styles.message}>
@@ -33,17 +33,25 @@ function LeaderBoard() {
             </div> */}
             {data.map((leader, index) => (
               <div className={styles.leader}>
-                <div className={styles.leader__index}>{index + 1}</div>
-                <div className={styles.leader__img}><img className={styles.leader_img} src={new AvatarGenerator().generateRandomAvatar()} alt='leaders'/></div>
-                <div className={styles.leader__name}>{leader.name}</div>
+                <div className={styles.leader__name__container}>
+                  <div className={styles.leader__index}>{index + 1}</div>
+                  <div className={styles.leader__img}>
+                    <img
+                      className={styles.leader_img}
+                      src={new AvatarGenerator().generateRandomAvatar()}
+                      alt="leaders"
+                    />
+                  </div>
+                  <div className={styles.leader__name}>{leader.name}</div>
+                </div>
                 <div className={styles.leader__score}>{leader.score}</div>
               </div>
             ))}
           </div>
-        </div>
-      )}
-      { !data && <SkeletonLeaderBoard/>}
-      </>
+        )}
+        {!data && <SkeletonLeaderBoard />}
+      </div>
+    </>
   );
 }
 

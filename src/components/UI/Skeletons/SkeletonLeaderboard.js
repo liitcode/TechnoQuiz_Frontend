@@ -6,24 +6,24 @@ import Shimmer from './shimer';
 import './skeleton.scss';
 
 const SkeletonLeaderBoard = () => {
-    const n = 10;
-    return (
-        <div className='skeleton-wrapper'>
-            <div className = 'skeleton-leaderboard'>
-                <div className ='skeleton-leaders'>
-                    {[...Array(n)].map(() => 
-                    <>
-                    <div className='skeleton-leader'>
-                        <SkeletonElement type='avatar-small' />
-                        <SkeletonElement type ='text'/>
-                    <Shimmer/>
-                    </div> 
-                    </>
-                    )}
-                </div>
-            </div>
-        </div>
-    )
-}
+  const n = 10;
+  return (
+    // <div className="skeleton-wrapper">
+    // <div className="skeleton-leaderboard">
+    <div className="skeleton-leaders">
+      {[...Array(n)].map(() => (
+        <>
+          <div className="skeleton-leader">
+            <SkeletonElement type="avatar-small" />
+            <SkeletonElement type="text" />
+            <Shimmer />
+          </div>
+        </>
+      ))}
+    </div>
+    // </div>
+    // </div>
+  );
+};
 
 export default SkeletonLeaderBoard;
