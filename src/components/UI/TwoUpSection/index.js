@@ -17,7 +17,7 @@ function Section({
                     <div className='col'>
                         <div className ='home__section-text-wrapper'>
                             <div className='top-line'>{topLine}</div>
-                            <h1 className={lightText?'heading':'heading-dark'}>{headline}</h1>
+                            <h1 className={lightText?'heading':'heading_dark'}>{headline}</h1>
                             <p className={lightTextDesc?'home__section-subtitle':'home__section-subtitle dark'}>
                                 {description}
                             </p>

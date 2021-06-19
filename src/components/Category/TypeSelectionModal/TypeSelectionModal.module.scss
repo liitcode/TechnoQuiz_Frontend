@@ -1,4 +1,5 @@
 @import '../../../assets/styles/mixins.scss';
+@import '../../../assets/styles/variables.scss';
 .backdrop {
   position: fixed;
   left: 0;
@@ -17,7 +18,13 @@
   height: 50%;
   background-color: white;
   border-radius: 10px;
-  z-index: 10000;
+  z-index: 100;
+  min-width: 335px;
+  margin: 0 2%;
+  min-height: 350px;
+  @include set-flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .mode {
@@ -27,9 +34,119 @@
   background-color: white;
   border-radius: 10px;
   margin: auto;
-  z-index: 10000;
+  z-index: 100;
   &__heading {
     margin-top: 5%;
     font-size: 1.5rem;
   }
+}
+
+.title {
+  font-size: 30px;
+  margin-top: 4%;
+}
+
+.modecontainer {
+  display: flex;
+  align-content: center;
+  width: fit-content;
+  justify-content: space-between;
+
+  // align-self: sretch;
+  // flex: 1;
+}
+.modeToggle {
+  align-content: center;
+}
+
+.Switch {
+  position: relative;
+  // margin-left: 10%;
+  margin: 9% 0;
+  height: 15%;
+  width: 80%;
+  background-color: #e4e4e4;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  align-content: center;
+
+  &_Radio {
+    display: none;
+  }
+
+  &_Selection {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 33.33%;
+    height: 100%;
+    background: $navbar-hover;
+    border-radius: 3px;
+    transition: &left 1s ease-out;
+  }
+  &_Label {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 33.33%;
+    line-height: 55px;
+    font-size: 25px;
+    color: $primary-color;
+    text-align: center;
+    cursor: pointer;
+    @at-root:checked + & {
+      color: $secondary-color;
+      transition: all 1s ease-out;
+    }
+  }
+}
+
+.toggle_switch {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+}
+.toggle_switch input[type='checkbox'] {
+  display: none;
+}
+.toggle_switch .switchmode {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ffcd00;
+  @include set-flex;
+  justify-content: center;
+  border-radius: 25px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -5px;
+  transition: background-color 0.2s ease;
+}
+.toggle_switch .switchmode::before {
+  position: absolute;
+  content: '';
+  left: 2px;
+  top: 2px;
+  width: 45px;
+  height: 45px;
+  background-color: #8aff8a;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+.toggle_switch input[type='checkbox']:checked + .switchmode::before {
+  transform: translateX(101px);
+  background-color: #6699cc;
+}
+.toggle_switch input[type='checkbox']:checked + .switchmode {
+  background-color: #336699;
+}
+
+.imgcontainer {
+  height: 70;
+  width: 70px;
+  margin-left: 2%;
+  margin-right: 2%;
 }

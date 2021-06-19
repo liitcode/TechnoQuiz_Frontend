@@ -3,26 +3,49 @@
 .leaderboard {
   width: 84%;
   padding: 2%;
+  height: 450px;
 }
 
 .leaders {
-  padding: 3%;
   border-radius: 10px;
-  max-height: 250px;
   overflow-y: scroll;
   box-shadow: 7px 10px 30px;
   padding: 2%;
   border-radius: 10px;
+  max-height: 298px;
 }
-
+.leaders :nth-child(even) {
+  background: #dcdcdc;
+}
 .leader {
   height: 40px;
   @include set-flex;
   background-color: $background-secondary-color;
-  margin: 2%;
   padding: 8%;
   border-radius: 5px;
-  box-shadow: 10px 10px 20px;
+  justify-content: space-between;
+}
+.leader :nth-child(even) {
+  background: transparent;
+}
+.leader__index {
+  color: $primary-color;
+}
+.leader__name {
+  text-align: left;
+
+  &__container {
+    @include set-flex;
+  }
+}
+.leader__score {
+  color: $navbar-hover;
+}
+.leader__img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin: 0 20px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -50,7 +73,8 @@
 .leaderboard_img {
   Img {
     width: 40%;
-    height: 70%;
+    height: 60%;
+    margin-bottom: 5%;
   }
 }
 

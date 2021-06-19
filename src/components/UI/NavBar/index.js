@@ -18,19 +18,22 @@ import './navbar.scss';
 function Navbar() {    
     const [profileImg,setProfileimg] = useState('');
     const [click,setClick] = useState(false);
-    const [button,setButton] = useState(true);
+    const [button,setButton] = useState();
     const [dropdown, setDropdown] = useState(false);
 
 
-    const handledropClick = () => setDropdown(!dropdown);
     
     useEffect(() => {
         setProfileimg(new AvatarGenerator().generateRandomAvatar());
+        // eslint-disable-next-line no-unused-expressions
+        window.innerWidth > 960 ? setButton(true) : setButton(false);
     }, []);
     
     const handleClick = () => setClick(!click); 
     const closeMobileMenu = () => setClick(false);
-    const showButton = () => window.innerWidth <= 960 ? setButton(false) : setButton(true);
+    const showButton = () => window.innerWidth < 960 ? setButton(false) : setButton(true);
+    const onMouseEnter = () => window.innerWidth < 960 ? setDropdown(false) : setDropdown(true);
+    const onMouseLeave = () => window.innerWidth < 960 ? setDropdown(false) : setDropdown(false);
     const  log  = useSelector((state) => state.auth.isLoggedin);
     window.addEventListener('resize',showButton);
     const disableNav = ['/signin','/signup'];
@@ -40,14 +43,14 @@ function Navbar() {
         <>
                 {button ? (
                     <>
-                    <li className='nav-menu' onClick={handledropClick}>
+                    <li className='nav-menu' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                     <Link className ='nav-profile'>
                     <img src={profileImg} alt = 'profile-pic' href='/category'/>
                     </Link>
                     {dropdown && <Dropdown />}
                     </li>
                     </>
-                ): <MobilePane />
+                ) : <MobilePane />
                 }
         </>
     );
