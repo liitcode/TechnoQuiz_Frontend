@@ -3,7 +3,7 @@ import React from 'react';
 import Section from '../UI/TwoUpSection';
 import TextSection from '../UI/TextSection';
 
-import { sectionOne,sectionTwo,sectionThree,sectionFour,textsection } from './data';
+import { sectionOne,sectionTwo,sectionThree,textsection } from './data';
 
 function Home(){
     return(
@@ -13,7 +13,6 @@ function Home(){
         <Section {...sectionOne}/>
         <Section {...sectionTwo}/>
         <Section {...sectionThree}/>
-        <Section {...sectionFour}/>
         </>
     )
 }

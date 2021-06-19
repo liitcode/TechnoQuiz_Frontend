@@ -26,7 +26,7 @@ function TextSection({
           >
             <div className="col">
               <div className="home__section-text-wrapper">
-                <div className="head-line">{headline}</div>
+                <div className="heading">{headline}</div>
                 <div className="top-line">{topLine}</div>
                 <h1 className={lightText ? 'heading' : 'heading_dark'}>
                   <Typewriter
