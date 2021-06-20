@@ -2,10 +2,13 @@
 import {
   OPEN_TYPE_SELECTION_MODAL,
   CLOSE_TYPE_SELECTION_MODAL,
+  CATEGORY_FECTH_SUCCESS,
+  CATEGORY_FECTH_FAIL,
 } from '../actions/actionType';
 
 const initialState = {
   isTypeSelectionModalOpen: false,
+  category : [],
 };
 
 export default function (state = initialState, action) {
@@ -22,6 +25,16 @@ export default function (state = initialState, action) {
 
     case CLOSE_TYPE_SELECTION_MODAL:
       return { ...initialState, isTypeSelectionModalOpen: false };
+
+    case CATEGORY_FECTH_SUCCESS:
+      return{
+        ...initialState,
+        category: payload.category,
+      };  
+      case CATEGORY_FECTH_FAIL:
+        return{
+          ...initialState,
+        };   
     default:
       return state;
   }

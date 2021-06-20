@@ -16,7 +16,7 @@ const login = (email, password) => {
       password,
     })
     .then((respone) => {
-      if (respone.data)
+      if (respone.data.authtoken)
         localStorage.setItem('user', JSON.stringify(respone.data));
     });
 };
