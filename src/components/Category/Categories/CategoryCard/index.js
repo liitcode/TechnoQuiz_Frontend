@@ -9,7 +9,12 @@ import randomColor from 'randomcolor';
 import { openTypeSelectionModal } from '../../../../Redux/actions/actionCreators/category';
 import styles from './CategoryCard.module.scss';
 
-function CategoryCard({ categoryName, categoryId,categoryIcon,categoryFact }) {
+function CategoryCard({
+  categoryName,
+  categoryId,
+  categoryIcon,
+  categoryFact,
+}) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [30, -30]);
@@ -27,24 +32,32 @@ function CategoryCard({ categoryName, categoryId,categoryIcon,categoryFact }) {
       dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
       whileTap={{ cursor: 'grabbing' }}
     >
-    <div className={styles.card__inner}>
+      <div className={styles.card__inner}>
         <div className={styles.card__front}>
-          <div className={styles.card__front__image} style={{background: randomColor({
-              luminosity: 'dark',
-              format: 'rgba',
-              alpha: 0.5,
-            })}} />
+          <div
+            className={styles.card__front__image}
+            style={{
+              background: randomColor({
+                luminosity: 'dark',
+                format: 'rgba',
+                alpha: 0.5,
+              }),
+            }}
+          >
             <div className={styles.card__icon}>
-              <img src={categoryIcon} alt={categoryName}/>
+              <img
+                className={styles.card__img}
+                src={categoryIcon}
+                alt={categoryName}
+              />
+              <h1 className={styles.card__title}>{categoryName}</h1>
             </div>
-            <div className={styles.card__title}>
-              <h1>{categoryName}</h1>
-            </div>
+          </div>
         </div>
         <div className={styles.card__back}>
           <h1>{categoryFact}</h1>
         </div>
-    </div>
+      </div>
     </motion.div>
   );
 }

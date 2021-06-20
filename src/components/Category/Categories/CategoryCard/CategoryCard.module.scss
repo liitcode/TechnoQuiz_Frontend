@@ -7,9 +7,8 @@
   perspective: 1000px;
   position: relative;
   cursor: grab;
-  width: 91%;
   margin: 3% 10px;
-  height: 140px;
+  height: 170px;
   border-radius: 50%;
   width: 90%;
 
@@ -44,11 +43,26 @@
 
   &__back {
     font-size: 0.5rem;
-    background-color:$primary-color;
+    background-color: $primary-color;
     color: $secondary-color;
     transform: rotateY(180deg);
     @include set-flex;
     border-radius: 25px;
+  }
+  &__icon {
+    display: inline;
+  }
+  &__title {
+    position: absolute;
+    top: 80%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    margin: 0px;
+  }
+  &__img {
+    margin-top: 15px;
+    height: 48%;
+    width: unset;
   }
 }
 
