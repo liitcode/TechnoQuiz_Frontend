@@ -5,17 +5,20 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import randomColor from 'randomcolor';
 import { openTypeSelectionModal } from '../../../../Redux/actions/actionCreators/category';
-
 import styles from './CategoryCard.module.scss';
 
-function CategoryCard({ categoryName, categoryId }) {
+function CategoryCard({
+  categoryName,
+  categoryId,
+  categoryIcon,
+  categoryFact,
+}) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [30, -30]);
   const rotateY = useTransform(x, [-100, 100], [-30, 30]);
-
-  // dispatch(openTypeSelectionModal)
 
   const dispatch = useDispatch();
 
@@ -31,10 +34,28 @@ function CategoryCard({ categoryName, categoryId }) {
     >
       <div className={styles.card__inner}>
         <div className={styles.card__front}>
-          <div className={styles.card__front__image} />
+          <div
+            className={styles.card__front__image}
+            style={{
+              background: randomColor({
+                luminosity: 'dark',
+                format: 'rgba',
+                alpha: 0.5,
+              }),
+            }}
+          >
+            <div className={styles.card__icon}>
+              <img
+                className={styles.card__img}
+                src={categoryIcon}
+                alt={categoryName}
+              />
+              <h1 className={styles.card__title}>{categoryName}</h1>
+            </div>
+          </div>
         </div>
         <div className={styles.card__back}>
-          <h1>Click here to take quiz on {categoryName} </h1>
+          <h1>{categoryFact}</h1>
         </div>
       </div>
     </motion.div>

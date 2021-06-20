@@ -1,27 +1,26 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { fetchCategory } from '../../../Redux/actions/actionCreators/category';
 import CategoryCard from './CategoryCard';
 import styles from './Categories.module.scss';
 
 function Categories() {
-  const [data, setData] = useState({});
+  const dispatch = useDispatch();
   useEffect(async () => {
-    const result = await axios(
-      'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/category',
-    );
-    setData(result.data);
+    dispatch(fetchCategory());
   }, []);
-
+  const data = useSelector((state) => state.category.category)
   return (
     <div className={styles.categories}>
       <h2>Choose Category</h2>
       <div className={styles.categories__cards}>
-        {Object.keys(data).map((item) => (
+        {data.map((item) => (
           <CategoryCard
-            key={item}
-            categoryName={data[item]}
-            categoryId={item}
+            key={item.id}
+            categoryName = {item.name}
+            categoryId = {item.id}
+            categoryIcon = {item.icon}
+            categoryFact = {item.fact}
           />
         ))}
       </div>
