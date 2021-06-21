@@ -1,4 +1,5 @@
 @import '../../../assets/styles/mixins.scss';
+@import '../../../assets/styles/variables.scss';
 .backdrop {
   position: fixed;
   left: 0;
@@ -8,37 +9,36 @@
   height: 100%;
   z-index: 1000;
   @include set-flex;
+  justify-content: center;
+  overflow-y: hidden;
 }
-
-.mode {
+.modal_container {
   position: relative;
-  width: 80%;
+  width: 30%;
   height: 50%;
   background-color: white;
   border-radius: 10px;
-  margin: auto;
-  z-index: 10000;
-  &__heading {
-    margin-top: 5%;
-    font-size: 1.5rem;
-  }
+  z-index: 100;
+  min-width: 335px;
+  margin: 0 2%;
+  min-height: 350px;
+  @include set-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.title {
+  font-size: 30px;
+  margin-top: 4%;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .mode {
-    width: 60%;
-    &__heading {
-      font-size: 3rem;
-    }
-  }
-}
-@media only screen and (min-width: 1025px) {
-  .mode {
-    position: relative;
-    width: 30%;
-    z-index: 10000;
-    &__heading {
-      font-size: 1.5rem;
-    }
-  }
+.closeButton {
+  border-radius: 50%;
+  border: none;
+  font-size: 25px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  padding: 3px 12px;
 }

@@ -16,7 +16,7 @@ function LeaderBoard() {
         'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/leaderboard',
       );
       setData(result.data);
-    }, 4000);
+    }, 1000);
   }, []);
 
   return (

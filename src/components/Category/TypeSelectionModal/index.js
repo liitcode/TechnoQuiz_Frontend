@@ -15,6 +15,7 @@ import { submitTypeSelectionModal } from '../../../Redux/actions/actionCreators/
 import Practice from '../../../assets/images/practice.png';
 import Timed from '../../../assets/images/timed.png';
 import { Button } from '../../UI/Button';
+import Modal from '../../UI/Modal'
 
 import styles from './TypeSelectionModal.module.scss';
 
@@ -33,7 +34,6 @@ function TypeSelectionModal() {
   const { path } = useSelector((state) => state.quiz);
   const { isTypeSelectionModalOpen } = useSelector((state) => state.category);
 
-  const stopPropagation = (e) => e.stopPropagation();
 
   useEffect(() => {
     if (isTypeSelectionModalOpen) {
@@ -102,14 +102,11 @@ function TypeSelectionModal() {
 
   return (
     <>
-      {isTypeSelectionModalOpen && (
-        <div className={styles.backdrop} onClick={closeModalWindowHandler}>
-          <div
-            className={styles.modal_container}
-            role="button"
-            onClick={stopPropagation}
-          >
-            <div className={styles.title}>{categoryName}</div>
+        <Modal  
+        isModalOpen = {isTypeSelectionModalOpen}  
+        closeModalHandlder = {closeModalWindowHandler}
+        title = {categoryName}
+        >
             <ToggleSwitch />
             <div className={styles.modecontainer}>
               <div className={styles.imgcontainer}>
@@ -150,9 +147,7 @@ function TypeSelectionModal() {
             >
               START
             </Button>
-          </div>
-        </div>
-      )}
+        </Modal>
     </>
   );
 }
