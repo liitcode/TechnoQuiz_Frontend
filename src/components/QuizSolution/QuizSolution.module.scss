@@ -1,0 +1,233 @@
+@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
+
+.score {
+  background-color: $primary-color;
+  color: $secondary-color;
+  text-align: center;
+  padding: 1% 1%;
+  font-size: 20px;
+  box-shadow: 1px 1px 12px 2px rgba(134, 134, 134, 0.2);
+}
+.questionSolution {
+  background-color: $grey-background;
+  margin: 30px 10px 0px 10px;
+  height: 63vh;
+  padding: 10px 10px;
+  &__container {
+    font-size: 18px;
+  }
+}
+
+.questionsContainer {
+  @include set-flex;
+}
+
+.questions {
+  cursor: pointer;
+  width: 13%;
+  min-width: 50px;
+}
+
+.question {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: $grey-background;
+  border-bottom: 1px solid #b2b9bc;
+  padding: 25% 2%;
+  text-align: center;
+}
+
+.question:hover {
+  background-color: $primary-color;
+  color: $background-color;
+}
+.question:focus {
+  background-color: $primary-color;
+  color: $background-color;
+}
+.questionwithOption {
+  align-self: flex-start;
+  margin: 10px 10px;
+  text-align: left;
+}
+.optionRed {
+  background-color: $red-color;
+}
+
+.optionGreen {
+  background-color: $green-color;
+}
+.AnswerSelectedByUser {
+  &__label {
+    width: 61px;
+    font-size: 12px;
+    color: $black-color;
+    font-weight: bold;
+  }
+  &__containerCorrect {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $light-green-color;
+    color: $font-color;
+    border: 2px solid $green-color;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin: 20px 0;
+    min-height: 35px;
+  }
+  &__containerWrong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $light-pink-color;
+    color: $font-color;
+    border: 2px solid $red-color;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin: 20px 0;
+    min-height: 35px;
+  }
+}
+.correctAnswer {
+  &__label {
+    width: 56px;
+    font-size: 12px;
+    color: $black-color;
+    font-weight: bold;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $secondary-color;
+    border: 2px solid $green-color;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin: 20px 0;
+    min-height: 35px;
+  }
+}
+
+.desktopOnly {
+  display: none;
+}
+
+@media only screen and (min-width: 508px) {
+  .score {
+    background-color: $primary-color;
+    color: $secondary-color;
+    text-align: center;
+    padding: 1% 1%;
+    font-size: 20px;
+    box-shadow: 1px 1px 12px 2px rgba(134, 134, 134, 0.2);
+  }
+  .questionSolution {
+    background-color: $grey-background;
+    margin: 70px 30px 0px 30px;
+    height: 52vh;
+    &__container {
+      padding: 8%;
+      font-size: 20px;
+    }
+  }
+
+  .questionsContainer {
+    @include set-flex;
+  }
+
+  .questions {
+    width: 30%;
+    cursor: pointer;
+    min-width: 340px;
+  }
+
+  .question {
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: $grey-background;
+    border-bottom: 1px solid #b2b9bc;
+    padding: 3.5% 2%;
+  }
+
+  .question:hover {
+    background-color: $primary-color;
+    color: $background-color;
+  }
+  .question:focus {
+    background-color: $primary-color;
+    color: $background-color;
+  }
+  .questionwithOption {
+    width: 81%;
+    align-self: flex-start;
+    margin-top: 10px;
+    text-align: left;
+    margin: 20px 10px;
+  }
+  .optionRed {
+    background-color: $red-color;
+  }
+
+  .optionGreen {
+    background-color: $green-color;
+  }
+  .AnswerSelectedByUser {
+    &__label {
+      width: 74px;
+      font-size: 12px;
+      color: $black-color;
+      font-weight: bold;
+    }
+    &__containerCorrect {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $light-green-color;
+      color: $font-color;
+      border: 2px solid $green-color;
+      border-radius: 5px;
+      padding-left: 5px;
+      margin: 20px 0;
+      min-height: 35px;
+    }
+    &__containerWrong {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $light-pink-color;
+      color: $font-color;
+      border: 2px solid $red-color;
+      border-radius: 5px;
+      padding-left: 5px;
+      margin: 20px 0;
+      min-height: 35px;
+    }
+  }
+  .desktopOnly {
+    display: unset;
+  }
+  .correctAnswer {
+    &__label {
+      width: 100px;
+      font-size: 12px;
+      color: $black-color;
+      font-weight: bold;
+    }
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $secondary-color;
+      border: 2px solid $green-color;
+      border-radius: 5px;
+      padding-left: 5px;
+      margin: 20px 0;
+      min-height: 35px;
+    }
+  }
+}
