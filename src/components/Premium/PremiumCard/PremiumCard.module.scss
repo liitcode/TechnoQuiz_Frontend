@@ -2,14 +2,13 @@
   margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-  width: 40%;
+  width: 90%;
   margin-bottom: 12%;
 
   &:hover {
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15);
   }
 }
-
 
 .header {
   position: relative;
@@ -18,7 +17,7 @@
   background-color: #fea116;
   padding-left: 30px;
   padding-right: 30px;
-  &_dark{
+  &_dark {
     position: relative;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -31,9 +30,10 @@
 .title {
   margin-top: 0px;
   color: white;
-  font-size: 35px;
   font-weight: 300;
   padding-top: 15px;
+  font-size: 25px;
+  margin-bottom: 9px;
 }
 .subtitle {
   color: white;
@@ -48,7 +48,7 @@
   right: 30px;
   color: white;
   font-weight: 300;
-  font-size: 35px;
+  font-size: 33px;
   height: 0;
   margin-top: -85px;
 }
@@ -69,4 +69,10 @@
   margin-right: 30px;
   padding-top: 25px;
   padding-bottom: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .premiumContainer {
+    width: 40%;
+  }
 }
