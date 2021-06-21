@@ -31,4 +31,14 @@
   margin-top: 4%;
 }
 
-
+.closeButton {
+  border-radius: 50%;
+  border: none;
+  font-size: 25px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  padding: 3px 12px;
+}
