@@ -39,12 +39,13 @@ export const submitTypeSelectionModal =
     );
 
 export const quizSubmission =
-  (difficulty, categoryId, userScore) => (dispatch) =>
+  (difficulty, categoryId, userScore, selectedAnswerByUser, maxUserScore) =>
+  (dispatch) =>
     quizService.score(difficulty, categoryId, userScore).then(
       (response) => {
         dispatch({
           type: QUIZ_SUBMIT_HANDLER_SUCCESS,
-          payload: response,
+          payload: { response, selectedAnswerByUser, userScore, maxUserScore },
         });
         return Promise.resolve();
       },

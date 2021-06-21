@@ -1,16 +1,21 @@
+/* eslint-disable vars-on-top */
+/* eslint-disable no-var */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styles from './Quiz.module.scss';
 import Timer from './Timer';
+import { Button } from '../UI/Button';
 import { quizSubmission } from '../../Redux/actions/actionCreators/quiz';
 
 function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswerByUser, setSelectedAnswerByUser] = useState([]);
   const [startingSeconds, setStartingSeconds] = useState(0);
-  const [secondsRemaining, setSecondsRemaining] = useState(0);
+  const [secondsRemaining, setSecondsRemaining] = useState(null);
   const dispatch = useDispatch();
   const {
     quizData: { data: { data: quizDataList } = [] },
@@ -30,6 +35,10 @@ function Quiz() {
   }, [quizDataList]);
 
   useEffect(() => {
+    document.body.style.overflow = 'auto';
+  });
+
+  useEffect(() => {
     let interval;
     if (secondsRemaining > 0) {
       interval = setInterval(() => {
@@ -41,8 +50,6 @@ function Quiz() {
     }
     return () => clearInterval(interval);
   }, [startingSeconds, secondsRemaining]);
-
-  if (path) return <Redirect to={path} />;
 
   const previousQuestionHandler = () => {
     setCurrentQuestionIndex(currentQuestionIndex - 1);
@@ -57,7 +64,7 @@ function Quiz() {
     setSelectedAnswerByUser(previousSelectedAnswers);
   };
 
-  const scoreCalculation = () => {
+  var scoreCalculation = () => {
     let count = 0;
     for (let i = 0; i < quizDataList.length; i += 1) {
       const userAnswer = `${selectedAnswerByUser[i]}_correct`;
@@ -66,47 +73,108 @@ function Quiz() {
       }
     }
     let scoreCard;
-    switch (quizMode) {
+    let maxScore = quizDataList.length;
+    switch (difficulty) {
       case 'E':
         scoreCard = count;
         break;
       case 'M':
         scoreCard = count * 2;
+        maxScore *= 2;
         break;
       case 'H':
         scoreCard = count * 3;
+        maxScore *= 3;
         break;
       default:
         scoreCard = count;
+        maxScore = quizDataList.length;
     }
-    return scoreCard;
+    return { scoreCard, maxScore };
   };
+  useEffect(() => {
+    if (secondsRemaining === 0) {
+      const score = scoreCalculation();
+      const userScore = score.scoreCard;
+      const maxUserScore = score.maxScore;
+
+      dispatch(
+        quizSubmission(
+          difficulty,
+          categoryId,
+          userScore,
+          selectedAnswerByUser,
+          maxUserScore,
+        ),
+      );
+    }
+  }, [secondsRemaining]);
+
+  if (path) return <Redirect to={path} />;
+
   const QuizSubmitHandler = () => {
-    const userScore = scoreCalculation();
-    dispatch(quizSubmission(difficulty, categoryId, userScore));
+    const score = scoreCalculation();
+    const userScore = score.scoreCard;
+    const maxUserScore = score.maxScore;
+
+    dispatch(
+      quizSubmission(
+        difficulty,
+        categoryId,
+        userScore,
+        selectedAnswerByUser,
+        maxUserScore,
+      ),
+    );
   };
 
   const endTestHandler = () => {
-    alert('EndTest');
+    const score = scoreCalculation();
+    const userScore = score.scoreCard;
+    const maxUserScore = score.maxScore;
+    dispatch(
+      quizSubmission(
+        difficulty,
+        categoryId,
+        userScore,
+        selectedAnswerByUser,
+        maxUserScore,
+      ),
+    );
   };
 
   return (
     <div className={styles.quiz}>
-      {quizMode === 'Timed' && <Timer secondsRemaining={secondsRemaining} />}
+      <div className={styles.stopWatch__MobileOnly}>
+        {
+          // quizMode === 'Timed' &&
+          <Timer secondsRemaining={secondsRemaining} />
+        }
+      </div>
       <div className={styles.quiz__container}>
         <div className={styles.quiz__container__heading}>
           CATEGORY: {categoryName}
         </div>
-        <div className={styles.quiz__container__currentquestion}>
-          {`Q${currentQuestionIndex + 1} out of ${
-            quizDataList && quizDataList.length
-          }`}
-        </div>
+
         {quizDataList && quizDataList.length > 0 && (
           <div className={styles.quiz__container__question}>
+            <div className={styles.quiz__container__currentquestion}>
+              <div className={styles.quiz__container__currentquestion__no}>
+                {`Q${currentQuestionIndex + 1} out of ${
+                  quizDataList && quizDataList.length
+                }`}
+              </div>
+              <div className={styles.stopWatch__DesktopOnly}>
+                {
+                  // quizMode === 'Timed' &&
+                  <Timer secondsRemaining={secondsRemaining} />
+                }
+              </div>
+            </div>
             <div className={styles.question}>
               {quizDataList[currentQuestionIndex].question}
             </div>
+
             {Object.keys(quizDataList[currentQuestionIndex].answers).map(
               (option) =>
                 quizDataList[currentQuestionIndex].answers[option] && (
@@ -127,31 +195,39 @@ function Quiz() {
                   </div>
                 ),
             )}
+            <div className={styles.quiz__btnContainer}>
+              <Button
+                type="button"
+                onclick={endTestHandler}
+                buttonStyle="btn--outline"
+                buttonColor="red"
+              >
+                End Quiz
+              </Button>
+              <div className={styles.quiz__prevNextBtn}>
+                <Button
+                  type="button"
+                  className={styles.quiz__prevBtn}
+                  onclick={previousQuestionHandler}
+                  disabled={currentQuestionIndex === 0}
+                >
+                  Previous
+                </Button>
+                {quizDataList &&
+                quizDataList.length &&
+                currentQuestionIndex === quizDataList.length - 1 ? (
+                  <Button type="button" onclick={QuizSubmitHandler}>
+                    Submit
+                  </Button>
+                ) : (
+                  <Button type="button" onclick={nextQuestionHandler}>
+                    Next
+                  </Button>
+                )}
+              </div>
+            </div>
           </div>
         )}
-        <div className={styles.quiz__nextbutton}>
-          <button type="button" onClick={endTestHandler}>
-            End Quiz
-          </button>
-          <button
-            type="button"
-            onClick={previousQuestionHandler}
-            disabled={currentQuestionIndex === 0}
-          >
-            Previous
-          </button>
-          {quizDataList &&
-          quizDataList.length &&
-          currentQuestionIndex === quizDataList.length - 1 ? (
-            <button type="button" onClick={QuizSubmitHandler}>
-              Submit
-            </button>
-          ) : (
-            <button type="button" onClick={nextQuestionHandler}>
-              Next
-            </button>
-          )}
-        </div>
       </div>
     </div>
   );
