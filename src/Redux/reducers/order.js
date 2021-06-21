@@ -1,8 +1,7 @@
-import { RAZORPAY_ORDER_SUCCESS } from '../actions/actionType';
+import { RAZORPAY_ORDER_SUCCESS,CLOSE_PAYMENT_MODAL } from '../actions/actionType';
 
 const intitialState = {
-    order : [],
-    succes : false
+    success : false,
 };
 
 export default function (state = intitialState,action) {
@@ -11,12 +10,12 @@ export default function (state = intitialState,action) {
         case RAZORPAY_ORDER_SUCCESS :
             return{
                 ...state,
-                succes : payload
+                success : payload
             }
-        case 'TEST' :
+        case CLOSE_PAYMENT_MODAL :
             return{
                 ...state,
-                order : payload
+                success : payload
             }    
         default : 
         return state;    

@@ -11,7 +11,7 @@ const STYLES = [
   'btn--premium'
 ];
 const SIZES = ['btn--medium', 'btn--large', 'btn--mobile', 'btn--wide'];
-const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow'];
+const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow','green'];
 
 export const Button = ({
   children,

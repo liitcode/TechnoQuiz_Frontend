@@ -1,5 +1,4 @@
 @import '../../assets/styles/mixins.scss';
-
 .cardContainer {
   @include set-flex;
   justify-content: space-evenly;
@@ -10,7 +9,9 @@
   font-weight: 100;
   letter-spacing: 2px;
 }
-
+.icon{
+  @include set-flex;
+}
 @media only screen and (min-width: 768px) {
   .cardContainer {
     flex-direction: row;

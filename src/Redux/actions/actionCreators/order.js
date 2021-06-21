@@ -1,4 +1,4 @@
-import { RAZORPAY_ORDER_SUCCESS } from '../actionType';
+import { RAZORPAY_ORDER_SUCCESS, CLOSE_PAYMENT_MODAL } from '../actionType';
 import payments from '../../services/payment.service';
 import { razorpayScriptURL } from '../../services/apiUrl';
 
@@ -48,8 +48,14 @@ export const placeOrder = (amount) => (dispatch) =>
                 dispatch({
                     type : RAZORPAY_ORDER_SUCCESS,
                     payload : createOptions(res.data,dispatch)
-                })  
+                })
             }
+        )
     )
-)
 
+export const closePaymentModal = () => (dispatch) => {
+    dispatch({
+        type : CLOSE_PAYMENT_MODAL,
+        payload : false,
+    })
+}

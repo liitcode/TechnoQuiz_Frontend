@@ -3,15 +3,20 @@
 /* eslint-disable no-alert */
 import React from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import { placeOrder } from '../../Redux/actions/actionCreators/order';
-
+import { BsCheckCircle } from 'react-icons/bs';
+import { Redirect } from 'react-router-dom';
+import { placeOrder,closePaymentModal } from '../../Redux/actions/actionCreators/order';
 import Styles from './Premium.module.scss';
 import PremiumCard from './PremiumCard';
+import Modal from '../UI/Modal';
+import { Button } from '../UI/Button';
 
 const Premium = () => {
   const dispatch = useDispatch();
   const success = useSelector((state) => state.order.success);
   const DisplayRazorpay = (amount) => dispatch(placeOrder(amount));
+  const CloseModal = () => dispatch(closePaymentModal());
+  const redirect = () => <Redirect to="/category" />
 
   return (
     <div>
@@ -32,7 +37,14 @@ const Premium = () => {
          onClick = {() => DisplayRazorpay(4800)}
         />
       </div>
-      {/* { success && <Modal/>} */}
+      <Modal
+        isModalOpen = {success}
+        closeModalHandlder = {CloseModal}
+        title= 'Your Payment is Succesful'
+      >
+      <BsCheckCircle className={Styles.icon} size='12em' color='rgb(62, 212, 62)'/>
+      <Button buttonStyle = 'btn--modal' buttonColor='green' onclick={() => {CloseModal(); redirect()}}>OK</Button>
+      </Modal>
     </div>
   );
 };

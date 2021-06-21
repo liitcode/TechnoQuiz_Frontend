@@ -102,7 +102,6 @@ function TypeSelectionModal() {
 
   return (
     <>
-      {isTypeSelectionModalOpen && (
         <Modal  
         isModalOpen = {isTypeSelectionModalOpen}  
         closeModalHandlder = {closeModalWindowHandler}
@@ -149,7 +148,6 @@ function TypeSelectionModal() {
               START
             </Button>
         </Modal>
-      )}
     </>
   );
 }
