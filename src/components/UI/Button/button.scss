@@ -108,6 +108,18 @@
       transition: all 0.2s ease-out;
     }
   }
+  &--premium {
+    background-color: transparent;
+    color: #fea116;
+    padding: 8px 20px;
+    border: 1px solid #fea116;
+    transition: all 0.3s ease-out;
+    &:hover {
+      color: $secondary-color;
+      background-color: #fea116;
+      transition: all 0.2s ease-out;
+    }
+  }
 }
 
 .blue {
