@@ -9,3 +9,4 @@ export const orderUrl = `${baseUrl}/pay/order`;
 export const verifyUrl = `${baseUrl}/pay/verify`;
 export const categoryUrl = `${baseUrl}/category`;
 export const leaderBoardUrl = `${baseUrl}/leaderBoard`;
+export const razorpayScriptURL = 'https://checkout.razorpay.com/v1/checkout.js';

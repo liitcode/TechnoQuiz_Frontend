@@ -1,31 +1,28 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Styles from './PremiumCard.module.scss';
 import { Button } from '../../UI/Button';
 
-function PremiumCard() {
+function PremiumCard({title,price,priceTag,description,onClick}) {
   return (
     <div className={Styles.premiumContainer}>
-      <div className={Styles.header}>
-        <p className={Styles.title}>Monthly</p>
+      <div className={title === 'Monthly' ? Styles.header : Styles.header_dark}>
+        <p className={Styles.title}>{title}</p>
         <p className={Styles.subtitle}>Subscription</p>
-        <p className={Styles.price}>₹450/mo</p>
+        <p className={Styles.price}>{price}</p>
       </div>
       <div className={Styles.body}>
-        <strong>Down from ₹500/month</strong>
-        <br />
-        Our monthly plan grants access to <strong>all premium features</strong>,
-        the best plan for short-term subscribers.
+        <strong>{priceTag}</strong>
+        <br /> <br />
+        Our {title} plan grants access to <strong>all premium features</strong>,
+        {description}
         <small className={Styles.currencyNotice}>
           (prices are marked in INR)
         </small>
       </div>
       <div className={Styles.footer}>
-        <Button
-          buttonStyle="btn--primary"
-          // onclick={() => DisplayRazorpay(500)}
-        >
-          Subscribe
-        </Button>
+        <Button buttonStyle={title === 'Monthly' ? 'btn--premium' : 'btn--outline'} onclick={onClick}> Subscribe </Button>
       </div>
     </div>
   );
