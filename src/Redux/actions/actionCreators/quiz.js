@@ -24,9 +24,7 @@ export const submitTypeSelectionModal =
   (difficulty, quizMode, categoryId, categoryName) => (dispatch) =>
     quizService.quiz(difficulty, categoryId).then(
       (response) => {
-        console.log("RESPONSSEEE",response)
         const quizData = decrypt(response.data,'F594D3AF69568CCC772C8B819535806CC935745B')
-        console.log("QUIZ",quizData);
         dispatch({
           type: QUIZ_DATA_ON_SUBMIT_SUCCESS,
           payload: {

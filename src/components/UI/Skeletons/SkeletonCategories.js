@@ -10,8 +10,8 @@ const SkeletonCategories = () => {
   const n = 11;
  return(
      <>
-       {[...Array(n)].map(()=>(
-       <div className="skeleton-card">
+       {[...Array(n)].map((_,index)=>(
+       <div className="skeleton-card" key={index}>
        <SkeletonElement type="circle" >
        <Shimmer />
        </SkeletonElement>

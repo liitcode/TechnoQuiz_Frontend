@@ -10,7 +10,7 @@ import Tooltip from '../UI/Tooltip';
 
 function QuizSolution() {
   const {
-    quizData: { data: { data: quizDataList } = [] },
+    quizData: { data: quizDataList  = [] },
   } = useSelector((state) => state.quiz);
   const { selectedAnswerByUser, userScore, maxUserScore } = useSelector(
     (state) => state.score,

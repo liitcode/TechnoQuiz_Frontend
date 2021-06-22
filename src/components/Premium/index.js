@@ -27,6 +27,7 @@ const Premium = () => {
       <Modal
       isModalOpen = {loginModal}
       closeModalHandlder = {CloseLoginModal}
+      windowStyle="modal_container"
       title= 'You must Login first!'
       >
         <RiLoginBoxLine className={Styles.icon} size='12em'/>
@@ -54,6 +55,7 @@ const Premium = () => {
       <Modal
         isModalOpen = {success}
         closeModalHandlder = {CloseModal}
+        windowStyle="modal_container"
         title= 'Your Payment is Succesful'
       >
         <BsCheckCircle className={Styles.icon} size='12em' color='rgb(62, 212, 62)'/>

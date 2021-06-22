@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
@@ -11,15 +14,20 @@ import styles from './Quiz.module.scss';
 import Timer from './Timer';
 import { Button } from '../UI/Button';
 import { quizSubmission } from '../../Redux/actions/actionCreators/quiz';
+import Modal from '../UI/Modal';
 
 function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswerByUser, setSelectedAnswerByUser] = useState([]);
   const [startingSeconds, setStartingSeconds] = useState(0);
   const [secondsRemaining, setSecondsRemaining] = useState(null);
+  const [isEndModalOpen, setIsEndModalOpen] = useState(false);
+  const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
+  const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
+
   const dispatch = useDispatch();
   const {
-    quizData: { data: quizDataList = []},
+    quizData: {  data: quizDataList  = [] },
     categoryName,
     quizMode,
     difficulty,
@@ -92,27 +100,7 @@ function Quiz() {
     }
     return { scoreCard, maxScore };
   };
-  useEffect(() => {
-    if (secondsRemaining === 0) {
-      const score = scoreCalculation();
-      const userScore = score.scoreCard;
-      const maxUserScore = score.maxScore;
-
-      dispatch(
-        quizSubmission(
-          difficulty,
-          categoryId,
-          userScore,
-          selectedAnswerByUser,
-          maxUserScore,
-        ),
-      );
-    }
-  }, [secondsRemaining]);
-
-  if (path) return <Redirect to={path} />;
-
-  const QuizSubmitHandler = () => {
+  const QuizCompleteHandler = () => {
     const score = scoreCalculation();
     const userScore = score.scoreCard;
     const maxUserScore = score.maxScore;
@@ -127,20 +115,31 @@ function Quiz() {
       ),
     );
   };
+  useEffect(() => {
+    if (secondsRemaining === 0) {
+      QuizCompleteHandler();
+    }
+  }, [secondsRemaining]);
 
-  const endTestHandler = () => {
-    const score = scoreCalculation();
-    const userScore = score.scoreCard;
-    const maxUserScore = score.maxScore;
-    dispatch(
-      quizSubmission(
-        difficulty,
-        categoryId,
-        userScore,
-        selectedAnswerByUser,
-        maxUserScore,
-      ),
-    );
+  if (path) return <Redirect to={path} />;
+
+  const quizSubmitBtnHandler = () => {
+    setIsSubmitModalOpen(true);
+  };
+
+  const quizCloseSubmitModalHandler = () => {
+    setIsSubmitModalOpen(false);
+  };
+  const quizEndBtnHandler = () => {
+    setIsEndModalOpen(true);
+  };
+
+  const quizCloseEndModalHandler = () => {
+    setIsEndModalOpen(false);
+  };
+
+  const quizTimeUpHandler = () => {
+    setIsTimeUpModalOpen(true);
   };
 
   return (
@@ -177,12 +176,13 @@ function Quiz() {
                   <label
                     key={option}
                     className={styles.option}
-                    onChange={optionSelectionHandler}
+                    
                   >
                     <input
                       type="radio"
                       value={option}
                       name={currentQuestionIndex}
+                      onChange={optionSelectionHandler}
                       checked={
                         option === selectedAnswerByUser[currentQuestionIndex]
                       }
@@ -194,7 +194,7 @@ function Quiz() {
             <div className={styles.quiz__btnContainer}>
               <Button
                 type="button"
-                onclick={endTestHandler}
+                onclick={quizEndBtnHandler}
                 buttonStyle="btn--outline"
                 buttonColor="red"
               >
@@ -215,8 +215,8 @@ function Quiz() {
                 currentQuestionIndex === quizDataList.length - 1 ? (
                   <Button
                     type="button"
-                    onclick={QuizSubmitHandler}
-                    buttonStyle="btn--quiz"
+                    onclick={quizSubmitBtnHandler}
+                    buttonStyle="btn--primary"
                   >
                     Submit
                   </Button>
@@ -224,7 +224,7 @@ function Quiz() {
                   <Button
                     type="button"
                     onclick={nextQuestionHandler}
-                    buttonStyle="btn--quiz"
+                    buttonStyle="btn--primary"
                   >
                     Next
                   </Button>
@@ -234,6 +234,70 @@ function Quiz() {
           </div>
         )}
       </div>
+      {isEndModalOpen && (
+        <Modal
+          isModalOpen={quizEndBtnHandler}
+          closeModalHandlder={quizCloseEndModalHandler}
+          title="Are you sure you want to end the Quiz?"
+          windowStyle="modal_container_noWidth"
+        >
+          <div className={styles.modalBtn}>
+            <Button
+              buttonSize="btn--large"
+              buttonColor="green"
+              buttonStyle="btn--quiz"
+              onclick={quizCloseEndModalHandler}
+            >
+              No
+            </Button>
+            <Button
+              buttonSize="btn--large"
+              buttonColor="red"
+              buttonStyle="btn--primary"
+              onclick={QuizCompleteHandler}
+            >
+              Yes
+            </Button>
+          </div>
+        </Modal>
+      )}
+
+      {isSubmitModalOpen && (
+        <Modal
+          isModalOpen={quizSubmitBtnHandler}
+          closeModalHandlder={quizCloseSubmitModalHandler}
+          title="Are you sure you want to submit the Quiz?"
+          windowStyle="modal_container_noWidth"
+        >
+          <div className={styles.modalBtn}>
+            <Button
+              buttonSize="btn--large"
+              buttonColor="green"
+              buttonStyle="btn--quiz"
+              onclick={quizCloseSubmitModalHandler}
+            >
+              No
+            </Button>
+            <Button
+              buttonSize="btn--large"
+              buttonColor="red"
+              buttonStyle="btn--primary"
+              onclick={QuizCompleteHandler}
+            >
+              Yes
+            </Button>
+          </div>
+        </Modal>
+      )}
+      {isTimeUpModalOpen && (
+        <Modal
+          isModalOpen={quizTimeUpHandler}
+          title="Your Time is Up!!!"
+          windowStyle="modal_container_noWidth"
+        >
+          <Button onclick={QuizCompleteHandler}>Continue</Button>
+        </Modal>
+      )}
     </div>
   );
 }

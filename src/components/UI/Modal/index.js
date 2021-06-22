@@ -1,25 +1,39 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import styles from './Modal.module.scss';
+import { Button } from '../Button';
 
-function Modal({ isModalOpen, children, closeModalHandlder,title }) {
-const stopPropagation = (e) => e.stopPropagation();
+function Modal({
+  isModalOpen,
+  children,
+  closeModalHandlder,
+  title,
+  windowStyle,
+}) {
+  const stopPropagation = (e) => e.stopPropagation();
+  const classNames = ['modal_container', 'modal_container_noWidth'].includes(
+    windowStyle,
+  )
+    ? windowStyle
+    : null;
   return (
     <>
-         { isModalOpen &&
-          <div className={styles.backdrop} onClick={closeModalHandlder}>
-          <div
-            className={styles.modal_container}
-            onClick={stopPropagation}
-          >
-            <div className ={styles.title}>{title}</div>
-            <button className = {styles.closeButton} type='button' onClick={closeModalHandlder}> x</button> 
+      {isModalOpen && (
+        <div className={styles.backdrop} onClick={closeModalHandlder}>
+          <div className={styles[classNames]} onClick={stopPropagation}>
+            <div className={styles.title}>{title}</div>
+            <Button buttonStyle="btn--circular" onclick={closeModalHandlder}>
+              x
+            </Button>
             {children}
           </div>
-        </div>}
+        </div>
+      )}
     </>
   );
 }

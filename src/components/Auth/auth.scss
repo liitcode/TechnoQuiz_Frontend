@@ -9,11 +9,10 @@
   justify-content: center;
   flex-wrap: wrap;
 
-
   &-container {
     @include set-flex;
     flex-wrap: wrap;
-    width:auto;
+    width: auto;
     flex-direction: column;
     background-color: $secondary-color;
     box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
@@ -39,12 +38,12 @@
     padding-bottom: 20px;
     justify-content: center;
   }
-  
+
   &-label {
     font-size: 1.1rem;
     margin-top: 0.5rem;
   }
-  
+
   &-text {
     margin-top: 10px;
     font-size: 1.1rem;
@@ -59,13 +58,13 @@
     min-width: 18em;
     height: 33px;
     padding: 0px 10px;
-    font-size: 16px;
+    font-size: 1rem;
     background-color: $text-color;
     border: 0;
     border-radius: 4px;
     transition: all 250ms ease-in-out;
     &:hover {
-      background-color:$secondary-color;
+      background-color: $secondary-color;
       box-shadow: 0px 0px 14px 0.3px $primary-color;
     }
     &:focus {
@@ -78,21 +77,21 @@
 .col {
   @include set-flex;
   color: $secondary-color;
-  background : transparent;
+  background: transparent;
   text-decoration: none;
   cursor: pointer;
   font-size: 3rem;
-  &-logo{
+  &-logo {
     margin-right: 0.5rem;
     &-link {
       color: $secondary-color;
-        justify-content: center;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 3rem;
-        display: flex;
-        align-items: center;
-        margin-bottom: 16px;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 3rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
     }
   }
 }
@@ -100,11 +99,11 @@
 .alert-danger {
   padding-top: 5px;
   font-size: 15px;
-  color:$navbar-hover;
+  color: $navbar-hover;
 }
 
 .header {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 1800;
   padding-bottom: 10px;
 }
@@ -122,16 +121,15 @@ img {
   height: 100%;
 }
 
-
 @media only screen and (max-width: 1024) {
-  .base{
+  .base {
     &-container {
       width: auto;
     }
   }
-  .col{
+  .col {
     &-logo-link {
-          font-size: 2rem;
-      }
+      font-size: 2rem;
+    }
   }
 }

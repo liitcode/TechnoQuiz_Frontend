@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
@@ -26,7 +27,7 @@ function LeaderBoard() {
               *Choose Category to see leaders of respective category
             </div> */}
             {data.map((leader, index) => (
-              <div className={styles.leader}>
+              <div className={styles.leader} key={`${leader.name}${index}`}>
                 <div className={styles.leader__name__container}>
                   <div className={styles.leader__index}>{index + 1}</div>
                   <div className={styles.leader__img}>

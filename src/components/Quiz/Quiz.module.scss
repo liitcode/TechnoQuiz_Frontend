@@ -72,6 +72,10 @@
 .bold {
   font-weight: 700;
 }
+.modalBtn {
+  @include set-flex;
+  margin-top: 2%;
+}
 
 @media only screen and (min-width: 508px) {
   .quiz {

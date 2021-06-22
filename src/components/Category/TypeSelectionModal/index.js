@@ -15,7 +15,7 @@ import { submitTypeSelectionModal } from '../../../Redux/actions/actionCreators/
 import Practice from '../../../assets/images/practice.png';
 import Timed from '../../../assets/images/timed.png';
 import { Button } from '../../UI/Button';
-import Modal from '../../UI/Modal'
+import Modal from '../../UI/Modal';
 
 import styles from './TypeSelectionModal.module.scss';
 
@@ -33,7 +33,6 @@ function TypeSelectionModal() {
   const { categoryName, categoryId } = useSelector((state) => state.category);
   const { path } = useSelector((state) => state.quiz);
   const { isTypeSelectionModalOpen } = useSelector((state) => state.category);
-
 
   useEffect(() => {
     if (isTypeSelectionModalOpen) {
@@ -102,52 +101,49 @@ function TypeSelectionModal() {
 
   return (
     <>
-        <Modal  
-        isModalOpen = {isTypeSelectionModalOpen}  
-        closeModalHandlder = {closeModalWindowHandler}
-        title = {categoryName}
+      <Modal
+        isModalOpen={isTypeSelectionModalOpen}
+        windowStyle="modal_container"
+        closeModalHandlder={closeModalWindowHandler}
+        title={categoryName}
+      >
+        <ToggleSwitch />
+        <div className={styles.modecontainer}>
+          <div className={styles.imgcontainer}>
+            <img src={Practice} alt="Practice Mode" />
+          </div>
+          <div className="modeToggle">
+            <label className={styles.toggle_switch}>
+              <input type="checkbox" checked={isTimed} onChange={modeToggle} />
+              <span className={styles.switchmode}>
+                {isTimed ? 'Timed' : 'Practice'}
+              </span>
+            </label>
+          </div>
+          <div className={styles.imgcontainer}>
+            <img src={Timed} alt="Timed Mode" />
+          </div>
+        </div>
+        <br />
+        <Button
+          buttonStyle="btn--modal"
+          className="styles.modalsubmit"
+          type="submit"
+          disabled={!difficultyButton || !quizMode}
+          onclick={() =>
+            dispatch(
+              submitTypeSelectionModal(
+                difficultyButton,
+                quizMode,
+                categoryId,
+                categoryName,
+              ),
+            )
+          }
         >
-            <ToggleSwitch />
-            <div className={styles.modecontainer}>
-              <div className={styles.imgcontainer}>
-                <img src={Practice} alt="Practice Mode" />
-              </div>
-              <div className="modeToggle">
-                <label className={styles.toggle_switch}>
-                  <input
-                    type="checkbox"
-                    checked={isTimed}
-                    onChange={modeToggle}
-                  />
-                  <span className={styles.switchmode}>
-                    {isTimed ? 'Timed' : 'Practice'}
-                  </span>
-                </label>
-              </div>
-              <div className={styles.imgcontainer}>
-                <img src={Timed} alt="Timed Mode" />
-              </div>
-            </div>
-            <br />
-            <Button
-              buttonStyle="btn--modal"
-              className="styles.modalsubmit"
-              type="submit"
-              disabled={!difficultyButton || !quizMode}
-              onclick={() =>
-                dispatch(
-                  submitTypeSelectionModal(
-                    difficultyButton,
-                    quizMode,
-                    categoryId,
-                    categoryName,
-                  ),
-                )
-              }
-            >
-              START
-            </Button>
-        </Modal>
+          START
+        </Button>
+      </Modal>
     </>
   );
 }

@@ -25,10 +25,8 @@ function Categories() {
               categoryName={item.name}
               categoryId={item.id}
               categoryIcon={item.icon}
-              categoryFact={item.fact}
             />
           ))}
-          {console.log(data)}
         {data.length===0 && <SkeletonCategories />}
       </div>
     </div>
