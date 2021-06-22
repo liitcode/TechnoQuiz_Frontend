@@ -8,10 +8,25 @@ import {
 } from '../actionType';
 import quizService from '../../services/quiz.service';
 
+const decrypt = (data, salt) => {
+  let o = data;
+  o = decodeURI(o);
+  if (salt && o.indexOf(salt) !== 0) throw new Error('object cannot be decrypted');
+  o = o.substring(salt.length).split('');
+  for (let i = 0, l = o.length; i < l; i += 1) {
+    if (o[i] === '{') o[i] = '}';
+    else if (o[i] === '}') o[i] = '{';
+  }
+  return JSON.parse(o.join(''));
+};
+
 export const submitTypeSelectionModal =
   (difficulty, quizMode, categoryId, categoryName) => (dispatch) =>
     quizService.quiz(difficulty, categoryId).then(
-      (quizData) => {
+      (response) => {
+        console.log("RESPONSSEEE",response)
+        const quizData = decrypt(response.data,'F594D3AF69568CCC772C8B819535806CC935745B')
+        console.log("QUIZ",quizData);
         dispatch({
           type: QUIZ_DATA_ON_SUBMIT_SUCCESS,
           payload: {

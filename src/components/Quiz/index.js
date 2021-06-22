@@ -19,7 +19,7 @@ function Quiz() {
   const [secondsRemaining, setSecondsRemaining] = useState(null);
   const dispatch = useDispatch();
   const {
-    quizData: { data: { data: quizDataList } = [] },
+    quizData: { data: quizDataList = []},
     categoryName,
     quizMode,
     difficulty,
