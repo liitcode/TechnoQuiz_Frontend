@@ -97,7 +97,7 @@ function TypeSelectionModal() {
 
   const modeToggle = () => {
     setIstimed(!isTimed);
-    setQuizMode(isTimed ? 'Timed' : 'Practice');
+    setQuizMode(!isTimed ? 'Timed' : 'Practice');
   };
 
   return (

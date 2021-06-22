@@ -43,8 +43,7 @@ function Quiz() {
     let interval;
     if (secondsRemaining > 0) {
       interval = setInterval(() => {
-        // eslint-disable-next-line no-shadow
-        setSecondsRemaining((secondsRemaining) => secondsRemaining - 1);
+        setSecondsRemaining(() => secondsRemaining - 1);
       }, 1000);
     } else {
       clearInterval(interval);
@@ -65,11 +64,11 @@ function Quiz() {
     setSelectedAnswerByUser(previousSelectedAnswers);
   };
 
-  var scoreCalculation = () => {
+  const scoreCalculation = () => {
     let count = 0;
     for (let i = 0; i < quizDataList.length; i += 1) {
       const userAnswer = `${selectedAnswerByUser[i]}_correct`;
-      if (quizDataList[i].correct[userAnswer]) {
+      if (quizDataList[i].correct[userAnswer] === 'true') {
         count += 1;
       }
     }
@@ -147,10 +146,7 @@ function Quiz() {
   return (
     <div className={styles.quiz}>
       <div className={styles.stopWatch__MobileOnly}>
-        {
-          // quizMode === 'Timed' &&
-          <Timer secondsRemaining={secondsRemaining} />
-        }
+        {quizMode === 'Timed' && <Timer secondsRemaining={secondsRemaining} />}
       </div>
       <div className={styles.quiz__container}>
         <div className={styles.quiz__container__heading}>
@@ -166,10 +162,9 @@ function Quiz() {
                 }`}
               </div>
               <div className={styles.stopWatch__DesktopOnly}>
-                {
-                  // quizMode === 'Timed' &&
+                {quizMode === 'Timed' && (
                   <Timer secondsRemaining={secondsRemaining} />
-                }
+                )}
               </div>
             </div>
             <div className={styles.question}>
@@ -179,7 +174,8 @@ function Quiz() {
             {Object.keys(quizDataList[currentQuestionIndex].answers).map(
               (option) =>
                 quizDataList[currentQuestionIndex].answers[option] && (
-                  <label key={option}
+                  <label
+                    key={option}
                     className={styles.option}
                     onChange={optionSelectionHandler}
                   >
@@ -217,11 +213,19 @@ function Quiz() {
                 {quizDataList &&
                 quizDataList.length &&
                 currentQuestionIndex === quizDataList.length - 1 ? (
-                  <Button type="button" onclick={QuizSubmitHandler} buttonStyle="btn--quiz">
+                  <Button
+                    type="button"
+                    onclick={QuizSubmitHandler}
+                    buttonStyle="btn--quiz"
+                  >
                     Submit
                   </Button>
                 ) : (
-                  <Button type="button" onclick={nextQuestionHandler} buttonStyle="btn--quiz">
+                  <Button
+                    type="button"
+                    onclick={nextQuestionHandler}
+                    buttonStyle="btn--quiz"
+                  >
                     Next
                   </Button>
                 )}

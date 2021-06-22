@@ -231,3 +231,15 @@
     }
   }
 }
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  background-color: green;
+  color: white;
+  left: 28%;
+  visibility: visible;
+  height: 3 0px;
+}
+.tooltip:hover {
+  visibility: visible;
+}
