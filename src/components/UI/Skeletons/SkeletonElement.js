@@ -2,10 +2,10 @@
 import React from 'react';
 import './skeleton.scss';
 
-const SkeletonElement = ({ type }) => {
+const SkeletonElement = ({ type,children }) => {
     const classes = `skeleton-${type}`;
     return (
-        <div className={classes}/>
+        <div className={classes}>{children}</div>
     )
 }
 

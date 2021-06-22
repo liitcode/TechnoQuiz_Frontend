@@ -7,6 +7,8 @@ $skeleton-color: #ddd;
     width: 75%;
     height: 20px;
     margin-right: 15px;
+    position: relative;
+    overflow: hidden;
   }
   &-avatar-small {
     width: 45px;
@@ -14,6 +16,8 @@ $skeleton-color: #ddd;
     border-radius: 50%;
     margin-right: 15px;
     background: $skeleton-color;
+    position: relative;
+    overflow: hidden;
   }
 
   &-leaders {
@@ -34,13 +38,43 @@ $skeleton-color: #ddd;
     position: relative;
     overflow: hidden;
   }
+  &-card {
+    position: relative;
+    background-color:  #f2f2f2;
+    width: 250px;
+    margin: 3% 10px;
+    height: 170px;
+    width: 90%;
+    border-radius: 25px;
+
+  }
+  &-circle{
+    position: relative;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: $skeleton-color;
+    margin: auto;
+    margin-top: 12px;
+    margin-bottom: 16px;
+    overflow:hidden;
+
+  }
+  &-rectangle{
+    position: relative;
+    background-color: $skeleton-color;
+    width: 75%;
+    height: 38px;
+    margin: auto;
+    overflow:hidden;
+  }
 }
 // animations
 
 .shimmer {
   width: 50%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   transform: (skew(-20deg));
   &-wrapper {
     position: absolute;
@@ -74,6 +108,9 @@ $skeleton-color: #ddd;
     &-leaders {
       max-height: unset;
       overflow-y: unset;
+    }
+    &-card {
+      width: 30%;
     }
   }
 }

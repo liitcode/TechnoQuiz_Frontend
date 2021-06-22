@@ -14,9 +14,8 @@ const SkeletonLeaderBoard = () => {
       {[...Array(n)].map(() => (
         <>
           <div className="skeleton-leader">
-            <SkeletonElement type="avatar-small" />
-            <SkeletonElement type="text" />
-            <Shimmer />
+            <SkeletonElement type="avatar-small"><Shimmer /></SkeletonElement>
+            <SkeletonElement type="text" ><Shimmer /></SkeletonElement>
           </div>
         </>
       ))}
