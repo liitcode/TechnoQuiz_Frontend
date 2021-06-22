@@ -45,6 +45,18 @@
       @extend %hover-effect;
     }
   }
+  &--circular {
+    border-radius: 50%;
+    border: none;
+    font-size: 25px;
+    background-color: black;
+    color: white;
+    position: absolute;
+    right: -14px;
+    top: -14px;
+    cursor: pointer;
+    padding: 3px 12px;
+  }
   &--large {
     padding: 12px 26px;
     font-size: 20px;

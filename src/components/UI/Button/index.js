@@ -10,9 +10,10 @@ const STYLES = [
   'btn--modal',
   'btn--premium',
   'btn--quiz',
+  'btn--circular',
 ];
 const SIZES = ['btn--medium', 'btn--large', 'btn--mobile', 'btn--wide'];
-const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow','green'];
+const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow', 'green'];
 
 export const Button = ({
   children,
