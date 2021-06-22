@@ -8,7 +8,8 @@ const STYLES = [
   'btn--outline',
   'btn--outline--white',
   'btn--modal',
-  'btn--premium'
+  'btn--premium',
+  'btn--quiz',
 ];
 const SIZES = ['btn--medium', 'btn--large', 'btn--mobile', 'btn--wide'];
 const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow','green'];

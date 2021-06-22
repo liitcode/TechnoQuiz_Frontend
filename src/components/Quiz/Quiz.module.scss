@@ -58,6 +58,9 @@
   margin: 1.5% 0%;
   text-align: left;
   font-size: 1rem;
+  &:hover {
+    cursor: help;
+  }
 }
 .stopWatch__DesktopOnly {
   display: none;

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
 /* eslint-disable no-unused-vars */
@@ -178,8 +179,7 @@ function Quiz() {
             {Object.keys(quizDataList[currentQuestionIndex].answers).map(
               (option) =>
                 quizDataList[currentQuestionIndex].answers[option] && (
-                  <div
-                    key={option}
+                  <label key={option}
                     className={styles.option}
                     onChange={optionSelectionHandler}
                   >
@@ -192,7 +192,7 @@ function Quiz() {
                       }
                     />
                     {quizDataList[currentQuestionIndex].answers[option]}
-                  </div>
+                  </label>
                 ),
             )}
             <div className={styles.quiz__btnContainer}>
@@ -209,6 +209,7 @@ function Quiz() {
                   type="button"
                   className={styles.quiz__prevBtn}
                   onclick={previousQuestionHandler}
+                  buttonStyle="btn--quiz"
                   disabled={currentQuestionIndex === 0}
                 >
                   Previous
@@ -216,11 +217,11 @@ function Quiz() {
                 {quizDataList &&
                 quizDataList.length &&
                 currentQuestionIndex === quizDataList.length - 1 ? (
-                  <Button type="button" onclick={QuizSubmitHandler}>
+                  <Button type="button" onclick={QuizSubmitHandler} buttonStyle="btn--quiz">
                     Submit
                   </Button>
                 ) : (
-                  <Button type="button" onclick={nextQuestionHandler}>
+                  <Button type="button" onclick={nextQuestionHandler} buttonStyle="btn--quiz">
                     Next
                   </Button>
                 )}

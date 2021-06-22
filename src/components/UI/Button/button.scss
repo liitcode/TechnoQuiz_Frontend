@@ -108,6 +108,12 @@
       transition: all 0.2s ease-out;
     }
   }
+  &--quiz {
+    background-color: $primary-color;
+    color: $secondary-color;
+    border: 1px solid $primary-color;
+    margin-right: 10px;
+  }
   &--premium {
     background-color: transparent;
     color: #fea116;
