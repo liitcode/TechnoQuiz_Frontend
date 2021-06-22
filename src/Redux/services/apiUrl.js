@@ -1,5 +1,7 @@
 const baseUrl =
-  'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api';
+  // 'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api';
+  // 'http://localhost:8000/api';
+  'http://d464b5f2314a.ngrok.io/api'
 
 export const loginUrl = `${baseUrl}/user/login`;
 export const registerUrl = `${baseUrl}/user/register`;

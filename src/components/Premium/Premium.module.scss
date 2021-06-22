@@ -11,6 +11,7 @@
 }
 .icon{
   @include set-flex;
+  margin-top: 10%;
 }
 @media only screen and (min-width: 768px) {
   .cardContainer {

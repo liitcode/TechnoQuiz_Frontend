@@ -2,10 +2,11 @@
 import React from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { DateTime } from 'luxon';
 import './dropdown.scss';
 import { logout } from '../../../Redux/actions/actionCreators/auth';
 
-const Dropdown = () => {
+export const Dropdown = () => {
   const dispatch = useDispatch();
   const logOut = () => dispatch(logout());
   const userName = useSelector((state) => state.auth.user.username);
@@ -27,4 +28,16 @@ const Dropdown = () => {
   );
 }
 
-export default Dropdown;
+
+export const Premium = () => {
+  const date = useSelector((state) => state.auth.expiry);
+  const expiry = DateTime.fromISO(date).toISODate()
+  return (
+    <>
+      <ul className='dropdown-premium'>
+      <li className='dropdown-item'>{`Your Plan Expires on ${expiry}`}</li>
+      </ul>
+    </>
+  );
+}
+

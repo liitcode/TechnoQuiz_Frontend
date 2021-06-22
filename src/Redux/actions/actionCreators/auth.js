@@ -38,10 +38,11 @@ export const register = (name, email, password) => (dispatch) =>
 export const login = (email, password) => (dispatch) =>
   authService
     .login(email, password)
-    .then((data) => {
+    .then((result) => {
+      if (result.data.authtoken) localStorage.setItem('user', JSON.stringify(result.data));
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: { user: data },
+        payload: { user: result },
       });
 
       return Promise.resolve();

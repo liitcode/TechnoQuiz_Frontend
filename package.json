@@ -12,6 +12,7 @@
     "dotenv": "^10.0.0",
     "framer-motion": "^4.1.17",
     "history": "^4.10.1",
+    "luxon": "^1.27.0",
     "node-sass": "^4.14.1",
     "random-avatar-generator": "^2.0.0",
     "randomcolor": "^0.6.2",

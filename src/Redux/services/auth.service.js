@@ -9,17 +9,12 @@ const register = (name, email, password) =>
     password,
   });
 
-const login = (email, password) => {
-  return axios
-    .post(loginUrl, {
+const login = (email, password) =>
+  axios.post(loginUrl, {
       email,
       password,
-    })
-    .then((respone) => {
-      if (respone.data.authtoken)
-        localStorage.setItem('user', JSON.stringify(respone.data));
-    });
-};
+  });
+   
 const logout = () => {
   localStorage.removeItem('user');
 };

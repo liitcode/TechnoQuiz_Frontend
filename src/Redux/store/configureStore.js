@@ -9,7 +9,7 @@ const middleware = [thunk];
 
 const middlewareEnhancer =
   process.env.NODE_ENV === 'development'
-    ? composeWithDevTools(applyMiddleware(createLogger(), ...middleware))
+    ? composeWithDevTools(applyMiddleware(...middleware,createLogger()))
     : composeWithDevTools(applyMiddleware(...middleware));
 
 // const middlewareEnhancer = composeWithDevTools(applyMiddleware(...middleware));

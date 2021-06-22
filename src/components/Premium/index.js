@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable object-shorthand */
 /* eslint-disable no-alert */
-import React from 'react';
+import React,{ useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { BsCheckCircle } from 'react-icons/bs';
-import { Redirect } from 'react-router-dom';
-import { placeOrder,closePaymentModal } from '../../Redux/actions/actionCreators/order';
+import { RiLoginBoxLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import { placeOrder,closePaymentModal,setLoginModal,closeLoginModal } from '../../Redux/actions/actionCreators/order';
 import Styles from './Premium.module.scss';
 import PremiumCard from './PremiumCard';
 import Modal from '../UI/Modal';
@@ -13,13 +14,26 @@ import { Button } from '../UI/Button';
 
 const Premium = () => {
   const dispatch = useDispatch();
-  const success = useSelector((state) => state.order.success);
-  const DisplayRazorpay = (amount) => dispatch(placeOrder(amount));
+  const success = useSelector((state) => state.order.success)
+  const loginModal = useSelector((state) => state.order.loginModal)
+  const  log  = useSelector((state) => state.auth.isLoggedin);
+
   const CloseModal = () => dispatch(closePaymentModal());
-  const redirect = () => <Redirect to="/category" />
+  const CloseLoginModal = () => dispatch(closeLoginModal());
+  const DisplayRazorpay = (amount) => log ? dispatch(placeOrder(amount)) : dispatch(setLoginModal());
 
   return (
     <div>
+      <Modal
+      isModalOpen = {loginModal}
+      closeModalHandlder = {CloseLoginModal}
+      title= 'You must Login first!'
+      >
+        <RiLoginBoxLine className={Styles.icon} size='12em'/>
+        <Link to="/signin">
+          <Button buttonStyle = 'btn--modal' buttonColor='primary' onclick={CloseLoginModal}>Log In</Button>
+        </Link>
+      </Modal>
       <h1 className= {Styles.heading}>Get started with a TechnoQuiz subscription that works for you</h1>
       <div className={Styles.cardContainer}>
         <PremiumCard
@@ -42,8 +56,10 @@ const Premium = () => {
         closeModalHandlder = {CloseModal}
         title= 'Your Payment is Succesful'
       >
-      <BsCheckCircle className={Styles.icon} size='12em' color='rgb(62, 212, 62)'/>
-      <Button buttonStyle = 'btn--modal' buttonColor='green' onclick={() => {CloseModal(); redirect()}}>OK</Button>
+        <BsCheckCircle className={Styles.icon} size='12em' color='rgb(62, 212, 62)'/>
+        <Link to="/signin">
+          <Button buttonStyle = 'btn--modal' buttonColor='green' onclick={CloseModal}>OK</Button>
+        </Link>
       </Modal>
     </div>
   );
