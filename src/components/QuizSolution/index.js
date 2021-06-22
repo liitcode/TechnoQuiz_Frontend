@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './QuizSolution.module.scss';
+import Tooltip from '../UI/Tooltip';
 
 function QuizSolution() {
   const {
@@ -28,7 +29,7 @@ function QuizSolution() {
     .slice(0, 2)
     .join('_');
   return (
-    <div className="scorePageContainer">
+    <div className={styles.scorePageContainer}>
       <div className={styles.questionsContainer}>
         <div className={styles.questions}>
           {quizDataList.map((question, index) => (
