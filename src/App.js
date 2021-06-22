@@ -12,7 +12,7 @@ import QuizSolution from './components/QuizSolution';
 import Quiz from './components/Quiz';
 import Navbar from './components/UI/NavBar';
 import Footer from './components/UI/Footer';
-import Premium  from './components/Premium';
+import Premium from './components/Premium';
 import { clearMessage } from './Redux/actions/actionCreators/message';
 
 function App() {
@@ -36,6 +36,7 @@ function App() {
             <Route path="/signin" component={Login} exact />
             <Route path="/signup" component={SignUp} exact />
             <Route path="/premium" component={Premium} exact />
+            <Route path="/quizsolution" component={QuizSolution} exact />
           </Switch>
           <Footer />
         </main>
