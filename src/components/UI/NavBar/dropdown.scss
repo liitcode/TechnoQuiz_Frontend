@@ -18,14 +18,15 @@
     margin-left: -3%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
     padding-left: 0;
-    & li {
-      background: $secondary-color;
-      color: $primary-color;
-      cursor: pointer;
-      &:hover {
-        @extend %hover;
-      }
-    }
+    border: 2px solid $primary-color;
+
+    // & li {
+    //   background: $secondary-color;
+    //   color: $primary-color;
+    //   &:hover {
+    //     @extend %hover;
+    //   }
+    // }
   }
   &-link {
     font-size: 1rem;
@@ -34,7 +35,9 @@
     width: 100%;
     text-decoration: none;
     color: $primary-color;
+    background: $secondary-color;
     padding: 16px;
+    cursor: pointer;
     &:hover {
       @extend %hover;
     }
@@ -45,7 +48,17 @@
     height: 100%;
     width: 100%;
     color: $primary-color;
+    background: $secondary-color;
     padding: 16px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid #6D6D6D;
+    &:hover {
+      background: #FEA116;
+      color: $secondary-color;
+      transition: all 0.2s ease;
+      font-weight: bolder;
+    }
   }
 }
 .clicked {
