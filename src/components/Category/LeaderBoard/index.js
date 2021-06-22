@@ -1,31 +1,25 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 import { AvatarGenerator } from 'random-avatar-generator';
 import styles from './LeaderBoard.module.scss';
-// import Dropdown from '../../UI/Dropdown';
 import Trophy from '../../../assets/images/trophy.png';
 import SkeletonLeaderBoard from '../../UI/Skeletons/SkeletonLeaderboard';
-// import SkeletonElement from '../../UI/Skeletons/SkeletonElement';
+import { fetchLeaderBoard } from '../../../Redux/actions/actionCreators/leaderboard'
 
 function LeaderBoard() {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    setTimeout(async () => {
-      const result = await axios(
-        'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api/leaderboard',
-      );
-      setData(result.data);
-    }, 1000);
+  const dispatch = useDispatch();
+  useEffect(async () => {
+    dispatch(fetchLeaderBoard());
   }, []);
-
+  const data = useSelector((state) => state.leaders.leaders);
   return (
     <>
       <div className={styles.leaderboard}>
         <div className={styles.leaderboard_img}>
           <img src={Trophy} alt="Leaderboard Trophy" />
         </div>
-        {data && (
+        {data.length > 1 && (
           <div className={styles.leaders}>
             {/* <Dropdown /> */}
             {/* <div className={styles.message}>
@@ -49,7 +43,7 @@ function LeaderBoard() {
             ))}
           </div>
         )}
-        {!data && <SkeletonLeaderBoard />}
+        {data.length === 0 && <SkeletonLeaderBoard />}
       </div>
     </>
   );

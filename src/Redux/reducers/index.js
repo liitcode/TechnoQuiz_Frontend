@@ -5,6 +5,7 @@ import category from './category';
 import quiz from './quiz';
 import score from './score';
 import order from './order';
+import leaders from './leaderboard'
 
 const rootReducer = combineReducers({
   auth,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   category,
   quiz,
   score,
-  order
+  order,
+  leaders
 });
 
 export default rootReducer;
