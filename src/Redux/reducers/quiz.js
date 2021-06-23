@@ -15,6 +15,7 @@ export default function (state = intitialState, action) {
         ...state,
         quizData: payload.quizDataFromAPi,
         path: '/quiz',
+        render : true,
         categoryName: payload.categoryName,
         quizMode: payload.quizMode,
         difficulty: payload.difficulty,

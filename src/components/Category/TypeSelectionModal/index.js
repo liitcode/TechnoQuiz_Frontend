@@ -54,8 +54,6 @@ function TypeSelectionModal() {
 
   const ToggleSwitch = () => {
     const handleChange = (btnName) => setDiffcultyButton(btnName);
-
-    console.log(difficultyButton);
     return (
       <>
         <div className={styles.switch}>

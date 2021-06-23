@@ -15,6 +15,7 @@ export default function (state = intitialState, action) {
         selectedAnswerByUser: payload.selectedAnswerByUser,
         userScore: payload.userScore,
         maxUserScore: payload.maxUserScore,
+        submission : true,
       };
     case QUIZ_SUBMIT_HANDLER_FAIL:
       return {

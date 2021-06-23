@@ -1,6 +1,5 @@
 const baseUrl =
   'https://technoquiz-env.eba-33dpsiuk.ap-south-1.elasticbeanstalk.com/api';
-  // 'http://localhost:8000/
 
 export const loginUrl = `${baseUrl}/user/login`;
 export const registerUrl = `${baseUrl}/user/register`;

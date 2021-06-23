@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-undef */
 /* eslint-disable camelcase */
 /* eslint-disable react/button-has-type */
@@ -10,6 +11,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Prompt } from 'react-router';
 import styles from './Quiz.module.scss';
 import Timer from './Timer';
 import { Button } from '../UI/Button';
@@ -24,7 +26,6 @@ function Quiz() {
   const [isEndModalOpen, setIsEndModalOpen] = useState(false);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
-
   const dispatch = useDispatch();
   const {
     quizData: {  data: quizDataList  = [] },
@@ -35,6 +36,7 @@ function Quiz() {
   } = useSelector((state) => state.quiz);
 
   const { path } = useSelector((state) => state.score);
+  const render = useSelector((state) => state.quiz.render);
 
   useEffect(() => {
     if (quizDataList && quizDataList.length > 0) {
@@ -58,6 +60,9 @@ function Quiz() {
     }
     return () => clearInterval(interval);
   }, [startingSeconds, secondsRemaining]);
+
+
+  if (!render) return <Redirect to='/category' />;
 
   const previousQuestionHandler = () => {
     setCurrentQuestionIndex(currentQuestionIndex - 1);
@@ -143,6 +148,11 @@ function Quiz() {
   };
 
   return (
+    <>
+    <Prompt
+      when={uizDataList.length > 0}
+      message='Are you sure you want to go to??'
+    />
     <div className={styles.quiz}>
       <div className={styles.stopWatch__MobileOnly}>
         {quizMode === 'Timed' && <Timer secondsRemaining={secondsRemaining} />}
@@ -299,6 +309,7 @@ function Quiz() {
         </Modal>
       )}
     </div>
+    </>
   );
 }
 
