@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
@@ -19,20 +20,22 @@ import Modal from '../../UI/Modal';
 
 import styles from './TypeSelectionModal.module.scss';
 
-const difficulty = [
-  { btnName: 'Easy', code: 'E', disabled: false },
-  { btnName: 'Medium', code: 'M', disabled: false },
-  { btnName: 'Hard', code: 'H', disabled: true },
-];
-
 function TypeSelectionModal() {
   const dispatch = useDispatch();
   const [difficultyButton, setDiffcultyButton] = useState('E');
   const [quizMode, setQuizMode] = useState('Practice');
   const [isTimed, setIstimed] = useState(false);
-  const { categoryName, categoryId } = useSelector((state) => state.category);
+  const { categoryName, categoryId, isTypeSelectionModalOpen } = useSelector(
+    (state) => state.category,
+  );
   const { path } = useSelector((state) => state.quiz);
-  const { isTypeSelectionModalOpen } = useSelector((state) => state.category);
+  const { isPremium } = useSelector((state) => state.auth);
+
+  const difficulty = [
+    { btnName: 'Easy', code: 'E', disabled: false },
+    { btnName: 'Medium', code: 'M', disabled: false },
+    { btnName: 'Hard', code: 'H', disabled: !isPremium },
+  ];
 
   useEffect(() => {
     if (isTypeSelectionModalOpen) {
@@ -49,48 +52,33 @@ function TypeSelectionModal() {
     dispatch(closeTypeSelectionModal());
   };
 
-  const ClickableLabel = (heading, title, onChange, id) => (
-    <label
-      className={styles.Switch_Label}
-      onClick={() => onChange(title)}
-      htmlFor="switch"
-      key={id}
-    >
-      {heading}
-    </label>
-  );
-  const ConcealedRadio = (value, selected, disabled) => (
-    <input
-      className={styles.Switch_Radio}
-      type="radio"
-      id="switch"
-      defaultChecked={selected === value}
-      disabled={disabled}
-    />
-  );
-
   const ToggleSwitch = () => {
     const handleChange = (btnName) => setDiffcultyButton(btnName);
-    const selectionStyle = () => ({
-      left: `${(['E', 'M', 'H'].indexOf(difficultyButton) / 3) * 100}%`,
-    });
+
+    console.log(difficultyButton);
     return (
-      <div className={styles.Switch}>
-        {difficulty.map((val) => (
-          <div key={val.code}>
-            <span>
-              {ConcealedRadio(
-                val.code,
-                difficultyButton,
-                val.code,
-                val.disabled,
-              )}
-              {ClickableLabel(val.btnName, val.code, handleChange, val.code)}
-            </span>
+      <>
+        <div className={styles.switch}>
+          {difficulty.map((val) => (
+            <Button
+              buttonStyle={
+                difficultyButton === val.code
+                  ? 'btn--switch-red'
+                  : 'btn--switch'
+              }
+              isdisabled={val.disabled}
+              onclick={() => handleChange(val.code)}
+            >
+              {val.btnName}
+            </Button>
+          ))}
+        </div>
+        {/* {!isPremium && (
+          <div style={{ marginTop: '-37px' }}>
+            *Hard is available to Premium users only
           </div>
-        ))}
-        <span className={styles.Switch_Selection} style={selectionStyle()} />
-      </div>
+        )} */}
+      </>
     );
   };
 
