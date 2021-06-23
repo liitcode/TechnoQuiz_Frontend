@@ -40,14 +40,26 @@
   }
   &--medium {
     padding: 8px;
-    font-size: 18px;
+    font-size: 1.1rem;
     &:hover {
       @extend %hover-effect;
     }
   }
+  &--circular {
+    border-radius: 50%;
+    border: none;
+    font-size: 1.5rem;
+    background-color: black;
+    color: white;
+    position: absolute;
+    right: -14px;
+    top: -14px;
+    cursor: pointer;
+    padding: 3px 12px;
+  }
   &--large {
     padding: 12px 26px;
-    font-size: 20px;
+    font-size: 1.25rem;
     &:hover {
       @extend %hover-effect;
     }
@@ -58,7 +70,6 @@
     width: 100%;
     text-decoration: none;
     font-size: 1.5rem;
-    font-size: 24px;
     background-color: transparent;
     color: $primary-color;
     padding: 14px 20px;
@@ -70,7 +81,7 @@
   }
   &--wide {
     padding: 12px 64px;
-    font-size: 20px;
+    font-size: 1.25rem;
     &:hover {
       color: $primary-color;
       background-color: $secondary-color;
@@ -93,7 +104,7 @@
     left: 0;
     background-color: $primary-color;
     color: $secondary-color;
-    font-size: 25px;
+    font-size: 1.5rem;
     border-radius: 0;
     border: 2px solid $primary-color;
     padding: 20px 20px;
@@ -108,6 +119,12 @@
       transition: all 0.2s ease-out;
     }
   }
+  &--quiz {
+    background-color: $primary-color;
+    color: $secondary-color;
+    border: 1px solid $primary-color;
+    margin-right: 10px;
+  }
   &--premium {
     background-color: transparent;
     color: #fea116;
@@ -118,6 +135,37 @@
       color: $secondary-color;
       background-color: #fea116;
       transition: all 0.2s ease-out;
+    }
+  }
+  &--switch {
+    border-radius: 0px;
+    background-color: #e4e4e4;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    // padding: 17px 30px;
+    padding: 10% 11%;
+
+    &:hover {
+      background-color: $navbar-hover;
+      color: $secondary-color;
+    }
+
+    &:disabled:hover {
+      background-color: #e4e4e4;
+      color: rgba(16, 16, 16, 0.3);
+      cursor: not-allowed;
+    }
+  }
+  &--switch-red {
+    border-radius: 0px;
+    background-color: $navbar-hover;
+    color: $secondary-color;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    padding: 10% 11%;
+
+    &:hover {
+      background-color: $navbar-hover;
     }
   }
 }

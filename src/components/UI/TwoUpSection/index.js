@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../Button';
+import 'aos/dist/aos.css';
 import './section.scss';
 
 function Section({
@@ -28,7 +29,7 @@ function Section({
                     </div>
                     <div className='col'>
                         <div className='home__section-img-wrapper'>
-                            <img src={img} alt={alt} className='home__section-img' />
+                            <img src={img} alt={alt} className='home__section-img' data-aos = {imgStart === 'start' ? 'fade-right' : 'fade-left'} />
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   z-index: 1000;
@@ -26,19 +26,32 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.modal_container_noWidth {
+  position: relative;
+  padding: 0.5% 1% 3% 1%;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 100;
+  margin: 0 2%;
+  @include set-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 .title {
-  font-size: 30px;
+  font-size: 1.8rem;
   margin-top: 4%;
 }
 
 .closeButton {
   border-radius: 50%;
   border: none;
-  font-size: 25px;
+  font-size: 1.55rem;
   background-color: black;
   color: white;
   position: absolute;
   right: -14px;
   top: -14px;
+  cursor: pointer;
   padding: 3px 12px;
 }

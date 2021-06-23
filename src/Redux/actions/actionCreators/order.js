@@ -1,9 +1,14 @@
-import { RAZORPAY_ORDER_SUCCESS, CLOSE_PAYMENT_MODAL } from '../actionType';
+import { DateTime } from 'luxon';
+import { RAZORPAY_ORDER_SUCCESS, CLOSE_PAYMENT_MODAL,SET_LOGIN_MODAL,CLOSE_LOGIN_MODAL,UPDATE_PREMIUM_PLAN } from '../actionType';
 import payments from '../../services/payment.service';
 import { razorpayScriptURL } from '../../services/apiUrl';
 
 
 const createOptions = (orderParams,dispatch) => {
+    const dateCreator = () => {
+      const month =  orderParams.amount === 45000 ? 1 : 12;
+        return DateTime.now().plus({ months: month }).toISODate();
+    }
     const options =   {
       key: process.env.REACT_APP_RAZORPAY_KEY,
       amount: orderParams.amount.toString(),
@@ -15,7 +20,11 @@ const createOptions = (orderParams,dispatch) => {
         if(response)
         dispatch({
             type : RAZORPAY_ORDER_SUCCESS,
-            payload : true
+            payload : true,
+        })
+        dispatch({
+            type : UPDATE_PREMIUM_PLAN, 
+            payload : dateCreator(),
         })
       },
       prefill: {
@@ -45,17 +54,35 @@ export const placeOrder = (amount) => (dispatch) =>
     loadRazorpayModal(razorpayScriptURL).then(
         payments.order(amount).then(
             (res) => {
-                dispatch({
-                    type : RAZORPAY_ORDER_SUCCESS,
-                    payload : createOptions(res.data,dispatch)
-                })
+               createOptions(res.data,dispatch)
             }
         )
-    )
+    );
 
 export const closePaymentModal = () => (dispatch) => {
     dispatch({
         type : CLOSE_PAYMENT_MODAL,
         payload : false,
+    })
+};
+
+export const setLoginModal = () => (dispatch) => {
+    dispatch({
+        type : SET_LOGIN_MODAL,
+        payload : true,
+    });
+};
+
+export const closeLoginModal = () => (dispatch) => {
+    dispatch({
+        type : CLOSE_LOGIN_MODAL,
+        payload : false,
+    });
+};
+
+export const updatePremium = (expiry) => (dispatch) => {
+    dispatch({
+        type : UPDATE_PREMIUM_PLAN,
+        payload : expiry
     })
 }

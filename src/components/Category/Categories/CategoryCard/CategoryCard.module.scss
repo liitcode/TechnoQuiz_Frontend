@@ -3,7 +3,6 @@
 
 .card {
   background-color: transparent;
-  width: 250px;
   perspective: 1000px;
   position: relative;
   cursor: grab;
@@ -69,5 +68,8 @@
 @media only screen and (min-width: 768px) {
   .card {
     width: 30%;
+    &__back__container {
+      width: 100%;
+    }
   }
 }

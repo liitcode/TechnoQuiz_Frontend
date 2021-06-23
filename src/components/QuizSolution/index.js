@@ -5,15 +5,21 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import styles from './QuizSolution.module.scss';
+import Tooltip from '../UI/Tooltip';
 
 function QuizSolution() {
   const {
-    quizData: { data: { data: quizDataList } = [] },
+    quizData: { data: quizDataList  = [] },
   } = useSelector((state) => state.quiz);
   const { selectedAnswerByUser, userScore, maxUserScore } = useSelector(
     (state) => state.score,
   );
+  const submission = useSelector(
+    (state) => state.score.submission);
+
+  if(!submission) return <Redirect to='/category' />;
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
 
   const selectedQuestionHandler = (index) => {
@@ -28,7 +34,7 @@ function QuizSolution() {
     .slice(0, 2)
     .join('_');
   return (
-    <div className="scorePageContainer">
+    <div className={styles.scorePageContainer}>
       <div className={styles.questionsContainer}>
         <div className={styles.questions}>
           {quizDataList.map((question, index) => (

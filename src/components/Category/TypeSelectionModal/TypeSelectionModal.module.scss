@@ -54,48 +54,12 @@
   align-content: center;
 }
 
-.Switch {
-  position: relative;
-  // margin-left: 10%;
-  margin: 9% 0;
-  height: 15%;
-  width: 80%;
-  background-color: #e4e4e4;
-  border-radius: 3px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-  align-content: center;
-
-  &_Radio {
-    display: none;
-  }
-
-  &_Selection {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 33.33%;
-    height: 100%;
-    background: $navbar-hover;
-    border-radius: 3px;
-    transition: &left 1s ease-out;
-  }
-  &_Label {
-    position: relative;
-    z-index: 2;
-    float: left;
-    width: 33.33%;
-    line-height: 55px;
-    font-size: 25px;
-    color: $primary-color;
-    text-align: center;
-    cursor: pointer;
-    @at-root:checked + & {
-      color: $secondary-color;
-      transition: all 1s ease-out;
-    }
-  }
+.switch {
+  margin: 8% 0;
+  // border-radius: 100px;
+  @include set-flex;
+  justify-content: center;
+  // box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .toggle_switch {

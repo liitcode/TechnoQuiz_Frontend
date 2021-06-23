@@ -8,10 +8,14 @@ const STYLES = [
   'btn--outline',
   'btn--outline--white',
   'btn--modal',
-  'btn--premium'
+  'btn--premium',
+  'btn--quiz',
+  'btn--circular',
+  'btn--switch',
+  'btn--switch-red',
 ];
 const SIZES = ['btn--medium', 'btn--large', 'btn--mobile', 'btn--wide'];
-const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow','green'];
+const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow', 'green'];
 
 export const Button = ({
   children,
@@ -20,6 +24,7 @@ export const Button = ({
   buttonStyle,
   buttonSize,
   buttonColor,
+  isdisabled,
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
@@ -31,6 +36,7 @@ export const Button = ({
       className={`btn ${checkButtonStyle} ${checkButtonSize} ${checkButtonColor}`}
       onClick={onclick}
       type={type}
+      disabled={isdisabled}
     >
       {children}
     </button>

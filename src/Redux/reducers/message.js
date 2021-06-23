@@ -7,10 +7,14 @@ export default function(state = initialState,action){
 
     switch(type) {
         case SET_MESSAGE:
-            return { message : payload };
+            return {
+                ...state,
+                 message : payload };
           
         case CLEAR_MESSAGE:
-            return { message : '' };    
+            return {
+                ...state, 
+                message : '' };    
 
         default:
             return state;

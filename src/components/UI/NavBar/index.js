@@ -10,7 +10,8 @@ import { FaBars,FaTimes } from 'react-icons/fa'
 import { MdFingerprint } from 'react-icons/md'
 import { IconContext } from 'react-icons/lib';
 import { AvatarGenerator } from 'random-avatar-generator';
-import Dropdown from './dropdown';
+import { Dropdown , Premium} from './dropdown';
+// eslint-disable-next-line import/no-named-as-default
 import MobilePane from './mobilePane';
 import { Button } from '../Button';
 import './navbar.scss';
@@ -20,9 +21,8 @@ function Navbar() {
     const [click,setClick] = useState(false);
     const [button,setButton] = useState();
     const [dropdown, setDropdown] = useState(false);
-
-
-    
+    const [premiumDetails, setPremiumDetails] = useState(false);
+ 
     useEffect(() => {
         setProfileimg(new AvatarGenerator().generateRandomAvatar());
         // eslint-disable-next-line no-unused-expressions
@@ -31,11 +31,18 @@ function Navbar() {
     
     const handleClick = () => setClick(!click); 
     const closeMobileMenu = () => setClick(false);
+
     const showButton = () => window.innerWidth < 960 ? setButton(false) : setButton(true);
     const onMouseEnter = () => window.innerWidth < 960 ? setDropdown(false) : setDropdown(true);
     const onMouseLeave = () => window.innerWidth < 960 ? setDropdown(false) : setDropdown(false);
+
+    const onmouseEnter = () => window.innerWidth < 960 ? setPremiumDetails(false) : setPremiumDetails(true);
+    const onmouseLeave = () => window.innerWidth < 960 ? setPremiumDetails(false) : setPremiumDetails(false);
+
     const  log  = useSelector((state) => state.auth.isLoggedin);
+    const  premium  = useSelector((state) => state.auth.isPremium);
     window.addEventListener('resize',showButton);
+
     const disableNav = ['/signin','/signup'];
     if (disableNav.includes(useLocation().pathname)) return null;
 
@@ -50,7 +57,7 @@ function Navbar() {
                     {dropdown && <Dropdown />}
                     </li>
                     </>
-                ) : <MobilePane />
+                ) : <MobilePane  premium={premiumDetails}/>
                 }
         </>
     );
@@ -69,6 +76,20 @@ function Navbar() {
         </>
     );
 
+    const premiumMenu = (
+        <>
+        { !premium ?
+            <li className='nav-item'>
+            <Link to='/premium' className='nav-links' onClick={closeMobileMenu}>Premium</Link>
+            </li> : 
+             <li className='nav-item' onMouseEnter={onmouseEnter} onMouseLeave={onmouseLeave}>
+             <div className='nav-links' onClick={closeMobileMenu}>Premium</div> 
+             {premiumDetails && <Premium />}
+             </li>
+            }
+        </>    
+    );
+
     return (
         <>
         <IconContext.Provider value={{color:'#242424'}}>
@@ -81,9 +102,7 @@ function Navbar() {
                  {click ? <FaTimes/> : <FaBars/> }
                 </div>
                 <ul className={click?'nav-menu active' : 'nav-menu'} >
-                    <li className='nav-item'>
-                    <Link to='/premium' className='nav-links' onClick={closeMobileMenu}>Premium</Link>
-                    </li>
+                  {premiumMenu}
                     <li className='nav-item'>
                     <Link to='/category' className='nav-links' onClick={closeMobileMenu}>Explore</Link>
                     </li>
