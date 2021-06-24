@@ -14,7 +14,6 @@ export default function (state = intitialState, action) {
       return {
         ...state,
         quizData: payload.quizDataFromAPi,
-        path: '/quiz',
         render : true,
         categoryName: payload.categoryName,
         quizMode: payload.quizMode,

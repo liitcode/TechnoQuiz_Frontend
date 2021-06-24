@@ -11,7 +11,6 @@ export default function (state = intitialState, action) {
     case QUIZ_SUBMIT_HANDLER_SUCCESS:
       return {
         ...state,
-        path: '/quizsolution',
         selectedAnswerByUser: payload.selectedAnswerByUser,
         userScore: payload.userScore,
         maxUserScore: payload.maxUserScore,

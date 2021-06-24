@@ -1,6 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+
+/* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
@@ -141,7 +141,7 @@ const Login = (props) => {
             )}
              <div className="form-group">
                <div className="form-text">
-                Don't have an account yet? <Link className ='form-text-link' to='/signup'>SignUp!</Link>
+                Don&apos;t have an account yet? <Link className ='form-text-link' to='/signup'>SignUp!</Link>
                 </div>
               </div>
             <CheckButton

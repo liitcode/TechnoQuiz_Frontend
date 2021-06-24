@@ -1,13 +1,7 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-curly-brace-presence */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styles from './QuizSolution.module.scss';
-import Tooltip from '../UI/Tooltip';
 
 function QuizSolution() {
   const {
@@ -44,6 +38,7 @@ function QuizSolution() {
               className={styles.question}
               key={question.id}
               onClick={() => selectedQuestionHandler(index)}
+              onKeyDown={() => selectedQuestionHandler(index)}
             >
               {`${index + 1}.`}
               <span

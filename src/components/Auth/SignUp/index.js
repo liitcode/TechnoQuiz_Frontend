@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-shadow */
@@ -64,10 +65,11 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [successful, setSuccessful] = useState(false);
-
   const { message } = useSelector((state) => state.message);
-
+  const { redir } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  if(redir === true )return <Redirect to='/signin' /> 
 
   const onChangeEmail = (e) => {
     const email = e.target.value;
@@ -95,7 +97,6 @@ const Register = () => {
       dispatch(register(username, email, password))
         .then(() => {
           setSuccessful(true);
-          <Redirect to="/category" />;
         })
         .catch(() => {
           setSuccessful(false);
@@ -118,7 +119,6 @@ const Register = () => {
             <img src={regImg} alt="" />
           </div>
           <Form onSubmit={handleRegister} ref={form}>
-            {!successful && (
               <div>
                 <div className="form-group">
                   <label htmlFor="username">Name</label>
@@ -159,15 +159,9 @@ const Register = () => {
                 </Button>
                 </div>
               </div>
-            )}
             {message && (
               <div className="form-group">
-                <div
-                  className={
-                    successful ? 'alert alert-success' : 'alert alert-danger'
-                  }
-                  role="alert"
-                >
+                <div className={ !successful ? 'alert-success' : 'alert-danger'}role="alert">
                   {message}
                 </div>
               </div>

@@ -1,13 +1,5 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-undef */
-/* eslint-disable camelcase */
-/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable vars-on-top */
-/* eslint-disable no-var */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -18,13 +10,14 @@ import { Button } from '../UI/Button';
 import { quizSubmission } from '../../Redux/actions/actionCreators/quiz';
 import Modal from '../UI/Modal';
 
-function Quiz() {
+function Quiz(props) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswerByUser, setSelectedAnswerByUser] = useState([]);
   const [startingSeconds, setStartingSeconds] = useState(0);
   const [secondsRemaining, setSecondsRemaining] = useState(null);
   const [isEndModalOpen, setIsEndModalOpen] = useState(false);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
+  const [leave,setLeave] = useState(true);
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
   const dispatch = useDispatch();
   const {
@@ -33,11 +26,8 @@ function Quiz() {
     quizMode,
     difficulty,
     categoryId,
+    render
   } = useSelector((state) => state.quiz);
-
-  const { path } = useSelector((state) => state.score);
-  const render = useSelector((state) => state.quiz.render);
-
   useEffect(() => {
     if (quizDataList && quizDataList.length > 0) {
       setStartingSeconds(90 * quizDataList.length);
@@ -118,7 +108,9 @@ function Quiz() {
         selectedAnswerByUser,
         maxUserScore,
       ),
-    );
+    ).then(() => {
+      props.history.push('/quizsolution');
+    })
   };
   useEffect(() => {
     if (secondsRemaining === 0) {
@@ -126,21 +118,25 @@ function Quiz() {
     }
   }, [secondsRemaining]);
 
-  if (path) return <Redirect to={path} />;
+  // if (path) return <Redirect to={path} />;
 
   const quizSubmitBtnHandler = () => {
     setIsSubmitModalOpen(true);
+    setLeave(true);
   };
 
   const quizCloseSubmitModalHandler = () => {
     setIsSubmitModalOpen(false);
+    setLeave(false);
   };
   const quizEndBtnHandler = () => {
     setIsEndModalOpen(true);
+    setLeave(true);
   };
 
   const quizCloseEndModalHandler = () => {
     setIsEndModalOpen(false);
+    setLeave(true);
   };
 
   const quizTimeUpHandler = () => {
@@ -150,8 +146,8 @@ function Quiz() {
   return (
     <>
     <Prompt
-      when={uizDataList.length > 0}
-      message='Are you sure you want to go to??'
+      when={render && !leave}
+      message='Are Your Sure you want to leave this page?'
     />
     <div className={styles.quiz}>
       <div className={styles.stopWatch__MobileOnly}>
@@ -183,16 +179,11 @@ function Quiz() {
             {Object.keys(quizDataList[currentQuestionIndex].answers).map(
               (option) =>
                 quizDataList[currentQuestionIndex].answers[option] && (
-                  <label
-                    key={option}
-                    className={styles.option}
-                    
-                  >
+                  <label key={option} className={styles.option}   onChange={optionSelectionHandler} >
                     <input
                       type="radio"
                       value={option}
                       name={currentQuestionIndex}
-                      onChange={optionSelectionHandler}
                       checked={
                         option === selectedAnswerByUser[currentQuestionIndex]
                       }

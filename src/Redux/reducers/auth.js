@@ -12,13 +12,14 @@ export default function(state = intitialState,action) {
             return {
                 ...state,
                 isLoggedin : false,
+                redir : true
             };
-            case REGISTER_FAIL :
-                return {
-                    ...state,
-                    isLoggedin : false,
-                }
-                case LOGIN_SUCCESS :
+        case REGISTER_FAIL :
+            return {
+                ...state,
+                isLoggedin : false,
+            }
+        case LOGIN_SUCCESS :
             return {
                 ...state,
                 isLoggedin : true,
@@ -39,11 +40,11 @@ export default function(state = intitialState,action) {
                 user : null,
             };
         case UPDATE_PREMIUM_PLAN : 
-        return {
-            ...state,
-            isPremium : true,
-            expiry : payload,
-        };
+            return {
+                ...state,
+                isPremium : true,
+                expiry : payload,
+            };
         default :
             return state;               
     }    
