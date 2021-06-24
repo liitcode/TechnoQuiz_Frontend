@@ -21,9 +21,10 @@ export const register = (name, email, password) => (dispatch) =>
       });
 
       return Promise.resolve();
-    },
-    (error) => {
-      const message = error.toString();
+    })
+    .catch(({ response }) => { 
+      const message =(response.data && response.data.message) || response.data || response.toString();
+      
       dispatch({
         type: REGISTER_FAIL,
       });
@@ -32,8 +33,7 @@ export const register = (name, email, password) => (dispatch) =>
         type: SET_MESSAGE,
         payload: message,
       });
-    },
-  );
+    });
 
 export const login = (email, password) => (dispatch) =>
   authService
@@ -47,8 +47,9 @@ export const login = (email, password) => (dispatch) =>
 
       return Promise.resolve();
     })
-    .catch((error) => {
-      const message = error.toString();
+    .catch(({ response }) => { 
+
+      const message =(response.data && response.data.message) || response.data || response.toString();
       dispatch({
         type: LOGIN_FAIL,
       });

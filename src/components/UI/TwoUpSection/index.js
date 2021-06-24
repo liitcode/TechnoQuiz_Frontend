@@ -7,7 +7,7 @@ import './section.scss';
 
 function Section({
     lightBg,topLine,lightText,lightTextDesc,headline,description,
-    buttonLabel,img,alt,imgStart
+    buttonLabel,img,alt,imgStart,setbtnLink,btnLink,click
 }){
     return (
         <>
@@ -22,9 +22,13 @@ function Section({
                             <p className={lightTextDesc?'home__section-subtitle':'home__section-subtitle dark'}>
                                 {description}
                             </p>
-                            <Link to='/signup'>
-                                <Button buttonSize='btn--wide' buttonColor='blue'>{buttonLabel}</Button>
+                            {setbtnLink ?
+                            <Link to={btnLink}>
+                                <Button  buttonSize='btn--wide' buttonColor='yellow'>{buttonLabel}</Button>
                             </Link>   
+                            : 
+                            <Button  buttonSize='btn--wide' buttonColor='yellow' onclick={click}>{buttonLabel}</Button>
+                            }
                         </div>
                     </div>
                     <div className='col'>
