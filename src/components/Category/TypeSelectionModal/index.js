@@ -20,7 +20,7 @@ import Modal from '../../UI/Modal';
 
 import styles from './TypeSelectionModal.module.scss';
 
-function TypeSelectionModal() {
+function TypeSelectionModal(props) {
   const dispatch = useDispatch();
   const [difficultyButton, setDiffcultyButton] = useState('E');
   const [quizMode, setQuizMode] = useState('Practice');
@@ -85,6 +85,17 @@ function TypeSelectionModal() {
     setQuizMode(!isTimed ? 'Timed' : 'Practice');
   };
 
+  const submitModal = () => dispatch(submitTypeSelectionModal(
+      difficultyButton,
+      quizMode,
+      categoryId,
+      categoryName,
+    ),
+  ).then(() => {
+    props.props.history.push('/quiz');
+    closeModalWindowHandler();
+  })
+
   return (
     <>
       <Modal
@@ -116,16 +127,7 @@ function TypeSelectionModal() {
           className="styles.modalsubmit"
           type="submit"
           disabled={!difficultyButton || !quizMode}
-          onclick={() =>
-            dispatch(
-              submitTypeSelectionModal(
-                difficultyButton,
-                quizMode,
-                categoryId,
-                categoryName,
-              ),
-            )
-          }
+          onclick={() => submitModal()}
         >
           START
         </Button>

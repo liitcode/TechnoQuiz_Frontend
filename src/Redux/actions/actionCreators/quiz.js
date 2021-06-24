@@ -8,8 +8,9 @@ import {
 } from '../actionType';
 import quizService from '../../services/quiz.service';
 
-const decrypt = (data, salt) => {
+const decrypt = (data) => {
   let o = data;
+  const salt = process.env.REACT_APP_SALT;
   o = decodeURI(o);
   if (salt && o.indexOf(salt) !== 0) throw new Error('object cannot be decrypted');
   o = o.substring(salt.length).split('');
@@ -24,7 +25,7 @@ export const submitTypeSelectionModal =
   (difficulty, quizMode, categoryId, categoryName) => (dispatch) =>
     quizService.quiz(difficulty, categoryId).then(
       (response) => {
-        const quizData = decrypt(response.data,'F594D3AF69568CCC772C8B819535806CC935745B')
+        const quizData = decrypt(response.data)
         dispatch({
           type: QUIZ_DATA_ON_SUBMIT_SUCCESS,
           payload: {
