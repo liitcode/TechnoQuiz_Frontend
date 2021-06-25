@@ -134,6 +134,24 @@
     }
   }
 
+  .questionNoSolution {
+    background-color: $grey-background;
+    margin: 70px 30px 0px 30px;
+    height: 52vh;
+
+    &__container {
+      @include set-flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 8%;
+      font-size: 2rem;
+    }
+  }
+  .purchasePremium {
+    font-size: 1.25rem;
+    color: $navbar-hover;
+  }
+
   .questionsContainer {
     @include set-flex;
   }
