@@ -1,0 +1,30 @@
+@import '../../../assets/styles/mixins.scss';
+@import '../../../assets/styles/variables.scss';
+
+.page_container {
+  width: 92%;
+  height: 80vh;
+  @include set-flex;
+  justify-content: center;
+  background-color: $error-backgound-color;
+  margin: 4%;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.page_heading {
+  font-size: 3rem;
+}
+
+.page_message {
+  font-size: 1.5rem;
+  color: $error-message-color;
+}
+
+@media screen and (min-width: 700px) {
+  .page_container {
+    width: 96%;
+    height: 58vh;
+    margin: 2%;
+  }
+}

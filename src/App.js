@@ -14,6 +14,7 @@ import Navbar from './components/UI/NavBar';
 import Footer from './components/UI/Footer';
 import Premium from './components/Premium';
 import { clearMessage } from './Redux/actions/actionCreators/message';
+import PageNotFound from './components/Shared/PageNotFound';
 
 function App() {
   const history = createBrowserHistory();
@@ -37,6 +38,7 @@ function App() {
             <Route path="/signup" component={SignUp} exact />
             <Route path="/premium" component={Premium} exact />
             <Route path="/quizsolution" component={QuizSolution} exact />
+            <Route path="/" component={PageNotFound} />
           </Switch>
           <Footer />
         </main>
