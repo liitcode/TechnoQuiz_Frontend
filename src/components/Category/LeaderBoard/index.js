@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable no-unused-vars */
+
 import React, { useEffect } from 'react';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AvatarGenerator } from 'random-avatar-generator';
 import styles from './LeaderBoard.module.scss';
 import Trophy from '../../../assets/images/trophy.png';

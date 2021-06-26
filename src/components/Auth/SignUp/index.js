@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useRef } from 'react';

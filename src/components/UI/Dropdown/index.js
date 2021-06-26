@@ -1,5 +1,5 @@
 /* eslint-disable spaced-comment */
-/* eslint-disable no-unused-vars */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Dropdown.module.scss';
