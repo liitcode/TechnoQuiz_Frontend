@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the component 1`] = `
-<div
-  data-testid="categorySkeleton"
->
+Array [
   <div
     className="skeleton-card"
   >
@@ -21,7 +19,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -30,7 +27,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -48,7 +45,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -57,7 +53,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -75,7 +71,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -84,7 +79,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -102,7 +97,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -111,7 +105,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -129,7 +123,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -138,7 +131,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -156,7 +149,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -165,7 +157,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -183,7 +175,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -192,7 +183,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -210,7 +201,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -219,7 +209,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -237,7 +227,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -246,7 +235,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -264,7 +253,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -273,7 +261,7 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
+  </div>,
   <div
     className="skeleton-card"
   >
@@ -291,7 +279,6 @@ exports[`renders the component 1`] = `
     <div
       className="skeleton-rectangle"
     >
-       
       <div
         className="shimmer-wrapper"
       >
@@ -300,6 +287,6 @@ exports[`renders the component 1`] = `
         />
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;

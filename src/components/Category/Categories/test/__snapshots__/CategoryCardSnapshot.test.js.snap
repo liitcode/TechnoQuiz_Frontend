@@ -11,303 +11,288 @@ exports[`renders the component 1`] = `
     className="categories__cards"
   >
     <div
-      data-testid="categorySkeleton"
+      className="skeleton-card"
     >
       <div
-        className="skeleton-card"
+        className="skeleton-circle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
-        </div>
-        <div
-          className="skeleton-rectangle"
-        >
-           
-          <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
       </div>
       <div
-        className="skeleton-card"
+        className="skeleton-rectangle"
       >
         <div
-          className="skeleton-circle"
+          className="shimmer-wrapper"
         >
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
         </div>
+      </div>
+    </div>
+    <div
+      className="skeleton-card"
+    >
+      <div
+        className="skeleton-circle"
+      >
         <div
-          className="skeleton-rectangle"
+          className="shimmer-wrapper"
         >
-           
           <div
-            className="shimmer-wrapper"
-          >
-            <div
-              className="shimmer"
-            />
-          </div>
+            className="shimmer"
+          />
+        </div>
+      </div>
+      <div
+        className="skeleton-rectangle"
+      >
+        <div
+          className="shimmer-wrapper"
+        >
+          <div
+            className="shimmer"
+          />
         </div>
       </div>
     </div>
