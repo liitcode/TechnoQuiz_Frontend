@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 import React from 'react';
 import Styles from './PremiumCard.module.scss';
 import { Button } from '../../UI/Button';
