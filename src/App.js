@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, Router } from 'react-router-dom';
@@ -20,7 +19,7 @@ function App() {
   const history = createBrowserHistory();
   const dispatch = useDispatch();
   useEffect(() => {
-    history.listen((location) => {
+    history.listen(() => {
       dispatch(clearMessage());
     });
   }, [dispatch]);

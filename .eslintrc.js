@@ -21,5 +21,6 @@ module.exports = {
     'no-param-reassign': 0,
     'func-names': 'off',
     'react/react-in-jsx-scope': 'off',
+    "react/prop-types": 0,
   },
 };

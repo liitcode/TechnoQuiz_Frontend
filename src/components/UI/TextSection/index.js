@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 import './textsection.module.scss';

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable no-console */
-/* eslint-disable react/prop-types */
+
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -86,11 +86,11 @@ function TypeSelectionModal(props) {
   };
 
   const submitModal = () => dispatch(submitTypeSelectionModal(
-      difficultyButton,
-      quizMode,
-      categoryId,
-      categoryName,
-    ),
+    difficultyButton,
+    quizMode,
+    categoryId,
+    categoryName,
+  ),
   ).then(() => {
     props.props.history.push('/quiz');
     closeModalWindowHandler();

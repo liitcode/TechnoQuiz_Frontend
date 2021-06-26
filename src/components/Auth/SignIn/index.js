@@ -1,12 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-
-/* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link,Redirect,withRouter } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
@@ -85,11 +83,11 @@ const Login = (props) => {
 
   return (
     <div className="base">
-      <div className='col'> 
+      <div className='col'>
         <Link className='col-logo-link shine' to='/'>
-          <MdFingerprint className='col-logo'/>
-            TechnoQuiz
-            </Link>
+          <MdFingerprint className='col-logo' />
+          TechnoQuiz
+        </Link>
       </div>
       <div className="base-container">
         <div className="header">LOGIN</div>
@@ -139,11 +137,11 @@ const Login = (props) => {
                 </div>
               </div>
             )}
-             <div className="form-group">
-               <div className="form-text">
-                Don&apos;t have an account yet? <Link className ='form-text-link' to='/signup'>SignUp!</Link>
-                </div>
+            <div className="form-group">
+              <div className="form-text">
+                Don&apos;t have an account yet? <Link className='form-text-link' to='/signup'>SignUp!</Link>
               </div>
+            </div>
             <CheckButton
               style={{ display: 'none' }}
               ref={checkButton}
