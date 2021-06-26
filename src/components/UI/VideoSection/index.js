@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 
 import React from 'react';
 import { Button } from '../Button';

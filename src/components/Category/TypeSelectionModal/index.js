@@ -1,6 +1,6 @@
 
 /* eslint-disable import/no-duplicates */
-/* eslint-disable no-console */
+
 
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */

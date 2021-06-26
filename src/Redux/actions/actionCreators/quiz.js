@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+
 import {
   QUIZ_DATA_ON_SUBMIT_SUCCESS,
   QUIZ_DATA_ON_SUBMIT_FAIL,
@@ -54,25 +54,25 @@ export const submitTypeSelectionModal =
 
 export const quizSubmission =
   (difficulty, categoryId, userScore, selectedAnswerByUser, maxUserScore) =>
-  (dispatch) =>
-    quizService.score(difficulty, categoryId, userScore).then(
-      (response) => {
-        dispatch({
-          type: QUIZ_SUBMIT_HANDLER_SUCCESS,
-          payload: { response, selectedAnswerByUser, userScore, maxUserScore },
-        });
-        return Promise.resolve();
-      },
-      (error) => {
-        const message = error.toString();
-        dispatch({
-          type: QUIZ_SUBMIT_HANDLER_FAIL,
-        });
+    (dispatch) =>
+      quizService.score(difficulty, categoryId, userScore).then(
+        (response) => {
+          dispatch({
+            type: QUIZ_SUBMIT_HANDLER_SUCCESS,
+            payload: { response, selectedAnswerByUser, userScore, maxUserScore },
+          });
+          return Promise.resolve();
+        },
+        (error) => {
+          const message = error.toString();
+          dispatch({
+            type: QUIZ_SUBMIT_HANDLER_FAIL,
+          });
 
-        dispatch({
-          type: SET_MESSAGE,
-          payload: message,
-        });
-        return Promise.reject();
-      },
-    );
+          dispatch({
+            type: SET_MESSAGE,
+            payload: message,
+          });
+          return Promise.reject();
+        },
+      );
