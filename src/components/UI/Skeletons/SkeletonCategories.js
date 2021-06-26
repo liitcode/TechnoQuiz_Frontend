@@ -1,6 +1,4 @@
-/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable arrow-body-style */
 import React from 'react';
 import SkeletonElement from './SkeletonElement';
 import Shimmer from './shimer';
