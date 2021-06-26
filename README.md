@@ -1,44 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# TechnoQuiz Frontend
 
-## Available Scripts
+|Landing Page|Category Page|Quiz Page|
+|-----|-----|-----|
+|![landing](https://ik.imagekit.io/16zqnfdfuhh/TQ_Frontend/HOME_PAGE_ue0io7I0q.png)|![category](https://ik.imagekit.io/16zqnfdfuhh/TQ_Frontend/CATEGORY_PAGE_Unzy9cVEh.png)|![quiz](https://ik.imagekit.io/16zqnfdfuhh/TQ_Frontend/QUIZ_PAGE_XikLu5e0m.png)
 
-In the project directory, you can run:
+## How to run this project
 
-### `yarn start`
+- Clone Repo 
+```git clone https://github.com/liitcode/TechnoQuiz_Frontend```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Install NPM packages
+```npm install```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Add .env file 
+```Env
+REACT_APP_RAZORPAY_KEY = 
+REACT_APP_SALT =
+```
 
-### `yarn test`
+- Run the Project
+```npm start```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## About The Project
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- TechnoQuiz is an online quiz platform that enables users to hone their technical skills in a fun and interactive way. 
+- Learning through interactive means like quizzes and contests is far more effective than traditional learning.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Source Code Repo
+> This is a migrated repo for detailed PR and commits refer : 
+- [TechnoQuiz](https://github.com/liitcode/TechnoQuiz_Frontend)
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## WorkFlow
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- We have used Standard jira practices to create our workflow smooth and transparent
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![JIRA_1](https://ik.imagekit.io/16zqnfdfuhh/TQ_Frontend/Frontend_Ticket_1_qLCfMiwD9.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- With custom automation rules to keep everyone in the loop
+![JIRA_2](https://ik.imagekit.io/16zqnfdfuhh/TQ_Frontend/Jira_Automation_1-MJ7QTiw.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Error Monitoring and Logs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Application Monitoring and Error Tracking through [Sentry](https://sentry.io/organizations/divyanshu-verma/projects/technoquiz_frontend/?project=5830909) 
+![sentry](https://ik.imagekit.io/16zqnfdfuhh/TQ_Frontend/Sentry_-FM9pO90u.png)
+
+
+## Resources
+- [PRD](https://docs.google.com/document/d/1IOZkW8H5hpOqimiDXSTyOXBxfyGfndyu7FzsNntbYuk/edit?usp=sharing)
+- [Design](https://www.figma.com/file/Mxwp4pQNCL6pdhUUiYJDCR/TechnoQuiz)
+- [HLA](https://ik.imagekit.io/16zqnfdfuhh/TQ_Backend/HLA_Update_dhq1FPVE9.png)
+
+## Tech Stack
+
+- React
+- Redux
+- NodeJS
+- Express JS
+- MongoDb Cloud
+
+## Tools Used
+
+- Figma
+- Draw.io
+- Sentry
+- Jira Software
+- AWS
+- Netlify
+
+## Contact
+- Divyanshu Verma [divyanshuverma2396@gmail.com](divyanshuverma2396@gmail.com)
+- Prashant Parashar [prashantparashardt@gmail.com](prashantparashardt@gmail.com)
