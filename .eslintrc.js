@@ -22,6 +22,7 @@ module.exports = {
     'func-names': 'off',
     'react/react-in-jsx-scope': 'off',
     "react/prop-types": 0,
+    'camelcase': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': [
       'error',
       {
@@ -48,5 +49,5 @@ module.exports = {
       }
     }],
     "react/jsx-props-no-spreading": "off",
-  },
+  }
 };

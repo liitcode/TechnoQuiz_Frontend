@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -17,7 +15,7 @@ function Quiz(props) {
   const [secondsRemaining, setSecondsRemaining] = useState(null);
   const [isEndModalOpen, setIsEndModalOpen] = useState(false);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
-  const [leave, setLeave] = useState(true);
+  const [leave, setLeave] = useState(false);
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
   const dispatch = useDispatch();
   const {
@@ -146,7 +144,7 @@ function Quiz(props) {
   return (
     <>
       <Prompt
-        when={render && !leave}
+        when={!leave}
         message='Are Your Sure you want to leave this page?'
       />
       <div className={styles.quiz}>
@@ -205,8 +203,8 @@ function Quiz(props) {
                     type="button"
                     className={styles.quiz__prevBtn}
                     onclick={previousQuestionHandler}
-                    buttonStyle="btn--quiz"
-                    disabled={currentQuestionIndex === 0}
+                    buttonStyle={currentQuestionIndex === 0 ? "btn--disabled" : "btn--quiz"}
+                    isdisabled={currentQuestionIndex === 0}
                   >
                     Previous
                   </Button>

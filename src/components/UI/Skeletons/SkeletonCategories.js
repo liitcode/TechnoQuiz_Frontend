@@ -7,19 +7,18 @@ import './skeleton.scss';
 const SkeletonCategories = () => {
   const n = 11;
   return (
-    <div data-testid="categorySkeleton">
+    <>
       {[...Array(n)].map((_, index) => (
         <div className="skeleton-card" key={index}>
           <SkeletonElement type="circle">
             <Shimmer />
           </SkeletonElement>
           <SkeletonElement type="rectangle">
-            {' '}
             <Shimmer />
           </SkeletonElement>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

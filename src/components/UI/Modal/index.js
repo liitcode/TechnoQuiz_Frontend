@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable camelcase */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import React from 'react';
 import styles from './Modal.module.scss';
 import { Button } from '../Button';

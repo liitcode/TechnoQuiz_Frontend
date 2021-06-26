@@ -49,6 +49,9 @@
     list-style: none;
     text-align: center;
   }
+  &-mob {
+    color: $alt-color;
+  }
   &-item {
     height: 80px;
     border-bottom: 2px solid transparent;

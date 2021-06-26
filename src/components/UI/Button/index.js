@@ -13,6 +13,7 @@ const STYLES = [
   'btn--circular',
   'btn--switch',
   'btn--switch-red',
+  "btn--disabled"
 ];
 const SIZES = ['btn--medium', 'btn--large', 'btn--mobile', 'btn--wide'];
 const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow', 'green'];
