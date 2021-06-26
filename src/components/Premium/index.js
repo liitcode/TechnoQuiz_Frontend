@@ -1,6 +1,4 @@
 
-/* eslint-disable object-shorthand */
-/* eslint-disable no-alert */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BsCheckCircle } from 'react-icons/bs';

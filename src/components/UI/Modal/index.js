@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 import React from 'react';
 import styles from './Modal.module.scss';
 import { Button } from '../Button';

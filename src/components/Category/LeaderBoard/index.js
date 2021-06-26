@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AvatarGenerator } from 'random-avatar-generator';
@@ -22,10 +20,6 @@ function LeaderBoard() {
         </div>
         {data.length > 1 && (
           <div className={styles.leaders}>
-            {/* <Dropdown /> */}
-            {/* <div className={styles.message}>
-              *Choose Category to see leaders of respective category
-            </div> */}
             {data.map((leader, index) => (
               <div className={styles.leader} key={`${leader.name}${index}`}>
                 <div className={styles.leader__name__container}>

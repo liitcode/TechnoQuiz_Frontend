@@ -19,10 +19,9 @@ module.exports = {
     'react/jsx-filename-extension': [0],
     'import/extensions': 'off',
     'no-param-reassign': 0,
-    'func-names': 'off',
     'react/react-in-jsx-scope': 'off',
     "react/prop-types": 0,
-    'camelcase': 'off',
+    'camelcase': 0,
     'jsx-a11y/no-noninteractive-element-interactions': [
       'error',
       {
@@ -49,5 +48,10 @@ module.exports = {
       }
     }],
     "react/jsx-props-no-spreading": "off",
+    "consistent-return": "off",
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/no-array-index-key": "off",
+    "func-names": 0,
+    "react/button-has-type": "off"
   }
 };

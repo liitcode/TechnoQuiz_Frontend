@@ -9,8 +9,7 @@ const middleware = [thunk];
 
 const middlewareEnhancer =
   process.env.NODE_ENV === 'development'
-    ? composeWithDevTools(applyMiddleware(...middleware,createLogger()))
+    ? composeWithDevTools(applyMiddleware(...middleware, createLogger()))
     : composeWithDevTools(applyMiddleware(...middleware));
 
-// const middlewareEnhancer = composeWithDevTools(applyMiddleware(...middleware));
 export default createStore(rootReducer, middlewareEnhancer);

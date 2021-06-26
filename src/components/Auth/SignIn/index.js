@@ -1,5 +1,3 @@
-
-/* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

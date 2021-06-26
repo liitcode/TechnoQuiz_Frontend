@@ -64,7 +64,7 @@ function Quiz(props) {
     previousSelectedAnswers[currentQuestionIndex] = e.target.value;
     setSelectedAnswerByUser(previousSelectedAnswers);
   };
-
+  // calculating  total score
   const scoreCalculation = () => {
     let count = 0;
     for (let i = 0; i < quizDataList.length; i += 1) {
@@ -73,6 +73,8 @@ function Quiz(props) {
         count += 1;
       }
     }
+
+    // To evaluate score based on difficulty
     let scoreCard;
     let maxScore = quizDataList.length;
     switch (difficulty) {
@@ -93,6 +95,8 @@ function Quiz(props) {
     }
     return { scoreCard, maxScore };
   };
+
+  // handler to run when quiz is completed
   const QuizCompleteHandler = () => {
     const score = scoreCalculation();
     const userScore = score.scoreCard;
