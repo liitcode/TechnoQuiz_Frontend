@@ -49,13 +49,13 @@ const Login = (props) => {
   const dispatch = useDispatch();
 
   const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
+    const emailUpdate = e.target.value;
+    setEmail(emailUpdate);
   };
 
   const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
+    const passwordUpdate = e.target.value;
+    setPassword(passwordUpdate);
   };
 
   const handleLogin = (e) => {
