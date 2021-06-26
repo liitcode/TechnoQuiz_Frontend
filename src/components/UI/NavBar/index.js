@@ -5,10 +5,11 @@ import { Link, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { MdFingerprint } from 'react-icons/md'
 import { IconContext } from 'react-icons/lib';
+import { DateTime } from 'luxon';
 import { AvatarGenerator } from 'random-avatar-generator';
 import { Dropdown, Premium } from './dropdown';
-import MobilePane from './mobilePane';
 import { Button } from '../Button';
+import MobilePane from './mobilePane';
 import './navbar.scss';
 
 function Navbar() {
@@ -36,6 +37,8 @@ function Navbar() {
 
     const log = useSelector((state) => state.auth.isLoggedin);
     const premium = useSelector((state) => state.auth.isPremium);
+    const dates = useSelector((state) => state.auth.expiry);
+    const expiry = premium ? DateTime.fromISO(dates).toISODate() : dates;
     window.addEventListener('resize', showButton);
 
     const disableNav = ['/signin', '/signup'];
@@ -84,7 +87,17 @@ function Navbar() {
             }
         </>
     );
-
+    const premiumMenuMOb = (
+        <>
+            {!premium ?
+                <li className='nav-item'>
+                    <Link to='/premium' className='nav-links' onClick={closeMobileMenu}>Premium</Link>
+                </li> :
+                <li className='nav-mob'>{`Your Plan Expires on ${expiry}`}</li>
+            }
+        </>
+    );
+    const displayPremium = button ? premiumMenu : premiumMenuMOb;
     return (
         <>
             <IconContext.Provider value={{ color: '#242424' }}>
@@ -97,7 +110,7 @@ function Navbar() {
                             {click ? <FaTimes /> : <FaBars />}
                         </div>
                         <ul className={click ? 'nav-menu active' : 'nav-menu'} >
-                            {premiumMenu}
+                            {displayPremium}
                             <li className='nav-item'>
                                 <Link to='/category' className='nav-links' onClick={closeMobileMenu}>Explore</Link>
                             </li>
