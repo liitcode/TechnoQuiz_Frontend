@@ -46,6 +46,7 @@ module.exports = {
       "required": {
         "some": ["nesting", "id"]
       }
-    }]
+    }],
+    "react/jsx-props-no-spreading": "off",
   },
 };
