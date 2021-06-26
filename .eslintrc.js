@@ -22,5 +22,20 @@ module.exports = {
     'func-names': 'off',
     'react/react-in-jsx-scope': 'off',
     "react/prop-types": 0,
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'error',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp',
+        ],
+      },
+    ],
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0
   },
 };
