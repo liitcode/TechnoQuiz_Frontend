@@ -1,10 +1,8 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Styles from './PremiumCard.module.scss';
 import { Button } from '../../UI/Button';
 
-function PremiumCard({title,price,priceTag,description,onClick}) {
+function PremiumCard({ title, price, priceTag, description, onClick }) {
   return (
     <div className={Styles.premiumContainer}>
       <div className={title === 'Monthly' ? Styles.header : Styles.header_dark}>

@@ -19,7 +19,39 @@ module.exports = {
     'react/jsx-filename-extension': [0],
     'import/extensions': 'off',
     'no-param-reassign': 0,
-    'func-names': 'off',
     'react/react-in-jsx-scope': 'off',
-  },
+    "react/prop-types": 0,
+    'camelcase': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      'error',
+      {
+        handlers: [
+          'onClick',
+          'onMouseDown',
+          'onMouseUp',
+          'onKeyPress',
+          'onKeyDown',
+          'onKeyUp',
+        ],
+      },
+    ],
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/label-has-associated-control": ["error", {
+      "required": {
+        "some": ["nesting", "id"]
+      }
+    }],
+    "jsx-a11y/label-has-for": ["error", {
+      "required": {
+        "some": ["nesting", "id"]
+      }
+    }],
+    "react/jsx-props-no-spreading": "off",
+    "consistent-return": "off",
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/no-array-index-key": "off",
+    "func-names": 0,
+    "react/button-has-type": "off"
+  }
 };

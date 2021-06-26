@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
+
 import React from 'react';
 import './footer.scss';
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   FaFacebook,
   FaInstagram,
@@ -12,64 +12,64 @@ import {
 import { MdFingerprint } from 'react-icons/md';
 
 function Footer() {
-  const disableFooter = ['/signin','/signup','/quiz'];
+  const disableFooter = ['/signin', '/signup', '/quiz'];
   return (
-    disableFooter.includes(useLocation().pathname) ? null : 
-    <div className='footer-container'>
-      <section className='social-media'>
-        <div className='social-media-wrap'>
-          <div className='footer-logo'>
-            <Link to='/' className='social-logo'>
-              <MdFingerprint className='navbar-icon' />
-              TechnoQuiz
-            </Link>
+    disableFooter.includes(useLocation().pathname) ? null :
+      <div className='footer-container'>
+        <section className='social-media'>
+          <div className='social-media-wrap'>
+            <div className='footer-logo'>
+              <Link to='/' className='social-logo'>
+                <MdFingerprint className='navbar-icon' />
+                TechnoQuiz
+              </Link>
+            </div>
+            <small className='website-rights'>TechnoQuiz © 2021</small>
+            <div className='social-icons'>
+              <Link
+                className='social-icon-link'
+                to='/'
+                target='_blank'
+                aria-label='Facebook'
+              >
+                <FaFacebook />
+              </Link>
+              <Link
+                className='social-icon-link'
+                to='/'
+                target='_blank'
+                aria-label='Instagram'
+              >
+                <FaInstagram />
+              </Link>
+              <Link
+                className='social-icon-link'
+                to='/'
+                target='_blank'
+                aria-label='Youtube'
+              >
+                <FaYoutube />
+              </Link>
+              <Link
+                className='social-icon-link'
+                to='/'
+                target='_blank'
+                aria-label='Twitter'
+              >
+                <FaTwitter />
+              </Link>
+              <Link
+                className='social-icon-link'
+                to='/'
+                target='_blank'
+                aria-label='LinkedIn'
+              >
+                <FaLinkedin />
+              </Link>
+            </div>
           </div>
-          <small className='website-rights'>TechnoQuiz © 2021</small>
-          <div className='social-icons'>
-            <Link
-              className='social-icon-link'
-              to='/'
-              target='_blank'
-              aria-label='Facebook'
-            >
-              <FaFacebook />
-            </Link>
-            <Link
-              className='social-icon-link'
-              to='/'
-              target='_blank'
-              aria-label='Instagram'
-            >
-              <FaInstagram />
-            </Link>
-            <Link
-              className='social-icon-link'
-              to='/'
-              target='_blank'
-              aria-label='Youtube'
-            >
-              <FaYoutube />
-            </Link>
-            <Link
-              className='social-icon-link'
-              to='/'
-              target='_blank'
-              aria-label='Twitter'
-            >
-              <FaTwitter />
-            </Link>
-            <Link
-              className='social-icon-link'
-              to='/'
-              target='_blank'
-              aria-label='LinkedIn'
-            >
-              <FaLinkedin />
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
   );
 }
 

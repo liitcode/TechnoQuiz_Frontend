@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the component 1`] = `
+<div
+  className="selectBox"
+>
+  <select
+    className="CategoryDropdown__select"
+    onChange={[Function]}
+    value=""
+  >
+    <option
+      value=""
+    >
+      All Categories
+    </option>
+  </select>
+</div>
+`;

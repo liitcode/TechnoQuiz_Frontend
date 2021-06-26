@@ -1,51 +1,50 @@
-/* eslint-disable func-names */
-import {REGISTER_SUCCESS,REGISTER_FAIL,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT,UPDATE_PREMIUM_PLAN} from '../actions/actionType';
+import { REGISTER_SUCCESS, REGISTER_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, UPDATE_PREMIUM_PLAN } from '../actions/actionType';
 
 const user = JSON.parse(localStorage.getItem('user'));
 
-const intitialState = user ? {isLoggedin : true, user, isPremium : user.isPremium, expiry : user.expiry} : {isLoggedin : false, user : 'null', isPremium : false};
+const intitialState = user ? { isLoggedin: true, user, isPremium: user.isPremium, expiry: user.expiry } : { isLoggedin: false, user: 'null', isPremium: false };
 
-export default function(state = intitialState,action) {
-    const { type,payload } = action;
-    switch (type){
-        case REGISTER_SUCCESS :
+export default function (state = intitialState, action) {
+    const { type, payload } = action;
+    switch (type) {
+        case REGISTER_SUCCESS:
             return {
                 ...state,
-                isLoggedin : false,
-                redir : true
+                isLoggedin: false,
+                redir: true
             };
-        case REGISTER_FAIL :
+        case REGISTER_FAIL:
             return {
                 ...state,
-                isLoggedin : false,
+                isLoggedin: false,
             }
-        case LOGIN_SUCCESS :
+        case LOGIN_SUCCESS:
             return {
                 ...state,
-                isLoggedin : true,
-                user : payload.user,
-                isPremium : payload.user.data.isPremium,
-                expiry : payload.user.data.expiry,
-            };  
-        case LOGIN_FAIL : 
-            return {
-                ...state,
-                isLoggedin : false,
-                user : null,
+                isLoggedin: true,
+                user: payload.user,
+                isPremium: payload.user.data.isPremium,
+                expiry: payload.user.data.expiry,
             };
-        case LOGOUT : 
+        case LOGIN_FAIL:
             return {
                 ...state,
-                isLoggedin : false,
-                user : null,
+                isLoggedin: false,
+                user: null,
             };
-        case UPDATE_PREMIUM_PLAN : 
+        case LOGOUT:
             return {
                 ...state,
-                isPremium : true,
-                expiry : payload,
+                isLoggedin: false,
+                user: null,
             };
-        default :
-            return state;               
-    }    
+        case UPDATE_PREMIUM_PLAN:
+            return {
+                ...state,
+                isPremium: true,
+                expiry: payload,
+            };
+        default:
+            return state;
+    }
 }

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -17,11 +15,11 @@ function Quiz(props) {
   const [secondsRemaining, setSecondsRemaining] = useState(null);
   const [isEndModalOpen, setIsEndModalOpen] = useState(false);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
-  const [leave,setLeave] = useState(true);
+  const [leave, setLeave] = useState(false);
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
   const dispatch = useDispatch();
   const {
-    quizData: {  data: quizDataList  = [] },
+    quizData: { data: quizDataList = [] },
     categoryName,
     quizMode,
     difficulty,
@@ -66,7 +64,7 @@ function Quiz(props) {
     previousSelectedAnswers[currentQuestionIndex] = e.target.value;
     setSelectedAnswerByUser(previousSelectedAnswers);
   };
-
+  // calculating  total score
   const scoreCalculation = () => {
     let count = 0;
     for (let i = 0; i < quizDataList.length; i += 1) {
@@ -75,6 +73,8 @@ function Quiz(props) {
         count += 1;
       }
     }
+
+    // To evaluate score based on difficulty
     let scoreCard;
     let maxScore = quizDataList.length;
     switch (difficulty) {
@@ -95,6 +95,8 @@ function Quiz(props) {
     }
     return { scoreCard, maxScore };
   };
+
+  // handler to run when quiz is completed
   const QuizCompleteHandler = () => {
     const score = scoreCalculation();
     const userScore = score.scoreCard;
@@ -145,161 +147,160 @@ function Quiz(props) {
 
   return (
     <>
-    <Prompt
-      when={render && !leave}
-      message='Are Your Sure you want to leave this page?'
-    />
-    <div className={styles.quiz}>
-      <div className={styles.stopWatch__MobileOnly}>
-        {quizMode === 'Timed' && <Timer secondsRemaining={secondsRemaining} />}
-      </div>
-      <div className={styles.quiz__container}>
-        <div className={styles.quiz__container__heading}>
-          CATEGORY: {categoryName}
+      <Prompt
+        when={!leave}
+        message='Are Your Sure you want to leave this page?'
+      />
+      <div className={styles.quiz}>
+        <div className={styles.stopWatch__MobileOnly}>
+          {quizMode === 'Timed' && <Timer secondsRemaining={secondsRemaining} />}
         </div>
+        <div className={styles.quiz__container}>
+          <div className={styles.quiz__container__heading}>
+            CATEGORY: {categoryName}
+          </div>
 
-        {quizDataList && quizDataList.length > 0 && (
-          <div className={styles.quiz__container__question}>
-            <div className={styles.quiz__container__currentquestion}>
-              <div className={styles.quiz__container__currentquestion__no}>
-                {`Q${currentQuestionIndex + 1} out of ${
-                  quizDataList && quizDataList.length
-                }`}
+          {quizDataList && quizDataList.length > 0 && (
+            <div className={styles.quiz__container__question}>
+              <div className={styles.quiz__container__currentquestion}>
+                <div className={styles.quiz__container__currentquestion__no}>
+                  {`Q${currentQuestionIndex + 1} out of ${quizDataList && quizDataList.length
+                    }`}
+                </div>
+                <div className={styles.stopWatch__DesktopOnly}>
+                  {quizMode === 'Timed' && (
+                    <Timer secondsRemaining={secondsRemaining} />
+                  )}
+                </div>
               </div>
-              <div className={styles.stopWatch__DesktopOnly}>
-                {quizMode === 'Timed' && (
-                  <Timer secondsRemaining={secondsRemaining} />
-                )}
+              <div className={styles.question}>
+                {quizDataList[currentQuestionIndex].question}
               </div>
-            </div>
-            <div className={styles.question}>
-              {quizDataList[currentQuestionIndex].question}
-            </div>
 
-            {Object.keys(quizDataList[currentQuestionIndex].answers).map(
-              (option) =>
-                quizDataList[currentQuestionIndex].answers[option] && (
-                  <label key={option} className={styles.option}   onChange={optionSelectionHandler} >
-                    <input
-                      type="radio"
-                      value={option}
-                      name={currentQuestionIndex}
-                      checked={
-                        option === selectedAnswerByUser[currentQuestionIndex]
-                      }
-                    />
-                    {quizDataList[currentQuestionIndex].answers[option]}
-                  </label>
-                ),
-            )}
-            <div className={styles.quiz__btnContainer}>
-              <Button
-                type="button"
-                onclick={quizEndBtnHandler}
-                buttonStyle="btn--outline"
-                buttonColor="red"
-              >
-                End Quiz
-              </Button>
-              <div className={styles.quiz__prevNextBtn}>
+              {Object.keys(quizDataList[currentQuestionIndex].answers).map(
+                (option) =>
+                  quizDataList[currentQuestionIndex].answers[option] && (
+                    <label key={option} className={styles.option} onChange={optionSelectionHandler} >
+                      <input
+                        type="radio"
+                        value={option}
+                        name={currentQuestionIndex}
+                        checked={
+                          option === selectedAnswerByUser[currentQuestionIndex]
+                        }
+                      />
+                      {quizDataList[currentQuestionIndex].answers[option]}
+                    </label>
+                  ),
+              )}
+              <div className={styles.quiz__btnContainer}>
                 <Button
                   type="button"
-                  className={styles.quiz__prevBtn}
-                  onclick={previousQuestionHandler}
-                  buttonStyle="btn--quiz"
-                  disabled={currentQuestionIndex === 0}
+                  onclick={quizEndBtnHandler}
+                  buttonStyle="btn--outline"
+                  buttonColor="red"
                 >
-                  Previous
+                  End Quiz
                 </Button>
-                {quizDataList &&
-                quizDataList.length &&
-                currentQuestionIndex === quizDataList.length - 1 ? (
+                <div className={styles.quiz__prevNextBtn}>
                   <Button
                     type="button"
-                    onclick={quizSubmitBtnHandler}
-                    buttonStyle="btn--primary"
+                    className={styles.quiz__prevBtn}
+                    onclick={previousQuestionHandler}
+                    buttonStyle={currentQuestionIndex === 0 ? "btn--disabled" : "btn--quiz"}
+                    isdisabled={currentQuestionIndex === 0}
                   >
-                    Submit
+                    Previous
                   </Button>
-                ) : (
-                  <Button
-                    type="button"
-                    onclick={nextQuestionHandler}
-                    buttonStyle="btn--primary"
-                  >
-                    Next
-                  </Button>
-                )}
+                  {quizDataList &&
+                    quizDataList.length &&
+                    currentQuestionIndex === quizDataList.length - 1 ? (
+                    <Button
+                      type="button"
+                      onclick={quizSubmitBtnHandler}
+                      buttonStyle="btn--primary"
+                    >
+                      Submit
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      onclick={nextQuestionHandler}
+                      buttonStyle="btn--primary"
+                    >
+                      Next
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
+        </div>
+        {isEndModalOpen && (
+          <Modal
+            isModalOpen={quizEndBtnHandler}
+            closeModalHandlder={quizCloseEndModalHandler}
+            title="Are you sure you want to end the Quiz?"
+            windowStyle="modal_container_noWidth"
+          >
+            <div className={styles.modalBtn}>
+              <Button
+                buttonSize="btn--large"
+                buttonColor="green"
+                buttonStyle="btn--quiz"
+                onclick={quizCloseEndModalHandler}
+              >
+                No
+              </Button>
+              <Button
+                buttonSize="btn--large"
+                buttonColor="red"
+                buttonStyle="btn--primary"
+                onclick={QuizCompleteHandler}
+              >
+                Yes
+              </Button>
+            </div>
+          </Modal>
+        )}
+
+        {isSubmitModalOpen && (
+          <Modal
+            isModalOpen={quizSubmitBtnHandler}
+            closeModalHandlder={quizCloseSubmitModalHandler}
+            title="Are you sure you want to submit the Quiz?"
+            windowStyle="modal_container_noWidth"
+          >
+            <div className={styles.modalBtn}>
+              <Button
+                buttonSize="btn--large"
+                buttonColor="green"
+                buttonStyle="btn--quiz"
+                onclick={quizCloseSubmitModalHandler}
+              >
+                No
+              </Button>
+              <Button
+                buttonSize="btn--large"
+                buttonColor="red"
+                buttonStyle="btn--primary"
+                onclick={QuizCompleteHandler}
+              >
+                Yes
+              </Button>
+            </div>
+          </Modal>
+        )}
+        {isTimeUpModalOpen && (
+          <Modal
+            isModalOpen={quizTimeUpHandler}
+            title="Your Time is Up!!!"
+            windowStyle="modal_container_noWidth"
+          >
+            <Button onclick={QuizCompleteHandler}>Continue</Button>
+          </Modal>
         )}
       </div>
-      {isEndModalOpen && (
-        <Modal
-          isModalOpen={quizEndBtnHandler}
-          closeModalHandlder={quizCloseEndModalHandler}
-          title="Are you sure you want to end the Quiz?"
-          windowStyle="modal_container_noWidth"
-        >
-          <div className={styles.modalBtn}>
-            <Button
-              buttonSize="btn--large"
-              buttonColor="green"
-              buttonStyle="btn--quiz"
-              onclick={quizCloseEndModalHandler}
-            >
-              No
-            </Button>
-            <Button
-              buttonSize="btn--large"
-              buttonColor="red"
-              buttonStyle="btn--primary"
-              onclick={QuizCompleteHandler}
-            >
-              Yes
-            </Button>
-          </div>
-        </Modal>
-      )}
-
-      {isSubmitModalOpen && (
-        <Modal
-          isModalOpen={quizSubmitBtnHandler}
-          closeModalHandlder={quizCloseSubmitModalHandler}
-          title="Are you sure you want to submit the Quiz?"
-          windowStyle="modal_container_noWidth"
-        >
-          <div className={styles.modalBtn}>
-            <Button
-              buttonSize="btn--large"
-              buttonColor="green"
-              buttonStyle="btn--quiz"
-              onclick={quizCloseSubmitModalHandler}
-            >
-              No
-            </Button>
-            <Button
-              buttonSize="btn--large"
-              buttonColor="red"
-              buttonStyle="btn--primary"
-              onclick={QuizCompleteHandler}
-            >
-              Yes
-            </Button>
-          </div>
-        </Modal>
-      )}
-      {isTimeUpModalOpen && (
-        <Modal
-          isModalOpen={quizTimeUpHandler}
-          title="Your Time is Up!!!"
-          windowStyle="modal_container_noWidth"
-        >
-          <Button onclick={QuizCompleteHandler}>Continue</Button>
-        </Modal>
-      )}
-    </div>
     </>
   );
 }

@@ -45,6 +45,18 @@
       @extend %hover-effect;
     }
   }
+  &--disabled{
+    background-color:$btn-disabled-background ;
+    border: 1px solid $btn-disabled-background;
+    margin-right: 10px;
+    color: $primary-color;
+  &:hover{
+    background-color:$btn-disabled-background ;
+    border: 1px solid $btn-disabled-background;
+    margin-right: 10px;
+    color:$primary-color;
+  }
+  }
   &--circular {
     border-radius: 50%;
     border: none;

@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
+
 import React from 'react';
 import './button.scss';
 
@@ -13,6 +12,7 @@ const STYLES = [
   'btn--circular',
   'btn--switch',
   'btn--switch-red',
+  "btn--disabled"
 ];
 const SIZES = ['btn--medium', 'btn--large', 'btn--mobile', 'btn--wide'];
 const COLOR = ['primary', 'secondary', 'red', 'blue', 'yellow', 'green'];

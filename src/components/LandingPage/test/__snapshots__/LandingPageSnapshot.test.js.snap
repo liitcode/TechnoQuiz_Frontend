@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the component 1`] = `
+Array [
+  <div
+    className="home__section darkBg"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row home__section-row"
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-text-wrapper"
+          >
+            <div
+              className="heading"
+            >
+              Test your technical knowledge
+            </div>
+            <div
+              className="top-line"
+            >
+              Take a Quiz On
+            </div>
+            <h1
+              className="heading"
+            >
+              <div
+                className="Typewriter"
+                data-testid="typewriter-wrapper"
+              />
+            </h1>
+          </div>
+        </div>
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-img-wrapper"
+          >
+            <img
+              alt="TechnoQuiz"
+              className="home__section-img"
+              src="images/5.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="home__section"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row home__section-row"
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row-reverse",
+          }
+        }
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-text-wrapper"
+          >
+            <div
+              className="top-line"
+            >
+              TechnoQuiz
+            </div>
+            <h1
+              className="heading_dark"
+            >
+              Interactive way to learn
+            </h1>
+            <p
+              className="home__section-subtitle dark"
+            >
+              Enhance your skills and expand your knowledge. Get the best of us!
+            </p>
+            <a
+              href="/signup"
+              onClick={[Function]}
+            >
+              <button
+                className="btn btn--primary btn--wide yellow"
+              >
+                Sign Up
+              </button>
+            </a>
+          </div>
+        </div>
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-img-wrapper"
+          >
+            <img
+              alt="TechnoQuiz"
+              className="home__section-img"
+              data-aos="fade-right"
+              src="images/1.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="home__section darkBg"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row home__section-row"
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-text-wrapper"
+          >
+            <div
+              className="top-line"
+            >
+              Product
+            </div>
+            <h1
+              className="heading"
+            >
+              What is it all about?
+            </h1>
+            <p
+              className="home__section-subtitle"
+            >
+              Choose your favourite topics with a variety of questions set for beginners and seniors alike!
+            </p>
+            <a
+              href="/category"
+              onClick={[Function]}
+            >
+              <button
+                className="btn btn--primary btn--wide yellow"
+              >
+                Try Now
+              </button>
+            </a>
+          </div>
+        </div>
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-img-wrapper"
+          >
+            <img
+              alt="TechnoQuiz"
+              className="home__section-img"
+              data-aos="fade-left"
+              src="images/2.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="home__section"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row home__section-row"
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row-reverse",
+          }
+        }
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-text-wrapper"
+          >
+            <div
+              className="top-line"
+            >
+              Premium
+            </div>
+            <h1
+              className="heading_dark"
+            >
+              Buy our Premium Membership to get an extra edge
+            </h1>
+            <p
+              className="home__section-subtitle dark"
+            >
+              Get acccess to all hard questions and explainations
+            </p>
+            <a
+              href="/premium"
+              onClick={[Function]}
+            >
+              <button
+                className="btn btn--primary btn--wide yellow"
+              >
+                View Plans
+              </button>
+            </a>
+          </div>
+        </div>
+        <div
+          className="col"
+        >
+          <div
+            className="home__section-img-wrapper"
+          >
+            <img
+              alt="TechnoQuiz"
+              className="home__section-img"
+              data-aos="fade-right"
+              src="images/3.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

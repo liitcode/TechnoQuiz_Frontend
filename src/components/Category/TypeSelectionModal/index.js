@@ -1,13 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-duplicates */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-no-duplicate-props */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -17,7 +7,6 @@ import Practice from '../../../assets/images/practice.png';
 import Timed from '../../../assets/images/timed.png';
 import { Button } from '../../UI/Button';
 import Modal from '../../UI/Modal';
-
 import styles from './TypeSelectionModal.module.scss';
 
 function TypeSelectionModal(props) {
@@ -86,11 +75,11 @@ function TypeSelectionModal(props) {
   };
 
   const submitModal = () => dispatch(submitTypeSelectionModal(
-      difficultyButton,
-      quizMode,
-      categoryId,
-      categoryName,
-    ),
+    difficultyButton,
+    quizMode,
+    categoryId,
+    categoryName,
+  ),
   ).then(() => {
     props.props.history.push('/quiz');
     closeModalWindowHandler();

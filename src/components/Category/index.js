@@ -14,7 +14,7 @@ function Category(props) {
     <div className={styles.categories}>
       <Categories />
       <LeaderBoard />
-      <TypeSelectionModal props = {props} />
+      <TypeSelectionModal props={props} />
     </div>
   );
 }

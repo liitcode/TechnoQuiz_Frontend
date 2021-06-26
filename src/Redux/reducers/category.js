@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import {
   OPEN_TYPE_SELECTION_MODAL,
   CLOSE_TYPE_SELECTION_MODAL,
