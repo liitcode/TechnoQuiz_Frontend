@@ -10,7 +10,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "aos": "^2.3.4",
-    "axios": "^0.21.3",
+    "axios": "^1.6.4",
     "framer-motion": "^4.1.17",
     "history": "^4.10.1",
     "luxon": "^1.28.1",
