@@ -14,7 +14,7 @@
     "framer-motion": "^4.1.17",
     "history": "^4.10.1",
     "luxon": "^1.28.1",
-    "node-sass": "^7.0.2",
+    "node-sass": "^7.0.3",
     "prop-types": "^15.7.2",
     "random-avatar-generator": "^2.0.0",
     "randomcolor": "^0.6.2",
